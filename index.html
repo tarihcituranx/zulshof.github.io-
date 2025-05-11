@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title>
+
+  <script>
+    const titles = {
+      en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
+      tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
+      id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
+    };
+
+    let lang = "en";
+    let index = 0;
+    let titleText = titles[lang];
+
+    function scrollTitle() {
+      document.title = titleText.slice(index) + " " + titleText.slice(0, index);
+      index = (index + 1) % titleText.length;
+    }
+
+    setInterval(scrollTitle, 200);
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const langSelector = document.getElementById("lang");
+      const translatableElements = document.querySelectorAll('[data-lang-en]');
+
+      if (langSelector) {
+        langSelector.addEventListener("change", () => {
+          lang = langSelector.value;
+          titleText = titles[lang];
+          index = 0;
+          translatableElements.forEach(el => {
+            el.textContent = el.getAttribute(`data-lang-${lang}`);
+          });
+        });
+      }
+    });
+  </script>
+
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
+    rel="stylesheet">
+</head>
+
+<body id="top" class="dark_theme">
+
+  <header class="header" data-header>
+    <div class="container">
+      <h1 class="h1 logo">
+        <a href="#">zulshof<span> illustrator</span></a>
+      </h1>
+
+      <div class="navbar-actions">
+        <select name="language" id="lang">
+          <option value="en">EN</option>
+          <option value="tr">TR</option>
+          <option value="id">ID</option>
+        </select>
+
+        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
+          <span class="icon"></span>
+        </button>
+      </div>
+
+      <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
+        <span class="one"></span>
+        <span class="two"></span>
+        <span class="three"></span>
+      </button>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+          <li><a href="#home" class="navbar-link" data-lang-en="Home" data-lang-tr="Anasayfa" data-lang-id="Beranda">Home</a></li>
+          <li><a href="#about" class="navbar-link" data-lang-en="About" data-lang-tr="Hakkımda" data-lang-id="Tentang">About</a></li>
+          <li><a href="#skills" class="navbar-link" data-lang-en="Fun Fact" data-lang-tr="Bilgi" data-lang-id="Catatan">Fun Fact</a></li>
+          <li><a href="#portfolio" class="navbar-link" data-lang-en="Works" data-lang-tr="Çalışmalarım" data-lang-id="Bekerja">Works</a></li>
+          <li><a href="#contact" class="navbar-link" data-lang-en="Contact" data-lang-tr="İletişim" data-lang-id="Kontak">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="container">
+<style>
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.hero-content > * {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-content > *:nth-child(1) { animation-delay: 0.2s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.4s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.6s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.8s; }
+.hero-content > *:nth-child(5) { animation-delay: 1s; }
+.hero-content > *:nth-child(6) { animation-delay: 1.2s; }
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  gap: 2rem;
+  text-align: left;
+}
+
+.about-banner {
+  flex: 1 1 250px;
+  text-align: center;
+  animation: fadeInLeft 1s ease forwards;
+}
+
+.about-banner img {
+  max-width: 280px;
+  height: auto;
+}
+
+.about-content {
+  flex: 1 1 320px;
+  max-width: 600px;
+  animation: fadeInRight 1s ease forwards;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(252, 163, 17, 0.3);
+}
+</style>
+
+<section class="hero" id="home" style="text-align: center; padding: 4rem 1rem 4rem;">
+  <div class="hero-content">
+    <h1 style="font-family: 'Saira Stencil One', cursive; font-size: clamp(2.5rem, 6vw, 5rem); color: #9ab8e0; letter-spacing: 0.1em; margin-bottom: 0.5rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+      ZULSHOF
+    </h1>
+    <h2 style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: clamp(1.2rem, 4vw, 2.5rem); color: #9ab8e0; font-weight: bold; margin: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.25);">
+      ILLUSTRATOR
+    </h2>
+    <div style="margin: 1rem 0;">
+      <span style="color: #9ab8e0; font-size: clamp(1rem, 2vw, 1.8rem); display: inline-block; margin: 0 0.25rem;">— — —</span>
+      <span style="color: #9ab8e0; font-size: clamp(1rem, 2vw, 1.8rem); display: inline-block; margin: 0 0.25rem;">— — —</span>
+    </div>
+    <div style="margin-top: 2rem;">
+      <span id="welcome-effect"
+            style="display: inline-block; font-family: 'Saira Stencil One', cursive; font-size: clamp(1.2rem, 3vw, 2rem); color: #ffffff; animation: fadeInOut 3s ease-in-out infinite; letter-spacing: 0.15em; vertical-align: middle;">
+        Welcome
+      </span>
+      <span style="font-size: clamp(1.2rem, 3vw, 2rem); color: #ffffff; vertical-align: middle; margin-left: 0.5rem;">❤️</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
+</style>
+
+<script>
+  const welcomeElement = document.getElementById("welcome-effect");
+  const translations = ["Welcome", "Hoş Geldiniz", "Selamat Datang"];
+  let currentIndex = 0;
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % translations.length;
+    welcomeElement.textContent = translations[currentIndex];
+  }, 3000);
+</script>
+</div>
+    <h2 class="h2 hero-title" style="margin-top: 2rem; font-size: clamp(1.5rem, 4.5vw, 3rem); text-shadow: 1px 1px 6px rgba(0,0,0,0.3);" data-lang-en="Explore My Imaginative 
+	World of Art & Storytelling" data-lang-tr="Sanat ve Hikaye Anlatımında
+	Hayal Gücüme Ortak Olun" data-lang-id="Jelajahi Dunia Imajinasi 
+	Saya melalui Seni & Cerita">
+      Explore My Imaginative World of Art & Storytelling
+    </h2>
+    <div style="margin-top: 1rem; display: flex; justify-content: center;">
+  <a href="#contact" class="btn btn-primary" data-lang-en="Get in Touch" data-lang-tr="İletişime Geç" data-lang-id="Hubungi Kami">Get in Touch</a>
+</div>
+
+<section class="about" id="about">
+  <figure class="about-banner">
+    <img src="./assets/images/about-banner.png" alt="A woman with a sketchbook and thoughtful expression">
+  </figure>
+
+  <div class="about-content section-content">
+    <p class="section-subtitle" data-lang-en="About me" data-lang-tr="Hakkımda" data-lang-id="Tentang saya">About me</p>
+
+    <h2 class="h3 section-title" data-lang-en="Let me tell you a lil bit about me…" data-lang-tr="Size biraz kendimden bahsedeyim…" data-lang-id="Izinkan saya bercerita sedikit tentang diri saya…">Let me tell you a lil bit about me…</h2>
+
+    <p class="section-text"
+  data-lang-en="Assalamu’alaikum… Hi, friends! I’m Zulshof, an illustrator based in East Java, Indonesia. I was born in a peaceful and beautiful village. Today, I work as a freelance illustrator—mostly for book publishers and on commission-based projects. You can hire me for custom illustrations, and feel free to explore my portfolio to get a better idea of how I bring stories to life through my art."
+  
+  data-lang-tr="Selamünaleyküm… Merhaba arkadaşlar! Ben Zulshof, Endonezya'nın Doğu Cava bölgesinden bir illüstratörüm. Huzurlu ve güzel bir köyde doğdum. Bugün, kitap yayınevleri ve özel siparişler için çalışan serbest bir illüstratörüm. Ücretli illüstrasyonlar için benimle çalışabilirsiniz; çizim tarzımı daha yakından görmek isterseniz portfolyomu incelemeyi unutmayın."
+  
+  data-lang-id="Assalamu’alaikum… Hai teman-teman! Saya Zulshof, seorang ilustrator dari Jawa Timur, Indonesia. Saya lahir di desa yang damai dan indah. Saat ini, saya bekerja sebagai ilustrator lepas untuk penerbit buku dan proyek pesanan. Kamu bisa mempekerjakan saya untuk ilustrasi berbayar, dan jangan ragu untuk melihat portofolio saya guna memahami gaya gambar saya lebih baik.">
+  
+  Assalamu’alaikum… Hi, friends! I’m Zulshof, an illustrator based in East Java, Indonesia. I was born in a peaceful and beautiful village. Today, I work as a freelance illustrator—mostly for book publishers and on commission-based projects. You can hire me for custom illustrations, and feel free to explore my portfolio to get a better idea of how I bring stories to life through my art.
+</p>
+
+
+   <a href="#contact" class="btn btn-secondary" 
+   data-lang-en="Hire me" 
+   data-lang-tr="Beni işe al" 
+   data-lang-id="Pekerjakan saya">
+  Hire me
+</a>
+<a href="./assets/images/ZULSHOF%20PORTOFOLIO.pdf" target="_blank" class="btn btn-primary" 
+   data-lang-en="View Portfolio" 
+   data-lang-tr="Portfolyoyu Görüntüle" 
+   data-lang-id="Lihat Portofolio">
+  View Portfolio
+</a>
+</section>
+
+<section class="skills" id="skills">
+  <div class="skills-content section-content">
+    <p class="section-subtitle" data-lang-en="Fun Fact" data-lang-tr="Küçük Bir Not" data-lang-id="Fakta Menarik">Fun Fact</p>
+
+    <h2 class="h3 section-title" data-lang-en="How It All Started…" data-lang-tr="Her Şey Nasıl Başladı…" data-lang-id="Bagaimana Semua Dimulai…">How It All Started…</h2>
+
+    <p class="section-text"
+       data-lang-en="As a child, I remember flipping through a children’s magazine filled with adorable illustrations. That moment sparked my love for art—especially drawing."
+       data-lang-tr="Çocukken bir çocuk dergisinde karşılaştığım sevimli çizimler, sanata—özellikle çizime—olan ilgimi başlattı."
+       data-lang-id="Saat kecil, saya terpesona oleh ilustrasi lucu dalam majalah anak-anak. Momen itu menyalakan cinta saya pada seni—terutama menggambar.">
+      As a child, I remember flipping through a children’s magazine filled with adorable illustrations. That moment sparked my love for art—especially drawing.
+    </p>
+
+    <p class="section-text"
+       data-lang-en="Sharing creativity through colors, lines, and stories remains the best part of my daily life."
+       data-lang-tr="Renkler, çizgiler ve hikâyeler aracılığıyla yaratıcılığı paylaşmak hâlâ günlük hayatımın en güzel kısmı."
+       data-lang-id="Berbagi kreativitas lewat warna, garis, dan cerita tetap menjadi bagian terbaik dari hari-hari saya.">
+      Sharing creativity through colors, lines, and stories remains the best part of my daily life.
+    </p>
+  </div>
+   
+    <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
+      <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
+    </div>
+</section>
+
+
+<style>
+  .insta-link {
+    color: #fca311;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .insta-link:hover {
+    text-decoration: underline;
+  }
+</style>
+
+
+
+      <!-- 
+        - #PROJECTS
+      -->
+<style>
+.instagram-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.instagram-item {
+  width: 300px;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1e1e1e;
+  text-decoration: none;
+}
+
+.instagram-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.instagram-item img {
+  width: 100%;
+  display: block;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.instagram-caption {
+  text-align: center;
+  margin: 0.75rem 1rem 1rem;
+  font-size: 1rem;
+  color: #e0e0e0;
+  font-style: italic;
+}
+</style>
+
+<section class="project" id="portfolio">
+  <div class="section-content">
+    <p class="section-subtitle" data-lang-en="My Works" data-lang-tr="Çalışmalarım" data-lang-id="Karya Saya">My Works</p>
+    <h2 class="h3 section-title" data-lang-en="Most Loved Illustrations on Instagram" data-lang-tr="Instagram'daki En Sevilen İllüstrasyonlar" data-lang-id="Ilustrasi Paling Disukai di Instagram">Most Loved Illustrations on Instagram</h2>
+    <p class="section-text" data-lang-en="These are some of my most liked and interacted posts from Instagram, selected by what you loved the most. Dive in and explore the stories behind each one!"
+      data-lang-tr="Bunlar, Instagram'da en çok beğenilen ve etkileşim alan paylaşımlarımdan bazıları. En çok sevdiklerinize göre seçildi. Her birinin ardındaki hikâyeyi keşfedin!"
+      data-lang-id="Ini adalah beberapa postingan saya yang paling banyak disukai dan diinteraksikan di Instagram, dipilih berdasarkan apa yang paling kamu sukai. Yuk, jelajahi ceritanya!">
+      These are some of my most liked and interacted posts from Instagram, selected by what you loved the most. Dive in and explore the stories behind each one!
+    </p>
+  </div>
+
+  <div class="instagram-gallery">
+    <a href="https://www.instagram.com/p/C1eIg5fpIsZ/" class="instagram-item" target="_blank">
+      <img src="./assets/images/insta1.png" alt="Most liked Instagram post 1">
+      <p class="instagram-caption" data-lang-en="Praying for good character" data-lang-tr="Güzel ahlak için dua" data-lang-id="Berdoa untuk akhlak yang baik">Praying for good character</p>
+    </a>
+    <a href="https://www.instagram.com/p/C1lV9XjpC5z/" class="instagram-item" target="_blank">
+      <img src="./assets/images/insta2.png" alt="Lili finds a butterfly">
+      <p class="instagram-caption" data-lang-en="Lili finds a butterfly" data-lang-tr="Lili bir kelebek buluyor" data-lang-id="Lili menemukan kupu-kupu">Lili finds a butterfly</p>
+    </a>
+    <a href="https://www.instagram.com/p/C620YeWJZQI/" class="instagram-item" target="_blank">
+      <img src="./assets/images/insta3.png" alt="Illustrator selfie post">
+      <p class="instagram-caption" data-lang-en="Thank you for 3K followers!" data-lang-tr="3K takipçi için teşekkürler!" data-lang-id="Terima kasih untuk 3K pengikut!">Thank you for 3K followers!</p>
+    </a>
+    <a href="https://www.instagram.com/p/CysBX1apSyB/" class="instagram-item" target="_blank">
+      <img src="./assets/images/insta4.png" alt="Fan art prayer illustration">
+      <p class="instagram-caption" data-lang-en="Illustration with a beautiful prayer" data-lang-tr="Güzel bir dua içeren illüstrasyon" data-lang-id="Ilustrasi dengan doa yang indah">Illustration with a beautiful prayer</p>
+    </a>
+    <a href="https://www.instagram.com/p/CymqfrTJDSo/" class="instagram-item" target="_blank">
+      <img src="./assets/images/insta5.png" alt="Warm tea moment illustration">
+      <p class="instagram-caption" data-lang-en="Warm moment with tea" data-lang-tr="Çay eşliğinde sıcak bir an" data-lang-id="Momen hangat dengan teh">Warm moment with tea</p>
+    </a>
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="https://www.instagram.com/zulshof/" class="btn btn-primary" target="_blank" data-lang-en="View More on Instagram" data-lang-tr="Instagram'da Daha Fazlası" data-lang-id="Lihat Lebih Banyak di Instagram">View More on Instagram</a>
+  </div>
+</section>
+
+<style>
+.contact-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f3f3f3;
+  border-radius: 50%;
+  margin-right: 1rem;
+  color: #222;
+  font-size: 1.2rem;
+}
+.upload-note {
+  background: rgba(252, 163, 17, 0.1);
+  color: #fca311;
+  padding: 1rem;
+  border-left: 4px solid #fca311;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  animation: fadeIn 1s ease;
+}
+.language-switcher select {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+.language-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<div class="language-switcher">
+  <select id="languageSelect" onchange="setLanguage(this.value)">
+    <option value="en">🇬🇧 English</option>
+    <option value="tr">🇹🇷 Türkçe</option>
+    <option value="id">🇮🇩 Bahasa</option>
+  </select>
+</div>
+
+<section class="contact" id="contact">
+  <div class="contact-content section-content">
+    <p class="section-subtitle" data-lang-en="Contact" data-lang-tr="İletişim" data-lang-id="Kontak">Contact</p>
+    <h2 class="h3 section-title" data-lang-en="Got a project in mind? Let’s bring it to life together!" data-lang-tr="Aklında bir proje mi var? Gel birlikte hayata geçirelim!" data-lang-id="Ada proyek dalam pikiran? Mari kita wujudkan bersama!">Got a project in mind? Let’s bring it to life together!</h2>
+    <p class="section-text" data-lang-en="I'm always excited to hear about new illustration projects! Fill out the form to share your ideas, and I’ll get back to you as soon as I can. If you need to send files (like a photo or a sample), just complete the form and attach your files via your mail app after it's opened."
+      data-lang-tr="Yeni illüstrasyon projeleri duymak beni her zaman heyecanlandırır! Fikirlerinizi paylaşmak için formu doldurun, size en kısa sürede geri döneceğim. Fotoğraf veya örnek gibi dosyalar göndermek isterseniz, formu doldurduktan sonra açılan mail uygulamasında bunları ekleyebilirsiniz."
+      data-lang-id="Saya selalu senang mendengar proyek ilustrasi baru! Isi formulir untuk berbagi ide Anda, dan saya akan segera menghubungi Anda. Jika Anda perlu mengirim file (seperti foto atau contoh), cukup isi formulir dan lampirkan file Anda melalui aplikasi email Anda setelah terbuka.">
+      I'm always excited to hear about new illustration projects! Fill out the form to share your ideas, and I’ll get back to you as soon as I can. If you need to send files (like a photo or a sample), just complete the form and attach your files via your mail app after it's opened.
+    </p>
+
+    <ul class="contact-list">
+      <li class="contact-list-item">
+        <div class="contact-item-icon">
+          <ion-icon name="location-outline"></ion-icon>
+        </div>
+        <div class="wrapper">
+          <h3 class="h4 contact-item-title" data-lang-en="Address:" data-lang-tr="Adres:" data-lang-id="Alamat:">Address:</h3>
+          <address class="contact-info" data-lang-en="East Java, Indonesia" data-lang-tr="Doğu Cava, Endonezya" data-lang-id="Jawa Timur, Indonesia">Jawa Timur, Indonesia</address>
+        </div>
+      </li>
+      <li class="contact-list-item">
+        <div class="contact-item-icon">
+          <ion-icon name="call-outline"></ion-icon>
+        </div>
+        <div class="wrapper">
+          <h3 class="h4 contact-item-title" data-lang-en="Phone:" data-lang-tr="Telefon:" data-lang-id="Telepon:">Phone:</h3>
+          <a href="tel:+" class="contact-info"></a>
+        </div>
+      </li>
+      <li class="contact-list-item">
+        <div class="contact-item-icon">
+          <ion-icon name="mail-outline"></ion-icon>
+        </div>
+        <div class="wrapper">
+          <h3 class="h4 contact-item-title" data-lang-en="Email:" data-lang-tr="E-posta:" data-lang-id="Email:">Email:</h3>
+          <a href="mailto:zulshof@gmail.com" class="contact-info">zulshof@gmail.com</a>
+        </div>
+      </li>
+      <li>
+        <ul class="contac-social-list">
+          <li><a href="https://www.instagram.com/zulshof" class="contact-social-link" target="_blank"><div class="tooltip">Instagram</div><ion-icon name="logo-instagram"></ion-icon></a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <form action="mailto:zulshof@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+    <div class="form-wrapper">
+      <label for="name" class="form-label" data-lang-en="Name" data-lang-tr="İsim" data-lang-id="Nama">Name</label>
+      <div class="input-wrapper">
+        <input type="text" name="name" id="name" required 
+          data-lang-en-placeholder="e.g John Doe"
+          data-lang-tr-placeholder="örn. Ahmet Yılmaz"
+          data-lang-id-placeholder="cth. Ahmad Yusuf"
+          placeholder="e.g John Doe" class="input-field">
+        <ion-icon name="person-circle"></ion-icon>
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <label for="email" class="form-label" data-lang-en="Email" data-lang-tr="E-posta" data-lang-id="Email">Email</label>
+      <div class="input-wrapper">
+        <input type="email" name="email" id="email" required 
+          data-lang-en-placeholder="e.g johndoe@mail.com"
+          data-lang-tr-placeholder="örn. ahmet@mail.com"
+          data-lang-id-placeholder="cth. ahmad@mail.com"
+          placeholder="e.g johndoe@mail.com" class="input-field">
+        <ion-icon name="mail"></ion-icon>
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <label for="phone" class="form-label" data-lang-en="Phone" data-lang-tr="Telefon" data-lang-id="Telepon">Phone</label>
+      <div class="input-wrapper">
+        <input type="tel" name="phone" id="phone" required 
+          data-lang-en-placeholder="Phone Number"
+          data-lang-tr-placeholder="Telefon Numarası"
+          data-lang-id-placeholder="Nomor Telepon"
+          placeholder="Phone Number" class="input-field">
+        <ion-icon name="call"></ion-icon>
+      </div>
+    </div>
+    <div class="form-wrapper">
+      <label for="message" class="form-label" data-lang-en="Message" data-lang-tr="Mesaj" data-lang-id="Pesan">Message</label>
+      <div class="input-wrapper">
+        <textarea name="message" id="message" required 
+          data-lang-en-placeholder="Tell me more about your idea..."
+          data-lang-tr-placeholder="Fikriniz hakkında daha fazla bilgi verin..."
+          data-lang-id-placeholder="Ceritakan lebih banyak tentang ide Anda..."
+          placeholder="Tell me more about your idea..." class="input-field"></textarea>
+        <ion-icon name="chatbubbles"></ion-icon>
+      </div>
+    </div>
+    <p class="upload-note" data-lang-en="📎 Need to share files? Once your mail app opens, simply attach your reference images or documents."
+      data-lang-tr="📎 Dosya mı eklemek istiyorsunuz? Mail uygulamanız açıldığında referans görsellerinizi veya belgelerinizi ekleyebilirsiniz."
+      data-lang-id="📎 Ingin berbagi file? Setelah aplikasi email Anda terbuka, lampirkan gambar atau dokumen referensi Anda.">
+      📎 Need to share files? Once your mail app opens, simply attach your reference images or documents.
+    </p>
+    <input type="hidden" name="subject" value="zulshofillustrator Message">
+    <button type="submit" class="btn btn-primary" data-lang-en="Send" data-lang-tr="Gönder" data-lang-id="Kirim">Send</button>
+  </form>
+</section>
+
+<script>
+function setLanguage(lang) {
+  document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
+    el.textContent = el.getAttribute('data-lang-' + lang);
+  });
+  document.querySelectorAll('[data-lang-' + lang + '-placeholder]').forEach(el => {
+    el.setAttribute('placeholder', el.getAttribute('data-lang-' + lang + '-placeholder'));
+  });
+  const titleMap = {
+    en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
+    tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
+    id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
+  };
+  document.title = titleMap[lang];
+}
+</script>
+
+<footer class="footer">
+  <div class="container" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+    <p class="h1 logo">
+      <a href="#">
+        zulshof<span>illustrator</span>
+      </a>
+    </p>
+
+     <p class="copyright" style="text-align: center;">
+      <span class="copyright-text"
+        data-lang-en="© 2025 Made with ❤️ by"
+        data-lang-tr="© 2025 Sevgiyle yapıldı ❤️"
+        data-lang-id="© 2025 Dibuat dengan ❤️ oleh">
+        © 2025 Made with ❤️ by
+      </span>
+      <a href="https://www.instagram.com/zulshof" target="_blank">zulshof</a> &amp;
+      <a href="https://www.instagram.com/tarihcituranx" target="_blank">tarihcituranx</a>.
+      <span class="inspired-text"
+        data-lang-en=" Inspired by the open-source work of "
+        data-lang-tr=" Bu çalışma, açık kaynak projesinden ilham almıştır "
+        data-lang-id=" Terinspirasi dari proyek open-source oleh ">
+        Inspired by the open-source work of
+      </span>
+      <a href="https://codewithsadee.github.io/jack-portfolio/" target="_blank">codewithsadee</a>.
+    </p>
+
+
+<a href="#top" class="go-top" data-go-top title="Go to Top">
+  <ion-icon name="arrow-up"></ion-icon>
+</a>
+
+<script src="./assets/js/script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
