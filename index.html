@@ -538,16 +538,16 @@ function setLanguage(lang) {
   document.title = titleMap[lang];
 }
 </script>
-<footer style="
+<footer class="footer" style="
   width: 100%;
-  background-color: #1a1a1a;
-  color: white;
+  color: var(--text-color);
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  background-color: var(--footer-bg);
 ">
   <h1 style="margin: 0; font-size: 2rem;">
     <a href="#" style="text-decoration: none; color: inherit;">
@@ -578,7 +578,6 @@ function setLanguage(lang) {
   </p>
 </footer>
 
-<!-- Scroll to top button -->
 <a href="#top" title="Go to Top" aria-label="Scroll to the top of the page" style="
   position: fixed;
   bottom: 20px;
@@ -592,12 +591,25 @@ function setLanguage(lang) {
   justify-content: center;
   color: #fff;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
 ">
   <ion-icon name="arrow-up" style="font-size: 24px;"></ion-icon>
 </a>
 
+<style>
+  :root {
+    --footer-bg: #1a1a1a;
+    --text-color: #ffffff;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --footer-bg: #f0f0f0;
+      --text-color: #000000;
+    }
+  }
+</style>
 
 
 <a href="#top" class="go-top" data-go-top title="Go to Top" aria-label="Scroll to the top of the page" style="position: fixed; bottom: 20px; right: 20px; background-color: #fca311; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
