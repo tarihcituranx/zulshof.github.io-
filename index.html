@@ -40,7 +40,7 @@
       if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
         el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
       } else if (el.hasAttribute(textAttr)) {
-        el.textContent = el.getAttribute(textAttr);
+        el.innerHTML = el.getAttribute(textAttr);
       }
     });
 
@@ -59,7 +59,7 @@
           if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
             el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
           } else if (el.hasAttribute(textAttr)) {
-            el.textContent = el.getAttribute(textAttr);
+            el.innerHTML = el.getAttribute(textAttr);
           }
         });
       });
