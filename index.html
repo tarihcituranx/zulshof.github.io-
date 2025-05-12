@@ -1,75 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<script>
+  const titles = {
+    en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
+    tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
+    id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
+  };
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title>
+  let lang;
+  let index = 0;
+  let titleText = "";
 
-  <script>
-    const titles = {
-      en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
-      tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
-      id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
-    };
+  function scrollTitle() {
+    document.title = titleText.slice(index) + " " + titleText.slice(0, index);
+    index = (index + 1) % titleText.length;
+  }
 
-    let lang = "en";
-    let index = 0;
-    let titleText = titles[lang];
+  function setLanguage(language) {
+    lang = language;
+    titleText = titles[lang];
+    index = 0;
 
-    function scrollTitle() {
-      document.title = titleText.slice(index) + " " + titleText.slice(0, index);
-      index = (index + 1) % titleText.length;
-    }
-
-    setInterval(scrollTitle, 200);
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const langSelector = document.getElementById("lang");
-      const translatableElements = document.querySelectorAll('[data-lang-en]');
-
-      if (langSelector) {
-        langSelector.addEventListener("change", () => {
-          lang = langSelector.value;
-          titleText = titles[lang];
-          index = 0;
-          translatableElements.forEach(el => {
-            el.textContent = el.getAttribute(`data-lang-${lang}`);
-          });
-        });
+    // Güncellenebilir tüm içerikleri değiştir
+    document.querySelectorAll("[data-lang-en]").forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      const key = `data-lang-${lang}`;
+      if (tagName === "input" || tagName === "textarea") {
+        const placeholderKey = `${key}-placeholder`;
+        if (el.hasAttribute(placeholderKey)) {
+          el.setAttribute("placeholder", el.getAttribute(placeholderKey));
+        }
+      } else {
+        el.textContent = el.getAttribute(key);
       }
     });
-  </script>
 
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
-    rel="stylesheet">
-</head>
+    // localStorage'a kaydet
+    localStorage.setItem("site-lang", lang);
+    // Seçim kutusunu güncelle
+    const langSelector = document.getElementById("lang");
+    if (langSelector) langSelector.value = lang;
+  }
 
-<body id="top" class="dark_theme">
+  document.addEventListener("DOMContentLoaded", () => {
+    const langSelector = document.getElementById("lang");
+    let savedLang = localStorage.getItem("site-lang");
 
-  <header class="header" data-header>
-    <div class="container">
-      <h1 class="h1 logo">
-        <a href="#">zulshof<span> illustrator</span></a>
-      </h1>
+    if (!savedLang) {
+      const browserLang = navigator.language.slice(0, 2).toLowerCase();
+      savedLang = ["tr", "id", "en"].includes(browserLang) ? browserLang : "en";
+    }
 
-      <div class="navbar-actions">
-        <select name="language" id="lang">
-          <option value="en">EN</option>
-          <option value="tr">TR</option>
-          <option value="id">ID</option>
-        </select>
+    setLanguage(savedLang);
+    setInterval(scrollTitle, 200);
 
-        <button class="theme-btn" aria-label="Change Theme" title="Change Theme" data-theme-btn>
-          <span class="icon"></span>
-        </button>
-      </div>
+    if (langSelector) {
+      langSelector.addEventListener("change", (e) => {
+        setLanguage(e.target.value);
+      });
+    }
+  });
+</script>
 
       <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
