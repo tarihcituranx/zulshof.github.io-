@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,58 +10,57 @@
 
   <script>
     const titles = {
-    en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
-    tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
-    id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
-  };
+      en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
+      tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
+      id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
+    };
 
-  let lang;
-  let index = 0;
-  let titleText = "";
+    let lang;
+    let index = 0;
+    let titleText = "";
 
-  function scrollTitle() {
-    document.title = titleText.slice(index) + " " + titleText.slice(0, index);
-    index = (index + 1) % titleText.length;
-  }
-
-  function setLanguage(language) {
-    lang = language;
-    titleText = titles[lang];
-    index = 0;
-
-    // Güncellenebilir tüm içerikleri değiştir
-    document.querySelectorAll("[data-lang-en]").forEach(el => {
-      const tagName = el.tagName.toLowerCase();
-      const key = `data-lang-${lang}`;
-      if (tagName === "input" || tagName === "textarea") {
-        const placeholderKey = `${key}-placeholder`;
-        if (el.hasAttribute(placeholderKey)) {
-          el.setAttribute("placeholder", el.getAttribute(placeholderKey));
-        }
-      } else {
-        el.textContent = el.getAttribute(key);
-      }
-    });
-
-    // localStorage'a kaydet
-    localStorage.setItem("site-lang", lang);
-    // Seçim kutusunu güncelle
-    const langSelector = document.getElementById("lang");
-    if (langSelector) langSelector.value = lang;
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const langSelector = document.getElementById("lang");
-    let savedLang = localStorage.getItem("site-lang");
-
-    if (!savedLang) {
-      const browserLang = navigator.language.slice(0, 2).toLowerCase();
-      savedLang = ["tr", "id", "en"].includes(browserLang) ? browserLang : "en";
+    function scrollTitle() {
+      document.title = titleText.slice(index) + " " + titleText.slice(0, index);
+      index = (index + 1) % titleText.length;
     }
 
-    setLanguage(savedLang);
-    setInterval(scrollTitle, 200);
+    function updateTexts() {
+      document.querySelectorAll("[data-lang-en]").forEach(el => {
+        const tag = el.tagName.toLowerCase();
+        const key = `data-lang-${lang}`;
+        const placeholder = `${key}-placeholder`;
 
+        if ((tag === "input" || tag === "textarea") && el.hasAttribute(placeholder)) {
+          el.setAttribute("placeholder", el.getAttribute(placeholder));
+        } else if (el.hasAttribute(key)) {
+          el.innerHTML = el.getAttribute(key);
+        }
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const langSelector = document.getElementById("lang");
+
+      const savedLang = localStorage.getItem("site-lang");
+      const browserLang = navigator.language.slice(0, 2).toLowerCase();
+      lang = savedLang || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
+
+      titleText = titles[lang];
+      updateTexts();
+      scrollTitle();
+      setInterval(scrollTitle, 200);
+
+      if (langSelector) {
+        langSelector.value = lang;
+        langSelector.addEventListener("change", () => {
+          lang = langSelector.value;
+          localStorage.setItem("site-lang", lang);
+          titleText = titles[lang];
+          index = 0;
+          updateTexts();
+        });
+      }
+    });
   </script>
 
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
@@ -90,7 +92,6 @@
         </button>
       </div>
 
-
       <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
         <span class="two"></span>
@@ -108,6 +109,10 @@
       </nav>
     </div>
   </header>
+</body>
+
+</html>
+
   <main>
     <article class="container">
 <style>
