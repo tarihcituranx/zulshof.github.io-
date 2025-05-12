@@ -59,18 +59,6 @@
     setLanguage(savedLang);
     setInterval(scrollTitle, 200);
 
-   if (langSelector) {
-  langSelector.value = lang; // Bu satır seçili dili gösterir
-  langSelector.addEventListener("change", () => {
-    lang = langSelector.value;
-    localStorage.setItem("site-lang", lang);
-    titleText = titles[lang];
-    index = 0;
-    updateTexts();
-  });
-}
-    }
-  });
   </script>
 
   <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
