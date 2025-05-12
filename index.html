@@ -20,23 +20,20 @@
     titleText = titles[lang];
     index = 0;
 
-    // Güncellenebilir tüm içerikleri değiştir
     document.querySelectorAll("[data-lang-en]").forEach(el => {
       const tagName = el.tagName.toLowerCase();
-      const key = `data-lang-${lang}`;
-      if (tagName === "input" || tagName === "textarea") {
-        const placeholderKey = `${key}-placeholder`;
-        if (el.hasAttribute(placeholderKey)) {
-          el.setAttribute("placeholder", el.getAttribute(placeholderKey));
-        }
-      } else {
-        el.textContent = el.getAttribute(key);
+      const textAttr = `data-lang-${lang}`;
+      const placeholderAttr = `data-lang-${lang}-placeholder`;
+
+      if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
+        el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
+      } else if (el.hasAttribute(textAttr) && !el.hasAttribute("placeholder")) {
+        el.innerHTML = el.getAttribute(textAttr);
       }
     });
 
-    // localStorage'a kaydet
     localStorage.setItem("site-lang", lang);
-    // Seçim kutusunu güncelle
+
     const langSelector = document.getElementById("lang");
     if (langSelector) langSelector.value = lang;
   }
@@ -60,6 +57,7 @@
     }
   });
 </script>
+
 
       <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
