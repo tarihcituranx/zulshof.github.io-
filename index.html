@@ -61,10 +61,16 @@
     setLanguage(savedLang);
     setInterval(scrollTitle, 200);
 
-    if (langSelector) {
-      langSelector.addEventListener("change", (e) => {
-        setLanguage(e.target.value);
-      });
+   if (langSelector) {
+  langSelector.value = lang; // Bu satır seçili dili gösterir
+  langSelector.addEventListener("change", () => {
+    lang = langSelector.value;
+    localStorage.setItem("site-lang", lang);
+    titleText = titles[lang];
+    index = 0;
+    updateTexts();
+  });
+}
     }
   });
   </script>
