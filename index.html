@@ -1,26 +1,56 @@
 <!DOCTYPE html>
-<script>
-  const titles = {
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title>
+
+  <script>
+    const titles = {
     en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
     tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
     id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
   };
 
-  let lang = "en";
+  let lang;
   let index = 0;
-  let titleText = titles[lang];
+  let titleText = "";
 
   function scrollTitle() {
     document.title = titleText.slice(index) + " " + titleText.slice(0, index);
     index = (index + 1) % titleText.length;
   }
 
-  setInterval(scrollTitle, 200);
+  function setLanguage(language) {
+    lang = language;
+    titleText = titles[lang];
+    index = 0;
 
-  window.addEventListener("DOMContentLoaded", () => {
+    // Güncellenebilir tüm içerikleri değiştir
+    document.querySelectorAll("[data-lang-en]").forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      const key = `data-lang-${lang}`;
+      if (tagName === "input" || tagName === "textarea") {
+        const placeholderKey = `${key}-placeholder`;
+        if (el.hasAttribute(placeholderKey)) {
+          el.setAttribute("placeholder", el.getAttribute(placeholderKey));
+        }
+      } else {
+        el.textContent = el.getAttribute(key);
+      }
+    });
+
+    // localStorage'a kaydet
+    localStorage.setItem("site-lang", lang);
+    // Seçim kutusunu güncelle
     const langSelector = document.getElementById("lang");
-    const translatableElements = document.querySelectorAll('[data-lang-en]');
+    if (langSelector) langSelector.value = lang;
+  }
 
+  document.addEventListener("DOMContentLoaded", () => {
+    const langSelector = document.getElementById("lang");
     let savedLang = localStorage.getItem("site-lang");
 
     if (!savedLang) {
@@ -28,40 +58,12 @@
       savedLang = ["tr", "id", "en"].includes(browserLang) ? browserLang : "en";
     }
 
-    lang = savedLang;
-    titleText = titles[lang];
-    index = 0;
-
-    translatableElements.forEach(el => {
-      const tagName = el.tagName.toLowerCase();
-      const placeholderAttr = `data-lang-${lang}-placeholder`;
-      const textAttr = `data-lang-${lang}`;
-
-      if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
-        el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
-      } else if (el.hasAttribute(textAttr)) {
-        el.innerHTML = el.getAttribute(textAttr);
-      }
-    });
+    setLanguage(savedLang);
+    setInterval(scrollTitle, 200);
 
     if (langSelector) {
-      langSelector.value = lang;
-      langSelector.addEventListener("change", () => {
-        lang = langSelector.value;
-        localStorage.setItem("site-lang", lang);
-        titleText = titles[lang];
-        index = 0;
-        translatableElements.forEach(el => {
-          const tagName = el.tagName.toLowerCase();
-          const placeholderAttr = `data-lang-${lang}-placeholder`;
-          const textAttr = `data-lang-${lang}`;
-
-          if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
-            el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
-          } else if (el.hasAttribute(textAttr)) {
-            el.innerHTML = el.getAttribute(textAttr);
-          }
-        });
+      langSelector.addEventListener("change", (e) => {
+        setLanguage(e.target.value);
       });
     }
   });
