@@ -6,40 +6,21 @@
     id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
   };
 
-  let lang;
+  let lang = "en";
   let index = 0;
-  let titleText = "";
+  let titleText = titles[lang];
 
   function scrollTitle() {
     document.title = titleText.slice(index) + " " + titleText.slice(0, index);
     index = (index + 1) % titleText.length;
   }
 
-  function setLanguage(language) {
-    lang = language;
-    titleText = titles[lang];
-    index = 0;
+  setInterval(scrollTitle, 200);
 
-    document.querySelectorAll("[data-lang-en]").forEach(el => {
-      const tagName = el.tagName.toLowerCase();
-      const textAttr = `data-lang-${lang}`;
-      const placeholderAttr = `data-lang-${lang}-placeholder`;
-
-      if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
-        el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
-      } else if (el.hasAttribute(textAttr) && !el.hasAttribute("placeholder")) {
-        el.innerHTML = el.getAttribute(textAttr);
-      }
-    });
-
-    localStorage.setItem("site-lang", lang);
-
+  window.addEventListener("DOMContentLoaded", () => {
     const langSelector = document.getElementById("lang");
-    if (langSelector) langSelector.value = lang;
-  }
+    const translatableElements = document.querySelectorAll('[data-lang-en]');
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const langSelector = document.getElementById("lang");
     let savedLang = localStorage.getItem("site-lang");
 
     if (!savedLang) {
@@ -47,17 +28,44 @@
       savedLang = ["tr", "id", "en"].includes(browserLang) ? browserLang : "en";
     }
 
-    setLanguage(savedLang);
-    setInterval(scrollTitle, 200);
+    lang = savedLang;
+    titleText = titles[lang];
+    index = 0;
+
+    translatableElements.forEach(el => {
+      const tagName = el.tagName.toLowerCase();
+      const placeholderAttr = `data-lang-${lang}-placeholder`;
+      const textAttr = `data-lang-${lang}`;
+
+      if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
+        el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
+      } else if (el.hasAttribute(textAttr)) {
+        el.textContent = el.getAttribute(textAttr);
+      }
+    });
 
     if (langSelector) {
-      langSelector.addEventListener("change", (e) => {
-        setLanguage(e.target.value);
+      langSelector.value = lang;
+      langSelector.addEventListener("change", () => {
+        lang = langSelector.value;
+        localStorage.setItem("site-lang", lang);
+        titleText = titles[lang];
+        index = 0;
+        translatableElements.forEach(el => {
+          const tagName = el.tagName.toLowerCase();
+          const placeholderAttr = `data-lang-${lang}-placeholder`;
+          const textAttr = `data-lang-${lang}`;
+
+          if ((tagName === "input" || tagName === "textarea") && el.hasAttribute(placeholderAttr)) {
+            el.setAttribute("placeholder", el.getAttribute(placeholderAttr));
+          } else if (el.hasAttribute(textAttr)) {
+            el.textContent = el.getAttribute(textAttr);
+          }
+        });
       });
     }
   });
 </script>
-
 
       <button class="nav-toggle-btn" aria-label="Toggle Menu" title="Toggle Menu" data-nav-toggle-btn>
         <span class="one"></span>
