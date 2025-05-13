@@ -75,30 +75,34 @@
 \*-----------------------------------*/
 
 body.dark_theme {
-
+  /* MEVCUT KOYU TEMA DEĞİŞKENLERİNİZ */
   --bg-primary: hsl(0, 0%, 12%);
-  --bg-secondary: hsl(0, 0%, 19%);
+  --bg-secondary: hsl(0, 0%, 19%);    /* Footer arka planı için bu kullanılır */
   --color-primary: hsl(0, 0%, 100%);
-  --color-secondary: hsl(0, 0%, 62%);
+  --color-secondary: hsl(0, 0%, 62%); /* Footer'daki "zulshof" ve genel metinler için bu kullanılır */
   --card-shadow: hsla(0, 0%, 0%, 0.4);
   --input-bg: hsl(0, 0%, 16%);
+  --shadow-1: 10px 10px 40px var(--card-shadow); /* Footer gölgesi için bu kullanılır */
 
-  --shadow-1: 10px 10px 40px var(--card-shadow);
-
+  /* FOOTER İÇİN EK/GÜNCELLENMİŞ DEĞİŞKENLER (KOYU TEMA) */
+  --raw-seinna: #fca311;                 /* "illustrator" kısmı için (koyu temada turuncu) */
+  --footer-actual-link-color: var(--raw-seinna); /* Koyu temada linkler turuncu olsun */
 }
 
 body.light_theme {
+  /* MEVCUT AYDINLIK TEMA DEĞİŞKENLERİNİZ */
   --bg-primary: #A3E3ED; /* Blizzard Blue */
-  --bg-secondary: hsl(0, 0%, 100%); /* Beyaz */
+  --bg-secondary: hsl(0, 0%, 100%); /* Beyaz - Footer arka planı için bu kullanılır */
   --color-primary: hsl(0, 0%, 12%); /* Siyah ton */
-  --color-secondary: hsl(0, 0%, 37%); /* Gri ton */
+  --color-secondary: hsl(0, 0%, 37%); /* Gri ton - Footer'daki "zulshof" ve genel metinler için bu kullanılır */
   --card-shadow: hsla(0, 0%, 0%, 0.1); /* Şeffaf siyah */
   --input-bg: hsl(0, 0%, 93%); /* Gri ton */
+  --shadow-1: 10px 10px 40px var(--card-shadow); /* Footer gölgesi için bu kullanılır */
 
-  --shadow-1: 10px 10px 40px var(--card-shadow);
+  /* FOOTER İÇİN EK/GÜNCELLENMİŞ DEĞİŞKENLER (AYDINLIK TEMA) */
+  --raw-seinna: #D95E00;                 /* "illustrator" kısmı için (aydınlık temada koyu turuncu) */
+  --footer-actual-link-color: var(--color-secondary); /* Aydınlık temada linkler "zulshof" gibi koyu gri olsun */
 }
-
-
 
 
 
@@ -862,45 +866,55 @@ textarea.input-field {
 
 .footer {
   background: var(--bg-secondary);
-  /* padding-block CSS'i padding-top ve padding-bottom anlamına gelir */
-  padding-top: 20px;
-  padding-bottom: 20px;
+  color: var(--color-secondary); /* Footer'ın ana metin rengi */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   box-shadow: var(--shadow-1);
+  width: 100%;
 }
 
-.footer .logo {
-  display: inline-block; /* Eğer logo bir link (<a>) ise ve satır elementi gibi davranıyorsa */
-  margin-bottom: 15px;
+/* Logo Kısmı */
+.footer-logo { /* Eğer <h1> etiketine bu sınıfı verdiyseniz */
+  margin: 0; /* HTML'den gelen inline stili buraya taşıyabilirsiniz */
+  font-size: 2rem; /* HTML'den gelen inline stili buraya taşıyabilirsiniz */
+}
+
+.footer-logo a { /* <h1> veya .footer-logo içindeki <a> etiketi için */
+  color: var(--color-secondary); /* "zulshof" yazısı için (temaya göre renk alır) */
   text-decoration: none;
-  font-size: 1.8rem; /* Örnek boyut, logonuzun "zulshof" kısmı için */
-  font-weight: bold; /* Örnek kalınlık */
-  color: var(--color-secondary); /* Logo'nun ana metin kısmı ("zulshof") için */
 }
 
-/* Eğer logonuz "zulshof<span>illustrator</span>" gibi bir yapıdaysa,
-   <span> içindeki "illustrator" kısmını hedeflemek için: */
-.footer .logo span { /* Veya daha spesifik bir class: .footer .logo .accent-text */
-  color: var(--raw-seinna); /* Logo'nun vurgulu kısmı ("illustrator") için */
-  /* Gerekirse font boyutu veya ağırlığı burada ayrıca ayarlanabilir */
+.footer-logo .logo-accent { /* "illustrator" yazısı için (<span> etiketi bu sınıfa sahip olmalı) */
+  color: var(--raw-seinna); /* Her zaman turuncu/koyu turuncu (temaya göre) */
 }
 
-.copyright {
-  color: var(--color-secondary); /* Copyright metni için */
+/* Copyright ve Diğer Metinler/Linkler */
+.copyright { /* <p> etiketleri için (varsa) */
+  /* color zaten .footer'dan miras alınır, gerekirse burada override edebilirsiniz */
   line-height: 1.6;
-  font-size: 0.9rem; /* Örnek boyut */
+  font-size: 0.9rem; /* HTML'den gelen inline stili buraya taşıyabilirsiniz */
+  margin-top: 1rem; /* HTML'den gelen inline stili buraya taşıyabilirsiniz */
+  margin-bottom: 0;
 }
 
-.copyright a {
-  display: inline-block; /* Linklerin satır içinde kalması için */
-  color: var(--raw-seinna); /* Copyright içindeki linkler için */
-  text-decoration: none; /* İsteğe bağlı, alt çizgiyi kaldırır */
+.copyright:last-of-type { /* Son paragraf için farklı bir margin gerekirse */
+    margin-top: 0.5rem;
 }
 
-.copyright a:hover {
-  text-decoration: underline; /* Fare üzerine gelince alt çizgi */
+.copyright-link { /* Footer içindeki tüm linkler (zulshof, tarihcituranx, codewithsadee) */
+  color: var(--footer-actual-link-color); /* Önemli Değişiklik: Temaya göre link rengi */
+  text-decoration: none;
 }
 
+.copyright-link:hover {
+  text-decoration: underline;
+}
 
 
 /*-----------------------------------*\
