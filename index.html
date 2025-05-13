@@ -689,43 +689,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <footer class="footer" style="
- <footer class="footer" style="
   width: 100%;
-  color: var(--text-color);
+  /* color: var(--text-color); <-- Bu genel metin rengi yerine footer için özel olanı kullanalım */
+  /* background-color: var(--footer-bg); <-- Bu da footer için özel olanı kullanalım */
   padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-  background-color: var(--footer-bg);
+  /* box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5); <-- Bu da CSS değişkenini kullansın */
 ">
-  <h1 style="margin: 0; font-size: 2rem;">
-    <a href="#" style="text-decoration: none; color: inherit;">
-      zulshof<span style="color: #fca311;">illustrator</span>
+  <!-- Yukarıdaki inline stiller yerine CSS sınıfı (.footer) içindeki değişkenleri kullanmak daha iyidir. -->
+  <!-- Örnek: style="" attribütünü tamamen kaldırıp, tüm stilleri .footer sınıfına CSS dosyasında atamak. -->
+  <!-- Şimdilik, sadece renk ve gölge ile ilgili olanları CSS değişkenleriyle uyumlu hale getirelim. -->
+
+  <h1 class="footer-logo" style="margin: 0; font-size: 2rem;">
+    <a href="#" style="text-decoration: none;"> <!-- color:inherit kaldırıldı, CSS yönetecek -->
+      zulshof<span class="logo-accent">illustrator</span>
+      <!-- <span style="color: #fca311;"> kaldırıldı, yerine class="logo-accent" geldi -->
     </a>
   </h1>
 
-  <p style="margin: 1rem 0 0;">
+  <p class="copyright" style="margin: 1rem 0 0;">
     <span data-lang-en="© 2025 Made with ❤️ by"
           data-lang-tr="© 2025 ❤️ ile hazırlayanlar:"
           data-lang-id="© 2025 Dibuat dengan ❤️ oleh">
       © 2025 Made with ❤️ by
     </span>
-    <a href="https://www.instagram.com/zulshof" target="_blank" rel="noopener noreferrer"
-       style="color: #fca311; text-decoration: none;">zulshof</a> &amp;
-    <a href="https://www.instagram.com/tarihcituranx" target="_blank" rel="noopener noreferrer"
-       style="color: #fca311; text-decoration: none;">tarihcituranx</a>.
+    <a class="copyright-link" href="https://www.instagram.com/zulshof" target="_blank" rel="noopener noreferrer"
+       style="text-decoration: none;">zulshof</a> &amp;
+       <!-- style="color: #fca311;" kaldırıldı, yerine class="copyright-link" geldi -->
+    <a class="copyright-link" href="https://www.instagram.com/tarihcituranx" target="_blank" rel="noopener noreferrer"
+       style="text-decoration: none;">tarihcituranx</a>.
+       <!-- style="color: #fca311;" kaldırıldı, yerine class="copyright-link" geldi -->
   </p>
 
-  <p style="margin: 0.5rem 0 0;">
+  <p class="copyright" style="margin: 0.5rem 0 0;">
     <span data-lang-en="Inspired by the open-source work of"
           data-lang-tr="Açık kaynak ilham kaynağı:"
           data-lang-id="Terinspirasi dari karya open-source oleh">
       Inspired by the open-source work of
     </span>
-    <a href="https://codewithsadee.github.io/jack-portfolio/" target="_blank" rel="noopener noreferrer"
-       style="color: #fca311; text-decoration: none;">codewithsadee</a>.
+    <a class="copyright-link" href="https://codewithsadee.github.io/jack-portfolio/" target="_blank" rel="noopener noreferrer"
+       style="text-decoration: none;">codewithsadee</a>.
+       <!-- style="color: #fca311;" kaldırıldı, yerine class="copyright-link" geldi -->
   </p>
 </footer>
 
