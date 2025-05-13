@@ -89,7 +89,16 @@ const goTo = params.get("return") || "index.html";
 
 setTimeout(() => {
   window.location.href = goTo;
-}, 2800);
+}, 2800);const params = new URLSearchParams(window.location.search);
+  const goTo = params.get("return") || "index.html";
+
+  // Kullanıcıya sadece bir kez göster
+  localStorage.setItem("boot-shown", "true");
+
+  // 2.8 saniye sonra ana sayfaya yönlendir
+  setTimeout(() => {
+    window.location.href = goTo;
+  }, 2800);
   </script>
 </body>
 </html>
