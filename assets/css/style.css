@@ -862,24 +862,44 @@ textarea.input-field {
 
 .footer {
   background: var(--bg-secondary);
-  padding-block: 20px;
+  /* padding-block CSS'i padding-top ve padding-bottom anlamına gelir */
+  padding-top: 20px;
+  padding-bottom: 20px;
   text-align: center;
   box-shadow: var(--shadow-1);
 }
 
-.footer .logo { margin-bottom: 15px; }
+.footer .logo {
+  display: inline-block; /* Eğer logo bir link (<a>) ise ve satır elementi gibi davranıyorsa */
+  margin-bottom: 15px;
+  text-decoration: none;
+  font-size: 1.8rem; /* Örnek boyut, logonuzun "zulshof" kısmı için */
+  font-weight: bold; /* Örnek kalınlık */
+  color: var(--color-secondary); /* Logo'nun ana metin kısmı ("zulshof") için */
+}
+
+/* Eğer logonuz "zulshof<span>illustrator</span>" gibi bir yapıdaysa,
+   <span> içindeki "illustrator" kısmını hedeflemek için: */
+.footer .logo span { /* Veya daha spesifik bir class: .footer .logo .accent-text */
+  color: var(--raw-seinna); /* Logo'nun vurgulu kısmı ("illustrator") için */
+  /* Gerekirse font boyutu veya ağırlığı burada ayrıca ayarlanabilir */
+}
 
 .copyright {
-  color: var(--color-secondary);
+  color: var(--color-secondary); /* Copyright metni için */
   line-height: 1.6;
+  font-size: 0.9rem; /* Örnek boyut */
 }
 
 .copyright a {
-  display: inline-block;
-  color: var(--raw-seinna);
+  display: inline-block; /* Linklerin satır içinde kalması için */
+  color: var(--raw-seinna); /* Copyright içindeki linkler için */
+  text-decoration: none; /* İsteğe bağlı, alt çizgiyi kaldırır */
 }
 
-
+.copyright a:hover {
+  text-decoration: underline; /* Fare üzerine gelince alt çizgi */
+}
 
 
 
