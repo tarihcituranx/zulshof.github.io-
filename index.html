@@ -620,19 +620,32 @@
 
 <script>
 function setLanguage(lang) {
+  // Tüm metinleri güncelle
   document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
     el.textContent = el.getAttribute('data-lang-' + lang);
   });
+
+  // Placeholder'ları güncelle
   document.querySelectorAll('[data-lang-' + lang + '-placeholder]').forEach(el => {
     el.setAttribute('placeholder', el.getAttribute('data-lang-' + lang + '-placeholder'));
   });
+
+  // Sayfa başlığını güncelle
   const titleMap = {
     en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
     tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
     id: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
   };
-  document.title = titleMap[lang];
+  document.title = titleMap[lang] || titleMap['en']; // Varsayılan İngilizce
 }
+
+// Sayfa yüklendiğinde varsayılan dili ayarla
+document.addEventListener("DOMContentLoaded", () => {
+  const userLang = (localStorage.getItem("site-lang") || navigator.language.slice(0, 2).toLowerCase());
+  const supportedLangs = ['en', 'tr', 'id'];
+  const lang = supportedLangs.includes(userLang) ? userLang : 'en'; // Varsayılan İngilizce
+  setLanguage(lang);
+});
 </script>
 <footer class="footer" style="
   width: 100%;
