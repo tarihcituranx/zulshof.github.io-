@@ -6,13 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title>
 
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    html.dark_theme {
+      background-color: #0d1b2a;
+      color: #ffffff;
+    }
+
+    html.light_theme {
+      background-color: #a3daec; /* Blizzard Blue */
+      color: #1c2b3a;
+    }
+  </style>
+
   <script>
+    // Tema uygulama
+    const userPref = localStorage.getItem("site-theme");
+    const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const useDark = userPref ? userPref === "dark" : systemPrefDark;
+    document.documentElement.classList.add(useDark ? "dark_theme" : "light_theme");
+
+    // Boot yönlendirme
     if (!localStorage.getItem("boot-shown")) {
-      // Boot daha önce gösterilmediyse oraya yönlendir
       window.location.href = "boot.html?return=index.html";
     }
-  </script>
-  <script>
+
+    // Başlık çeviri ve scroll
     const titles = {
       en: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator",
       tr: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör",
@@ -76,19 +104,7 @@
     rel="stylesheet">
 </head>
 
-<body 
-<script>
-   const userPref = localStorage.getItem("site-theme");
-    const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (!userPref) {
-      document.documentElement.classList.toggle("dark_theme", systemPrefDark);
-    } else {
-      document.documentElement.classList.toggle("dark_theme", userPref === "dark");
-    }
-</script>
-
-	<body id="top" class="dark_theme">
+<body id="top">
 
   <header class="header" data-header>
     <div class="container">
