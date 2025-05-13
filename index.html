@@ -775,6 +775,92 @@ function setLanguage(lang) {
     const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
     el.textContent = text;
   });
+</script>
+<style>
+  #preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0d1b2a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    animation: fadeIn 1s ease-in-out both;
+  }
+
+  #preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .preloader-image {
+    width: 150px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    margin-bottom: 1.25rem;
+    animation: imageFadeIn 1s ease-in-out;
+  }
+
+  @keyframes imageFadeIn {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .preloader-logo {
+    font-family: 'Saira Stencil One', cursive;
+    font-size: 2rem;
+    color: #fca311;
+    letter-spacing: 0.1em;
+    margin: 0.3rem 0;
+    animation: fadeInUp 1.2s ease-in-out;
+  }
+
+  .preloader-subtext {
+    color: #9ab8e0;
+    font-size: 1.1rem;
+    font-family: 'Roboto', sans-serif;
+    opacity: 0.85;
+    animation: fadeInUp 1.4s ease-in-out;
+  }
+
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(15px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div id="preloader">
+  <img src="./assets/images/about-banner.png" alt="Illustrator portrait" class="preloader-image">
+  <div class="preloader-logo">ZULSHOF</div>
+  <div class="preloader-subtext"
+       data-lang-en="Illustrator"
+       data-lang-tr="İllüstratör"
+       data-lang-id="Ilustrator">
+    Illustrator
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    preloader.classList.add("hidden");
+  });
+
+  const lang = localStorage.getItem("site-lang") || navigator.language.slice(0, 2).toLowerCase();
+  const subtext = document.querySelector('.preloader-subtext');
+  const translated = subtext.getAttribute("data-lang-" + lang) || subtext.getAttribute("data-lang-en");
+  subtext.textContent = translated;
 </script>	    
 </body>
 </html>
