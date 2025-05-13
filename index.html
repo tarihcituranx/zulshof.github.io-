@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
+ <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title>
 
+  <!-- 1. YENİ STATİK BAŞLIK ETİKETİ (Static Title Tag) - İngilizce Öncelikli -->
+  <!-- Bu, <title>zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör</title> satırınızın yerine geçecek -->
+  <title>Zulshof - Illustrator | Art &amp; Storytelling Portfolio</title>
+  <!-- JavaScript kodunuz, kullanıcının dil seçimine göre bu başlığı dinamik olarak değiştirmeye devam edecektir. -->
+
+  <!-- 2. YENİ META AÇIKLAMA (Description) - İngilizce Öncelikli -->
+  <meta name="description" content="Zulshof is a freelance illustrator from East Java, Indonesia, specializing in art and storytelling. Discover her portfolio on Instagram (@zulshof) and creative projects. Available in English, Indonesian, and Turkish.">
+
+  <!-- 3. YENİ ANAHTAR KELİMELER (Keywords) - Tüm dillerden ilgili kelimeler -->
+  <meta name="keywords" content="Zulshof, illustrator, illüstratör, ilustrator, freelance, serbest çalışan, lepas, art, sanat, seni, drawing, çizim, gambar, portfolio, portfolyo, portofolio, Instagram, Indonesia, Endonezya, East Java, Jawa Timur, book illustration, storytelling, cerita bergambar">
+
+  <!-- 4. YENİ CANONICAL URL -->
+  <link rel="canonical" href="https://gnctrhc.com.tr/">
+
+  <!-- 5. YENİ OPEN GRAPH ETİKETLERİ (Sosyal Medya Paylaşımları İçin - Instagram ve Facebook için önemli) -->
+  <meta property="og:title" content="Zulshof - Illustrator | Art &amp; Storytelling Portfolio">
+  <meta property="og:description" content="Freelance illustrator Zulshof's portfolio of art and storytelling. Follow on Instagram @zulshof. Available in English, Indonesian, and Turkish.">
+  <meta property="og:image" content="https://gnctrhc.com.tr/assets/images/about-banner.png"> <!-- Sitenizi temsil eden bir görsel -->
+  <meta property="og:image:alt" content="Zulshof Illustration Portfolio">
+  <meta property="og:url" content="https://gnctrhc.com.tr/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="id_ID">
+  <meta property="og:locale:alternate" content="tr_TR">
+  <meta property="og:see_also" content="https://www.instagram.com/zulshof/">
+
+  <!-- MEVCUT FAVICON VE MANIFEST LİNKLERİNİZ (apple-mobile-web-app-title güncellendi) -->
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <!-- Bu satır "MyWebSite" yerine "Zulshof" olarak güncellendi -->
+  <meta name="apple-mobile-web-app-title" content="Zulshof">
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- MEVCUT STİL BLOKUNUZ -->
   <style>
     html {
       scroll-behavior: smooth;
@@ -28,6 +61,7 @@
     }
   </style>
 
+  <!-- MEVCUT SCRIPT BLOKUNUZ (Tema, Boot Yönlendirme, Başlık Çevirisi vb.) -->
   <script>
     // Tema uygulama
     const userPref = localStorage.getItem("site-theme");
@@ -77,22 +111,33 @@
       const browserLang = navigator.language.slice(0, 2).toLowerCase();
       lang = savedLang || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
 
+      // ÖNEMLİ: Buradaki titleText ataması, statik <title> etiketini ezdikten sonra
+      // JavaScript'in başlığı devralmasını sağlar. Ancak arama motorları ilk olarak statik başlığı görebilir.
       titleText = titles[lang];
       updateTexts();
       scrollTitle();
-      setInterval(scrollTitle, 200);
+      setInterval(scrollTitle, 200); // Bu satır zaten vardı, korundu.
 
       if (langSelector) {
         langSelector.value = lang;
         langSelector.addEventListener("change", () => {
           lang = langSelector.value;
           localStorage.setItem("site-lang", lang);
-          titleText = titles[lang];
-          index = 0;
+          titleText = titles[lang]; // Dil değiştiğinde titleText'i güncelle
+          index = 0; // Scroll animasyonunu sıfırla
           updateTexts();
         });
       }
     });
+  </script>
+
+  <!-- MEVCUT HARİCİ CSS VE FONT LİNKLERİNİZ -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap"
+    rel="stylesheet">
   </script>
 
 <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
