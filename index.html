@@ -78,17 +78,17 @@
 
 <body 
 <script>
-  const userPref = localStorage.getItem("site-theme");
-  const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+   const userPref = localStorage.getItem("site-theme");
+    const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-  if (!userPref) {
-    document.body.classList.toggle("dark_theme", systemPrefDark);
-  } else {
-    document.body.classList.toggle("dark_theme", userPref === "dark");
-  }
+    if (!userPref) {
+      document.documentElement.classList.toggle("dark_theme", systemPrefDark);
+    } else {
+      document.documentElement.classList.toggle("dark_theme", userPref === "dark");
+    }
 </script>
 
-	id="top" class="dark_theme">
+	<body id="top" class="dark_theme">
 
   <header class="header" data-header>
     <div class="container">
