@@ -64,41 +64,27 @@
   </div>
 
   <script>
-    // Dil algılama
+    // URL parametresiyle dönüş adresini al
+    const params = new URLSearchParams(window.location.search);
+    const goTo = params.get("return") || "index.html";
+
+    // Boot ekranı bir kere gösterilsin
+    localStorage.setItem("boot-shown", "true");
+
+    // Kullanıcı diline göre metin seçimi
     const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
-    const subtext = document.getElementById("bootSubtext");
     const translations = {
       en: "Preparing your experience...",
       tr: "Siteniz hazırlanıyor...",
       id: "Menyiapkan pengalaman Anda..."
     };
+    const subtext = document.getElementById("bootSubtext");
     subtext.textContent = translations[lang] || translations["en"];
 
-    // Tema algılama
-    const savedTheme = localStorage.getItem("site-theme");
-    const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    if (!savedTheme) {
-      localStorage.setItem("site-theme", systemPrefDark ? "dark" : "light");
-    }
-
-    // Fade-out + yönlendirme
+    // Yönlendirme zamanlaması
     const boot = document.getElementById("bootContainer");
     setTimeout(() => boot.classList.add("fade-out"), 1800);
-   const params = new URLSearchParams(window.location.search);
-const goTo = params.get("return") || "index.html";
-
-setTimeout(() => {
-  window.location.href = goTo;
-}, 2800);const params = new URLSearchParams(window.location.search);
-  const goTo = params.get("return") || "index.html";
-
-  // Kullanıcıya sadece bir kez göster
-  localStorage.setItem("boot-shown", "true");
-
-  // 2.8 saniye sonra ana sayfaya yönlendir
-  setTimeout(() => {
-    window.location.href = goTo;
-  }, 2800);
+    setTimeout(() => window.location.href = goTo, 2800);
   </script>
 </body>
 </html>
