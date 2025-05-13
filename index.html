@@ -687,6 +687,94 @@ function setLanguage(lang) {
     document.body.appendChild(firefly);
     setTimeout(() => firefly.remove(), 1000);
   });
+</script>
+<style>
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #222;
+    color: #fff;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    transition: transform 0.5s ease;
+  }
+
+  #cookie-banner.hidden {
+    transform: translateY(100%);
+  }
+
+  #cookie-banner .cookie-text {
+    max-width: 80%;
+  }
+
+  #cookie-banner .cookie-actions button {
+    margin-left: 0.5rem;
+    background: #fca311;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  #cookie-banner .cookie-actions button.decline {
+    background: #888;
+  }
+</style>
+
+<div id="cookie-banner" class="hidden">
+  <div class="cookie-text" 
+       data-lang-en="We use cookies to personalize content and analyze traffic. Do you accept?"
+       data-lang-tr="İçeriği kişiselleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?"
+       data-lang-id="Kami menggunakan cookie untuk personalisasi dan analisis lalu lintas. Apakah Anda setuju?">
+    We use cookies to personalize content and analyze traffic. Do you accept?
+  </div>
+  <div class="cookie-actions">
+    <button class="accept"
+      data-lang-en="Accept"
+      data-lang-tr="Kabul Et"
+      data-lang-id="Setuju">Accept</button>
+    <button class="decline"
+      data-lang-en="Decline"
+      data-lang-tr="Reddet"
+      data-lang-id="Tolak">Decline</button>
+  </div>
+</div>
+
+<script>
+  const cookieBanner = document.getElementById("cookie-banner");
+  const cookieAccepted = localStorage.getItem("cookie-consent");
+
+  if (!cookieAccepted) {
+    cookieBanner.classList.remove("hidden");
+  }
+
+  cookieBanner.querySelector(".accept").addEventListener("click", () => {
+    localStorage.setItem("cookie-consent", "accepted");
+    cookieBanner.classList.add("hidden");
+  });
+
+  cookieBanner.querySelector(".decline").addEventListener("click", () => {
+    localStorage.setItem("cookie-consent", "declined");
+    cookieBanner.classList.add("hidden");
+  });
+
+  // Çok dilli destek (site-lang ile entegre çalışır)
+  const lang = localStorage.getItem("site-lang") || navigator.language.slice(0, 2).toLowerCase();
+  document.querySelectorAll('#cookie-banner [data-lang-en]').forEach(el => {
+    const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
+    el.textContent = text;
+  });
 </script>	    
 </body>
 </html>
