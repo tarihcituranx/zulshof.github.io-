@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=boot.html?return=index.html">
-  <title>Redirecting...</title>
+  <title>ZULSHOF</title>
+  <script>
+    if (!localStorage.getItem("boot-shown")) {
+      // boot daha önce gösterilmediyse oraya yönlendir
+      window.location.href = "boot.html?return=index.html";
+    }
+  </script>
 </head>
-<body>
-  Redirecting to boot...
-</body>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
