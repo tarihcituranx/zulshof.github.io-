@@ -144,7 +144,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+<meta name="apple-mobile-web-app-title" content="Zulshof" />
 <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -520,15 +520,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 </style>
-
-<div class="language-switcher">
-  <select id="languageSelect" onchange="setLanguage(this.value)">
-    <option value="en">🇬🇧 English</option>
-    <option value="tr">🇹🇷 Türkçe</option>
-    <option value="id">🇮🇩 Bahasa</option>
-  </select>
-</div>
-
 <section class="contact" id="contact">
   <div class="contact-content section-content">
     <p class="section-subtitle" data-lang-en="Contact" data-lang-tr="İletişim" data-lang-id="Kontak">Contact</p>
@@ -698,6 +689,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <footer class="footer" style="
+ <footer class="footer" style="
   width: 100%;
   color: var(--text-color);
   padding: 2rem 1rem;
@@ -716,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <p style="margin: 1rem 0 0;">
     <span data-lang-en="© 2025 Made with ❤️ by"
-          data-lang-tr="© 2025 Sevgiyle yapıldı ❤️"
+          data-lang-tr="© 2025 ❤️ ile hazırlayanlar:"
           data-lang-id="© 2025 Dibuat dengan ❤️ oleh">
       © 2025 Made with ❤️ by
     </span>
@@ -728,8 +720,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   <p style="margin: 0.5rem 0 0;">
     <span data-lang-en="Inspired by the open-source work of"
-          data-lang-tr="Bu çalışma, açık kaynak projesinden ilham almıştır"
-          data-lang-id="Terinspirasi dari proyek open-source oleh">
+          data-lang-tr="Açık kaynak ilham kaynağı:"
+          data-lang-id="Terinspirasi dari karya open-source oleh">
       Inspired by the open-source work of
     </span>
     <a href="https://codewithsadee.github.io/jack-portfolio/" target="_blank" rel="noopener noreferrer"
@@ -806,57 +798,85 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => firefly.remove(), 1000);
   });
 </script>
+<!-- ======== COOKIE BANNER KODU BAŞLANGICI ======== -->
 <style>
- /* Cookie Banner */
+ /* Cookie Banner Stilleri */
   #cookie-banner {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #222;
+    background: #222; /* Koyu tema için uygun bir arka plan */
     color: #fff;
-    padding: 1rem;
+    padding: 1rem 1.5rem; /* Biraz daha fazla yan boşluk */
     font-family: 'Roboto', sans-serif;
-    font-size: 0.95rem;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.4);
+    font-size: 0.9rem; /* Biraz daha küçük font */
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.3); /* Daha belirgin gölge */
     display: flex;
+    flex-wrap: wrap; /* Küçük ekranlarda alt alta gelmesi için */
     justify-content: space-between;
     align-items: center;
-    z-index: 9999;
-    transition: transform 0.5s ease;
+    gap: 1rem; /* Metin ve butonlar arası boşluk */
+    z-index: 10000; /* Diğer elementlerin üzerinde kalması için yüksek z-index */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Opaklık geçişi eklendi */
+    opacity: 1;
   }
 
   #cookie-banner.hidden {
     transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none; /* Gizliyken tıklama olaylarını engelle */
   }
 
   #cookie-banner .cookie-text {
-    max-width: 80%;
+    flex-grow: 1; /* Mümkün olduğunca genişlesin */
+    max-width: 100%; /* Küçük ekranlarda tam genişlik */
+  }
+
+  @media (min-width: 768px) { /* Orta ve büyük ekranlar için */
+    #cookie-banner .cookie-text {
+      max-width: 70%; /* Büyük ekranlarda metin kısmını biraz daralt */
+    }
+  }
+
+  #cookie-banner .cookie-actions {
+    display: flex;
+    gap: 0.75rem; /* Butonlar arası boşluk */
   }
 
   #cookie-banner .cookie-actions button {
-    margin-left: 0.5rem;
-    background: #fca311;
-    color: #fff;
+    background: #fca311; /* Ana tema renginiz */
+    color: #ffffff;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.6rem 1.2rem; /* Buton iç boşlukları */
+    border-radius: 25px; /* Daha yuvarlak butonlar */
     cursor: pointer;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Buton yazı boyutu */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  #cookie-banner .cookie-actions button:hover {
+    background-color: #e0930b; /* Hover rengi biraz daha koyu */
+    transform: scale(1.03); /* Hafif büyüme efekti */
   }
 
   #cookie-banner .cookie-actions button.decline {
-    background: #888;
+    background: #6c757d; /* Gri tonunda reddet butonu */
+    color: #fff;
+  }
+
+  #cookie-banner .cookie-actions button.decline:hover {
+    background-color: #5a6268;
   }
 </style>
 
 <div id="cookie-banner" class="hidden">
-  <div class="cookie-text" 
-       data-lang-en="We use cookies to personalize content and analyze traffic. Do you accept?"
-       data-lang-tr="İçeriği kişiselleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?"
-       data-lang-id="Kami menggunakan cookie untuk personalisasi dan analisis lalu lintas. Apakah Anda setuju?">
-    We use cookies to personalize content and analyze traffic. Do you accept?
+  <div class="cookie-text"
+       data-lang-en="🍪 We use cookies to enhance your experience, personalize content, and analyze traffic. Do you accept?"
+       data-lang-tr="🍪 Deneyiminizi geliştirmek, içeriği kişiselleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?"
+       data-lang-id="🍪 Kami menggunakan cookie untuk meningkatkan pengalaman Anda, personalisasi konten, dan analisis lalu lintas. Apakah Anda setuju?">
+    🍪 We use cookies to enhance your experience, personalize content, and analyze traffic. Do you accept?
   </div>
   <div class="cookie-actions">
     <button class="accept"
@@ -871,30 +891,68 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
-  // Cookie Banner
-  const cookieBanner = document.getElementById("cookie-banner");
-  const cookieAccepted = localStorage.getItem("cookie-consent");
+  (function() { // Kapsülleme için IIFE (Immediately Invoked Function Expression)
+    const cookieBanner = document.getElementById("cookie-banner");
+    if (!cookieBanner) {
+      // console.warn("Cookie banner HTML element (#cookie-banner) not found.");
+      return; // Banner HTML'i yoksa script çalışmasın
+    }
 
-  if (!cookieAccepted) {
-    cookieBanner.classList.remove("hidden");
-  }
+    const acceptButton = cookieBanner.querySelector(".accept");
+    const declineButton = cookieBanner.querySelector(".decline");
+    const cookieConsentKey = "cookie-consent-v1"; // Anahtar ismini versiyonlamak ileride değişiklik yapmayı kolaylaştırır
 
-  cookieBanner.querySelector(".accept").addEventListener("click", () => {
-    localStorage.setItem("cookie-consent", "accepted");
-    cookieBanner.classList.add("hidden");
-  });
+    // Dil metinlerini güncelleme fonksiyonu
+    function updateBannerTexts() {
+      const siteLangStorage = localStorage.getItem("site-lang");
+      const browserLang = navigator.language ? navigator.language.slice(0, 2).toLowerCase() : 'en';
+      let lang = siteLangStorage || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
 
-  cookieBanner.querySelector(".decline").addEventListener("click", () => {
-    localStorage.setItem("cookie-consent", "declined");
-    cookieBanner.classList.add("hidden");
-  });
+      cookieBanner.querySelectorAll('[data-lang-en]').forEach(el => {
+        const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
+        // Butonların textContent'ini değiştirmek genellikle yeterlidir.
+        el.textContent = text;
+      });
+    }
 
-  // Multi-language support
-  const lang = localStorage.getItem("site-lang") || navigator.language.slice(0, 2).toLowerCase();
-  document.querySelectorAll('#cookie-banner [data-lang-en]').forEach(el => {
-    const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
-    el.textContent = text;
-  });
+    // Banner'ı gösterme veya gizleme mantığı
+    const cookieAccepted = localStorage.getItem(cookieConsentKey);
+    if (!cookieAccepted) {
+      cookieBanner.classList.remove("hidden");
+      updateBannerTexts(); // Banner gösteriliyorsa metinleri güncelle
+    }
+
+    // Buton olayları
+    if (acceptButton) {
+      acceptButton.addEventListener("click", () => {
+        localStorage.setItem(cookieConsentKey, "accepted");
+        cookieBanner.classList.add("hidden");
+      });
+    } else {
+      // console.warn("Cookie banner 'accept' button not found.");
+    }
+
+    if (declineButton) {
+      declineButton.addEventListener("click", () => {
+        localStorage.setItem(cookieConsentKey, "declined"); // Reddetme durumunu da kaydetmek iyi bir pratik
+        cookieBanner.classList.add("hidden");
+      });
+    } else {
+      // console.warn("Cookie banner 'decline' button not found.");
+    }
+
+    // Ana dil seçici değiştiğinde banner metinlerini (eğer görünürse) güncelle
+    const globalLangSelector = document.getElementById("lang"); // Navbar'daki dil seçiciniz
+    if (globalLangSelector) {
+      globalLangSelector.addEventListener("change", function() {
+        if (!cookieBanner.classList.contains("hidden")) { // Sadece banner görünürse metinleri güncelle
+          updateBannerTexts();
+        }
+      });
+    }
+  })(); // IIFE'yi hemen çalıştır
+</script>
+<!-- ======== COOKIE BANNER KODU SONU ======== -->
 </script>
 <style>
   #preloader {
