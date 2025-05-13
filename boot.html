@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZULSHOF Boot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #0d1b2a;
+      color: #fca311;
+      font-family: 'Saira Stencil One', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      transition: opacity 1s ease;
+    }
+
+    .boot-container {
+      animation: fadeIn 1s ease-in-out;
+      transition: opacity 1s ease;
+    }
+
+    .fade-out {
+      opacity: 0 !important;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .boot-image {
+      width: 160px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      margin-bottom: 1rem;
+    }
+
+    .boot-title {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: #fca311;
+    }
+
+    .boot-subtext {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: #9ab8e0;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+  <div class="boot-container" id="bootContainer">
+    <img src="./assets/images/about-banner.png" alt="Illustrator" class="boot-image">
+    <div class="boot-title">ZULSHOF</div>
+    <div class="boot-subtext" id="bootSubtext">Preparing your experience...</div>
+  </div>
+
+  <script>
+    // Dil algılama
+    const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
+    const subtext = document.getElementById("bootSubtext");
+    const translations = {
+      en: "Preparing your experience...",
+      tr: "Siteniz hazırlanıyor...",
+      id: "Menyiapkan pengalaman Anda..."
+    };
+    subtext.textContent = translations[lang] || translations["en"];
+
+    // Tema algılama
+    const savedTheme = localStorage.getItem("site-theme");
+    const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (!savedTheme) {
+      localStorage.setItem("site-theme", systemPrefDark ? "dark" : "light");
+    }
+
+    // Fade-out + yönlendirme
+    const boot = document.getElementById("bootContainer");
+    setTimeout(() => boot.classList.add("fade-out"), 1800);
+   const params = new URLSearchParams(window.location.search);
+const goTo = params.get("return") || "index.html";
+
+setTimeout(() => {
+  window.location.href = goTo;
+}, 2800);
+  </script>
+</body>
+</html>
