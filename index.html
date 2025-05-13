@@ -72,7 +72,19 @@
     rel="stylesheet">
 </head>
 
-<body id="top" class="dark_theme">
+<body 
+<script>
+  const userPref = localStorage.getItem("site-theme");
+  const systemPrefDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (!userPref) {
+    document.body.classList.toggle("dark_theme", systemPrefDark);
+  } else {
+    document.body.classList.toggle("dark_theme", userPref === "dark");
+  }
+</script>
+
+	id="top" class="dark_theme">
 
   <header class="header" data-header>
     <div class="container">
@@ -839,28 +851,5 @@ function setLanguage(lang) {
     100% { opacity: 1; transform: translateY(0); }
   }
 </style>
-
-<div id="preloader">
-  <img src="./assets/images/about-banner.png" alt="Illustrator portrait" class="preloader-image">
-  <div class="preloader-logo">ZULSHOF</div>
-  <div class="preloader-subtext"
-       data-lang-en="Illustrator"
-       data-lang-tr="İllüstratör"
-       data-lang-id="Ilustrator">
-    Illustrator
-  </div>
-</div>
-
-<script>
-  window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    preloader.classList.add("hidden");
-  });
-
-  const lang = localStorage.getItem("site-lang") || navigator.language.slice(0, 2).toLowerCase();
-  const subtext = document.querySelector('.preloader-subtext');
-  const translated = subtext.getAttribute("data-lang-" + lang) || subtext.getAttribute("data-lang-en");
-  subtext.textContent = translated;
-</script>	    
 </body>
 </html>
