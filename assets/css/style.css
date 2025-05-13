@@ -88,16 +88,14 @@ body.dark_theme {
 }
 
 body.light_theme {
-
-  --bg-primary: hsl(0, 0%, 90%);
-  --bg-secondary: hsl(0, 0%, 100%);
-  --color-primary: hsl(0, 0%, 12%);
-  --color-secondary: hsl(0, 0%, 37%);
-  --card-shadow: hsla(0, 0%, 0%, 0.1);
-  --input-bg: hsl(0, 0%, 93%);
+  --bg-primary: #A3E3ED; /* Blizzard Blue */
+  --bg-secondary: hsl(0, 0%, 100%); /* Beyaz */
+  --color-primary: hsl(0, 0%, 12%); /* Siyah ton */
+  --color-secondary: hsl(0, 0%, 37%); /* Gri ton */
+  --card-shadow: hsla(0, 0%, 0%, 0.1); /* Şeffaf siyah */
+  --input-bg: hsl(0, 0%, 93%); /* Gri ton */
 
   --shadow-1: 10px 10px 40px var(--card-shadow);
-
 }
 
 
