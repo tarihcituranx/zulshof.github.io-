@@ -659,5 +659,34 @@ function setLanguage(lang) {
 <script src="./assets/js/script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<style>
+  .firefly {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #fca311 0%, #ffba08 60%, transparent 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.8;
+    z-index: 9999;
+    animation: firefly-fade 1s ease-out forwards;
+  }
+
+  @keyframes firefly-fade {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.1); opacity: 0; }
+  }
+</style>
+
+<script>
+  document.addEventListener("mousemove", (e) => {
+    const firefly = document.createElement("div");
+    firefly.classList.add("firefly");
+    firefly.style.left = e.pageX + "px";
+    firefly.style.top = e.pageY + "px";
+    document.body.appendChild(firefly);
+    setTimeout(() => firefly.remove(), 1000);
+  });
+</script>	    
 </body>
 </html>
