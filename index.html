@@ -524,76 +524,103 @@
       </li>
     </ul>
   </div>
-
- <form action="mailto:shofiazulya0609@gmail.com" method="POST" enctype="text/plain" class="contact-form">
-  <div class="form-wrapper">
-    <label for="name" class="form-label" data-lang-en="Name" data-lang-tr="İsim" data-lang-id="Nama">Name</label>
-    <div class="input-wrapper">
+<form
+  action="https://formspree.io/f/xdkgpeoo"
+  method="POST"
+  class="contact-form"
+  style="padding: 20px; border-radius: 10px; box-shadow: var(--shadow-1); background-color: var(--bg-secondary); color: var(--color-primary);"
+>
+  <div class="form-wrapper" style="margin-bottom: 15px;">
+    <label for="name" class="form-label" data-lang-en="Name" data-lang-tr="İsim" data-lang-id="Nama" style="font-weight: bold; color: var(--color-primary);">
+      Name <span style="color: red;">*</span>
+    </label>
+    <div class="input-wrapper" style="position: relative;">
       <input type="text" name="Name" id="name" required 
         data-lang-en-placeholder="e.g John Doe"
         data-lang-tr-placeholder="örn. Ahmet Yılmaz"
         data-lang-id-placeholder="cth. Ahmad Yusuf"
-        placeholder="e.g John Doe" class="input-field">
-      <ion-icon name="person-circle"></ion-icon>
+        placeholder="e.g John Doe"
+        class="input-field"
+        style="width: 100%; padding: 10px; border: 1px solid var(--color-secondary); border-radius: 5px; background-color: var(--input-bg); color: var(--color-primary);"
+      >
+      <ion-icon name="person-circle" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: var(--color-secondary);"></ion-icon>
     </div>
   </div>
-  <div class="form-wrapper">
-    <label for="email" class="form-label" data-lang-en="Email" data-lang-tr="E-posta" data-lang-id="Email">Email</label>
-    <div class="input-wrapper">
-      <input type="email" name="Email" id="email" required 
+  <div class="form-wrapper" style="margin-bottom: 15px;">
+    <label for="email" class="form-label" data-lang-en="Email" data-lang-tr="E-posta" data-lang-id="Email" style="font-weight: bold; color: var(--color-primary);">
+      Email <span style="color: red;">*</span>
+    </label>
+    <div class="input-wrapper" style="position: relative;">
+      <input type="email" name="email" id="email" required 
         data-lang-en-placeholder="e.g johndoe@mail.com"
         data-lang-tr-placeholder="örn. ahmet@mail.com"
         data-lang-id-placeholder="cth. ahmad@mail.com"
-        placeholder="e.g johndoe@mail.com" class="input-field">
-      <ion-icon name="mail"></ion-icon>
+        placeholder="e.g johndoe@mail.com"
+        class="input-field"
+        style="width: 100%; padding: 10px; border: 1px solid var(--color-secondary); border-radius: 5px; background-color: var(--input-bg); color: var(--color-primary);"
+      >
+      <ion-icon name="mail" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: var(--color-secondary);"></ion-icon>
     </div>
   </div>
-  <div class="form-wrapper">
-    <label for="phone" class="form-label" data-lang-en="Phone" data-lang-tr="Telefon" data-lang-id="Telepon">Phone</label>
-    <div class="input-wrapper">
-      <input type="tel" name="Phone" id="phone" required 
+  <div class="form-wrapper" style="margin-bottom: 15px;">
+    <label for="phone" class="form-label" data-lang-en="Phone" data-lang-tr="Telefon" data-lang-id="Telepon" style="font-weight: bold; color: var(--color-primary);">Phone</label>
+    <div class="input-wrapper" style="position: relative;">
+      <input type="tel" name="Phone" id="phone" 
         data-lang-en-placeholder="Phone Number"
         data-lang-tr-placeholder="Telefon Numarası"
         data-lang-id-placeholder="Nomor Telepon"
-        placeholder="Phone Number" class="input-field">
-      <ion-icon name="call"></ion-icon>
+        placeholder="Phone Number"
+        class="input-field"
+        style="width: 100%; padding: 10px; border: 1px solid var(--color-secondary); border-radius: 5px; background-color: var(--input-bg); color: var(--color-primary);"
+      >
+      <ion-icon name="call" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); color: var(--color-secondary);"></ion-icon>
     </div>
   </div>
-  <div class="form-wrapper">
-    <label for="message" class="form-label" data-lang-en="Message" data-lang-tr="Mesaj" data-lang-id="Pesan">Message</label>
-    <div class="input-wrapper">
-      <textarea name="Message" id="message" required 
+  <div class="form-wrapper" style="margin-bottom: 20px;">
+    <label for="message" class="form-label" data-lang-en="Message" data-lang-tr="Mesaj" data-lang-id="Pesan" style="font-weight: bold; color: var(--color-primary);">
+      Message <span style="color: red;">*</span>
+    </label>
+    <div class="input-wrapper" style="position: relative;">
+      <textarea name="message" id="message" required 
         data-lang-en-placeholder="Write your message..."
         data-lang-tr-placeholder="Mesajınızı yazın..."
         data-lang-id-placeholder="Tulis pesan Anda..."
-        placeholder="Write your message..." class="input-field"></textarea>
-      <ion-icon name="chatbubbles"></ion-icon>
+        placeholder="Write your message..."
+        class="input-field"
+        style="width: 100%; padding: 10px; border: 1px solid var(--color-secondary); border-radius: 5px; background-color: var(--input-bg); color: var(--color-primary); height: 100px;"
+      ></textarea>
+      <ion-icon name="chatbubbles" style="position: absolute; top: 10px; right: 10px; color: var(--color-secondary);"></ion-icon>
     </div>
+  </div>
   <div style="text-align: center; margin: 2rem 0;">
-  <button type="submit" class="submit-button" data-lang-en="Send" data-lang-tr="Gönder" data-lang-id="Kirim"
-    style="
-      background-color: #fca311;
-      color: #fff;
-      padding: 0.75rem 2rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: all 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-    "
-    onmouseover="this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)'"
-    onmouseout="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'">
-    Send
-  </button>
-</div>
-    <p class="upload-note" data-lang-en="📎 Need to share files? Once your mail app opens, simply attach your reference images or documents."
-      data-lang-tr="📎 Dosya mı eklemek istiyorsunuz? Mail uygulamanız açıldığında referans görsellerinizi veya belgelerinizi ekleyebilirsiniz."
-      data-lang-id="📎 Ingin berbagi file? Setelah aplikasi email Anda terbuka, lampirkan gambar atau dokumen referensi Anda.">
-      📎 Need to share files? Once your mail app opens, simply attach your reference images or documents.
-    <section>
+    <button type="submit" class="submit-button" data-lang-en="Send" data-lang-tr="Gönder" data-lang-id="Kirim"
+      style="
+        background-color: #fca311;
+        color: #fff;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        font-size: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+      "
+      onmouseover="this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)'"
+      onmouseout="this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)'">
+      Send
+    </button>
+  </div>
+  <p class="upload-note" 
+    data-lang-en="📎 Have files to share? Use a file-sharing service like Drive or Dropbox and include the link in your message."
+    data-lang-tr="📎 Paylaşacak dosyanız mı var? Drive veya Dropbox gibi bir dosya paylaşım hizmeti kullanın ve bağlantıyı mesajınıza ekleyin."
+    data-lang-id="📎 Ingin berbagi file? Gunakan layanan berbagi file seperti Drive atau Dropbox dan sertakan tautannya dalam pesan Anda."
+    style="color: var(--color-secondary); text-align: center;"
+  >
+    📎 Have files to share? Use a file-sharing service like Drive or Dropbox and include the link in your message.
+  </p>
+</form>
 
 <script>
 function setLanguage(lang) {
