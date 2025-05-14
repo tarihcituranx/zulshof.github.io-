@@ -560,11 +560,14 @@ main { overflow-x: hidden; }
 .about { padding-block: var(--section-padding); }
 
 .about-banner {
+  position: relative; /* Bu satır önemli! Ekledik. */
   max-width: 400px;
   margin-inline: auto;
   margin-bottom: 80px;
+  /* overflow: hidden; /* İsteğe bağlı: GIF banner dışına taşarsa gizler */
 }
 
+/* .about içindeki buton stilleri aynı kalabilir */
 .about .btn {
   max-width: unset;
   width: 100%;
@@ -572,6 +575,36 @@ main { overflow-x: hidden; }
 
 .about .btn-secondary { margin-bottom: 10px; }
 
+/* YENİ EKLENEN STİLLER: GIF için */
+#bird-gif-overlay {
+  position: absolute; /* .about-banner'a göre konumlanacak */
+  
+  /* Konumlandırma: GIF'in içeriğine göre bu değerleri ayarlayın */
+  /* Örnek: Sol üst köşe civarı */
+  top: -15px;         /* Banner'ın üst kenarından biraz yukarıda */
+  left: -10px;        /* Banner'ın sol kenarından biraz dışarıda */
+  
+  /* Alternatif: Sağ üst köşe için */
+  /* top: -15px; */
+  /* right: -10px; */ /* 'left' yerine 'right' kullanın */
+
+  /* Boyutlandırma: GIF'in orijinali 720x720. Banner (max 400px) için küçültelim. */
+  width: 130px;       /* Örnek genişlik, banner'ınıza göre ayarlayın (örn: 100px, 150px) */
+  height: 130px;      /* GIF'iniz kare ise genişlikle aynı tutun. */
+  /* Eğer GIF kare değilse ve en-boy oranını korumak istiyorsanız: */
+  /* height: auto; */
+
+  z-index: 1;         /* Ana banner resminin üzerinde görünmesi için */
+  pointer-events: none; /* GIF'in altındaki tıklamaları engellememesi için */
+}
+
+/* Ana banner resminin (varsa) stilleri */
+.about-banner > .main-banner-image { /* Eğer ana banner resmine özel bir class verdiyseniz (HTML'de önerilir) */
+  display: block; /* Resimlerin altında oluşabilecek boşlukları engellemek için */
+  max-width: 100%;
+  height: auto;
+  /* z-index: 0; /* Genellikle gerekmez ama #bird-gif-overlay'in kesin üstte olması için eklenebilir */
+}
 
 
 
