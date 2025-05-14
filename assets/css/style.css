@@ -581,11 +581,11 @@ main { overflow-x: hidden; }
   
   /* Konumlandırma: GIF'in içeriğine göre bu değerleri ayarlayın */
   /* Örnek: .about-banner'ın sol üstünden hafifçe dışarıda */
-  top: -20px;         /* Banner'ın üst kenarından biraz yukarıda (deneyerek ayarlayın) */
-  left: -15px;        /* Banner'ın sol kenarından biraz dışarıda/içeride (deneyerek ayarlayın) */
+  top: -40px;         /* Banner'ın üst kenarından biraz yukarıda (deneyerek ayarlayın) */
+  left: -9px;        /* Banner'ın sol kenarından biraz dışarıda/içeride (deneyerek ayarlayın) */
   
   /* Boyutlandırma: GIF'in orijinali 720x720. Banner (max 400px) için küçültelim. */
-  width: 130px;       /* İstediğiniz boyuta göre ayarlayın */
+  width: 1400px;       /* İstediğiniz boyuta göre ayarlayın */
   height: 130px;      /* GIF kare ise genişlikle aynı */
   /* height: auto; */ /* GIF kare değilse */
 
