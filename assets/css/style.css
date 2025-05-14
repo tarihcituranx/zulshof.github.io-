@@ -1390,3 +1390,16 @@ textarea.input-field {
 
 
 }
+/* ... Diğer CSS kodlarınız ... */
+
+#flyingButterfly {
+  position: fixed; /* Sayfa kaydırılsa bile ekran üzerinde sabit kalır */
+  width: 80px;     /* Kelebeğin genişliği, GIF'inize göre ayarlayın */
+  height: auto;    /* Genişliğe göre yüksekliği otomatik ayarlar */
+  z-index: 9999;   /* Diğer tüm öğelerin üzerinde görünmesi için yüksek bir z-index */
+  pointer-events: none; /* Kelebeğin altındaki elemanlara tıklanabilmesi için */
+  left: 50%;       /* Başlangıç pozisyonu (JavaScript ile güncellenecek) */
+  top: 50%;        /* Başlangıç pozisyonu (JavaScript ile güncellenecek) */
+  transform: translate(-50%, -50%); /* Başlangıçta ortalamak için (opsiyonel) */
+  transition: transform 0.3s ease-out; /* Yön değiştirirken yumuşak bir geçiş için */
+}
