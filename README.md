@@ -1,114 +1,145 @@
-# Zulshof & Tarihcituranx https://gnctrhc.com.tr/
+# gnctrhc.com.tr — Zulshof & Tarihcituranx Portfolyo
 
-Bu proje, **zulshof** ve **tarihcituranx** tarafından ortaklaşa geliştirilen, modern ve interaktif bir kişisel portfolyo web sitesidir. İki geliştiricinin çalışmalarını ve yeteneklerini sergilemek amacıyla tasarlanmıştır. Kullanıcı dostu bir arayüzle birlikte çeşitli kişiselleştirme seçenekleri sunar.
+Bu proje, **zulshof** ve **tarihcituranx** tarafından ortaklaşa geliştirilen, modern ve interaktif bir kişisel portfolyo web sitesidir. Amacı, geliştiricilerin çalışmalarını, projelerini ve yeteneklerini sergilemek; ziyaretçilere ilham vermek ve iletişim kurmaktır. Kullanıcı dostu bir arayüz, çoklu dil desteği ve çeşitli kişiselleştirme özellikleri sunar.
 
 ![Zulshof Portfolyo Banner](https://gnctrhc.com.tr/assets/images/about-banner.png)
 
+---
+
 ## ⚠️ Önemli Not
 
-Bu kişisel bir portfolyo sitesidir ve **zulshof** ile **tarihcituranx**'ın ortak çalışmasını temsil eder. Kod tabanının doğrudan kopyalanması veya klonlanması, kişisel ve özgün bir çalışma olması nedeniyle **amaçlanmamıştır ve tavsiye edilmez**. Projenin amacı, geliştiricilerin yeteneklerini sergilemek ve ilham vermektir. Lütfen bu emeğe saygı gösterin.
+Bu site **zulshof** ve **tarihcituranx**'ın ortak çalışmasını temsil eden, özgün bir kişisel portfolyo projesidir. Kod tabanının doğrudan kopyalanması veya klonlanması önerilmez ve amaçlanmamıştır. Lütfen emeğe saygı gösterin; bu proje, ilham vermek ve geliştiricilerin yeteneklerini paylaşmak için hazırlanmıştır.
+
+---
 
 ## ✨ Öne Çıkan Özellikler
 
-*   **Dinamik Tema Yönetimi:**
-    *   Kullanıcı tercihine göre **Aydınlık** ve **Karanlık** tema arasında geçiş yapabilme.
-    *   Tema tercihleri kullanıcının tarayıcısında (`localStorage`) saklanır.
-    *   CSS değişkenleri (`var(--bg-primary)`, `var(--color-secondary)` vb.) ile kolay tema yönetimi.
-*   **Çoklu Dil Desteği:**
-    *   İçerik **İngilizce (EN)**, **Türkçe (TR)** ve **Endonezce (ID)** dillerinde görüntülenebilir.
-    *   Dil tercihleri kullanıcının tarayıcısında (`localStorage`) saklanır.
-    *   Dil metinleri HTML `data-lang-*` atribütleri ve JavaScript ile yönetilir.
-*   **Çerez (Cookie) Onay Banner'ı:**
-    *   Kullanıcılara çerez kullanımı hakkında bilgi veren ve onaylarını alan bir banner.
-    *   Çerez tercihleri (`localStorage` veya çerez ile) saklanır.
-*   **Özelleştirilmiş Fare İmleci:**
-    *   Site genelinde veya belirli alanlarda **boya fırçası** şeklinde özel bir fare imleci kullanılır.
-    *   CSS `cursor: url('path/to/paintbrush.cur'), auto;` ile uygulanmıştır.
-*   **Duyarlı (Responsive) Footer Tasarımı:**
-    *   Hem aydınlık hem de karanlık temada okunabilir ve estetik footer.
-    *   Logo ("zulshof**illustrator**") ve link renkleri temaya göre dinamik olarak değişir.
-    *   CSS değişkenleri (`--raw-seinna`, `--footer-actual-link-color`) ile renk yönetimi.
-*   **Modern ve Temiz Arayüz:** HTML5, CSS3 ve JavaScript ile oluşturulmuş, kullanıcı deneyimine odaklanan tasarım.
-*   **İletişim ve Sosyal Medya Bağlantıları:** Footer bölümünde Instagram gibi sosyal medya profillerine linkler.
+- **Dinamik Tema Yönetimi:**
+  - Aydınlık ve Karanlık tema arasında geçiş imkanı
+  - Tema seçimi tarayıcıda (`localStorage`) saklanır
+  - CSS custom property’leri (değişkenler) ile kolay yönetim
+
+- **Çoklu Dil Desteği:**
+  - Türkçe, İngilizce ve Endonezce içerik
+  - Dil tercihi tarayıcıda saklanır, kolayca değiştirilebilir
+
+- **Çerez (Cookie) Onay Banner'ı:**
+  - AB uyumlu çerez bilgilendirmesi ve kullanıcıdan onay alınması
+
+- **Özel Fare İmleci:**
+  - Tüm sitede veya belirli alanlarda boya fırçası şeklinde özel imleç
+
+- **Duyarlı (Responsive) Tasarım:**
+  - Tüm cihazlarda modern ve esnek arayüz
+  - Tema ve footer dinamik olarak uyum sağlar
+
+- **Sosyal Medya ve İletişim:**
+  - Footer ve iletişim sayfasında Instagram vb. sosyal medya bağlantıları
+
+---
 
 ## 🛠️ Kullanılan Teknolojiler
 
-*   **Frontend:**
-    *   HTML5
-    *   CSS3 (Flexbox, Grid, CSS Değişkenleri)
-    *   JavaScript (DOM Manipulation, `localStorage` API)
-*   **İkonlar:** [Kullandıysanız, örn: Ionicons, FontAwesome]
-*   **Tasarım İlhamı:** [codewithsadee](https://github.com/codewithsadee) (Belirli bölümler veya genel yaklaşım için)
-*   **Geliştirme Araçları:**
-    *   Git & GitHub (Versiyon kontrolü ve hosting)
-    *   [Kullandığınız diğer araçlar, örn: VS Code]
+- **Frontend:**  
+  - HTML5  
+  - CSS3 (Flexbox, Grid, CSS değişkenleri)  
+  - Vanilla JavaScript (DOM manipulation, localStorage API)
+- **Tasarım İlhamı:**  
+  - [codewithsadee](https://github.com/codewithsadee)
+- **Araçlar:**  
+  - Git & GitHub  
+  - VS Code  
+  - (Kullandığınız diğer araçlar burada belirtilebilir)
 
-## 📂 Proje Yapısı (Önerilen)
+---
+
+## 📂 Proje Yapısı (Öneri)
 
 ```
-zulshof.github.io-/  (veya proje klasör adınız)
+gnctrhc.com.tr/
 ├── assets/
 │   ├── css/
-│   │   ├── style.css         # Ana stil dosyası (genel düzen, bileşenler)
-│   │   ├── theme.css         # Tema renk değişkenleri (body.dark_theme, body.light_theme)
-│   │   └── footer.css        # Footer'a özel stiller (eğer ayrı bir dosyadaysa)
+│   │   ├── style.css
+│   │   ├── theme.css
+│   │   └── footer.css
 │   ├── js/
-│   │   ├── script.js         # Ana JavaScript (tema, dil, cookie banner, imleç vb.)
-│   │   └── lang.js           # (Eğer dil metinleri ayrı bir JS dosyasındaysa)
+│   │   ├── script.js
+│   │   └── lang.js
 │   ├── images/
-│   │   ├── paintbrush.cur    # Özel fare imleci (veya .png)
-│   │   └── ...               # Diğer logolar, profil resmi vb.
-│   └── fonts/                # (Kullandığınız özel fontlar varsa)
-├── index.html                # Ana sayfa
-└── README.md                 # Bu dosya
+│   │   ├── paintbrush.cur
+│   │   └── ... (logolar, profil resimleri)
+│   └── fonts/
+├── index.html
+├── kvkk.html
+├── gizlilik.html
+├── iletisim.html
+├── robots.txt
+├── sitemap.xml
+└── README.md
 ```
+
+---
 
 ## 🏁 Başlarken
 
-Bu bölüm, projenin nasıl görüntülenebileceğine dair bilgi içerir. **Lütfen yukarıdaki "Önemli Not" bölümünü dikkate alınız.**
-
 ### Gereksinimler
 
-*   Güncel bir web tarayıcısı (Chrome, Firefox, Edge, Safari vb.)
+- Güncel bir web tarayıcısı (Chrome, Firefox, Edge, Safari, vb.)
 
-### Görüntüleme
+### Nasıl Görüntülenir?
 
-Proje canlı olarak [[https://tarihcituranx.github.io/zulshof.github.io-/](https://gnctrhc.com.tr/)](https://tarihcituranx.github.io/zulshof.github.io-/) adresinde (veya sitenizin canlı olduğu asıl adres) görüntülenebilir.
-Eğer kaynak kodlarını incelemek isterseniz, `index.html` dosyasını doğrudan bir web tarayıcısında açarak yerel bir kopya üzerinde çalışabilirsiniz. Ancak, bu kişisel bir portfolyo sitesi olduğu için kodların yeniden dağıtılması veya kopyalanması amaçlanmamıştır.
+- Canlı site adresi: [https://gnctrhc.com.tr/](https://gnctrhc.com.tr/)
+- Kaynak kodları incelemek veya yerel olarak test etmek için `index.html` ve diğer dosyaları bilgisayarınızda açabilirsiniz.
+- **Not:** Bu site kişisel ve özgün bir portfolyo olduğundan kodların yeniden dağıtılması veya kopyalanması amaçlanmamıştır.
+
+---
 
 ## 🚀 Kullanım Kılavuzu
 
-*   **Tema Değiştirme:** Sayfanın [Tema değiştirici butonunun konumu, örn: sağ üst köşesindeki] 🌞 (Aydınlık) / 🌜 (Karanlık) ikonuna tıklayarak temalar arasında geçiş yapın. Seçiminiz tarayıcınızda saklanacaktır.
-*   **Dil Değiştirme:** Sayfanın [Dil seçici menüsünün konumu, örn: navigasyon barındaki] 🌐 ikonuna tıklayarak mevcut diller (İngilizce, Türkçe, Endonezce) arasından seçim yapın. Seçiminiz tarayıcınızda saklanacaktır.
-*   **Çerez Onayı:** Site ilk açıldığında ekranın altında bir çerez onay banner'ı göreceksiniz. "Kabul Et" veya "Reddet" seçeneklerinden birini kullanarak tercihinizi belirtin.
-*   **Özel İmleç:** Site içinde gezinirken fare imlecinizin boya fırçası şeklinde olduğunu fark edeceksiniz.
+- **Tema Değiştirme:** Sağ üst köşedeki 🌞 / 🌜 ikonuna tıklayarak tema değiştirilebilir.
+- **Dil Değiştirme:** Navigasyon menüsündeki 🌐 ikonuna tıklayarak dil seçimi yapılabilir.
+- **Çerez Onayı:** Siteye ilk girişte ekranda çıkan çerez banner’ından tercihinizi belirleyin.
+- **Özel İmleç:** Sitede gezinirken boya fırçası şeklindeki özel imleci görebilirsiniz.
+- **İletişim:** Footer veya `iletisim.html` üzerinden iletişime geçebilirsiniz.
+
+---
 
 ## 🤝 Katkıda Bulunma
 
-Bu proje kişisel bir portfolyo sitesi olduğu için dışarıdan doğrudan kod katkısı kabul edilmemektedir. Ancak, herhangi bir hata fark ederseniz veya bir öneriniz varsa, lütfen bir "Issue" açarak **tarihcituranx** veya **zulshof** ile iletişime geçin. Geri bildirimleriniz değerlidir.
+Bu proje kişisel bir portfolyo sitesi olduğu için dışarıdan kod katkısı kabul edilmemektedir. Hata bildirmek veya öneride bulunmak isterseniz, lütfen iletişim kanallarını kullanın veya [issue](https://github.com/tarihcituranx/zulshof.github.io-/issues) açın.
+
+---
 
 ## 📄 Lisans
 
-Bu projenin içeriği ve kodları **zulshof** ve **tarihcituranx**'a aittir. Tüm hakları saklıdır. Kodların izinsiz kopyalanması, çoğaltılması veya dağıtılması yasaktır.
-<!-- Eğer bir lisans belirtmek isterseniz (örn: CC BY-NC-ND 4.0 gibi daha kısıtlayıcı bir lisans):
-Bu proje [Lisans Adı ve Linki] altında lisanslanmıştır.
+Bu projenin kod ve içerikleri **zulshof** ve **tarihcituranx**’a aittir.  
+Tüm hakları saklıdır. Kodların izinsiz kopyalanması, çoğaltılması veya dağıtılması yasaktır.
+
+<!-- Eğer lisans eklemek isterseniz (örn: CC BY-NC-ND 4.0 gibi), aşağıdaki satırı açınız:
+Bu proje [Creative Commons BY-NC-ND 4.0 International License](https://creativecommons.org/licenses/by-nc-nd/4.0/) ile lisanslanmıştır.
 -->
+
+---
 
 ## 🙏 Teşekkürler
 
-*   Bu projenin geliştirilmesi sürecindeki ortak çalışma için **zulshof** ve **tarihcituranx**.
-*   Tasarım ilhamı ve bazı yapısal fikirler için **codewithsadee**.
+- Ortak çalışma ve motivasyon için **zulshof** ve **tarihcituranx**
+- Tasarım ilhamı için **codewithsadee**
 
-## irtibat
+---
+
+## 📬 İletişim
 
 **Geliştiriciler:**
 
-*   **tarihcituranx**
-    *   GitHub: [@tarihcituranx](https://github.com/tarihcituranx)
-    *   Instagram: [@tarihcituranx](https://www.instagram.com/tarihcituranx)
-*   **zulshof**
-    *   Instagram: [@zulshof](https://www.instagram.com/zulshof)
-   
+- **tarihcituranx**  
+  - GitHub: [@tarihcituranx](https://github.com/tarihcituranx)  
+  - Instagram: [@tarihcituranx](https://www.instagram.com/tarihcituranx)
 
-Proje Linki (GitHub Pages): `https://tarihcituranx.github.io/zulshof.github.io-/`
-GitHub Reposu: `https://github.com/tarihcituranx/zulshof.github.io-`
+- **zulshof**  
+  - Instagram: [@zulshof](https://www.instagram.com/zulshof)
+
+**Proje Linkleri:**
+
+- Canlı Site: [https://gnctrhc.com.tr/](https://gnctrhc.com.tr/)
+- GitHub Reposu: [https://github.com/tarihcituranx/zulshof.github.io-](https://github.com/tarihcituranx/zulshof.github.io-)
