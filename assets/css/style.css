@@ -1438,9 +1438,8 @@ body.dark_theme {
   background-image: none !important;
 }
 
-/* Mevcut CSS kodlarının üzerine eklemen gereken bölümler */
 /*------------------*/
-/* ARKA PLAN PATTERN */
+/* ARKA PLAN PATTERN (SADECE AYDINLIK MODDA) */
 /*------------------*/
 body.light_theme {
   background-color: #A3E3ED;
@@ -1450,15 +1449,58 @@ body.light_theme {
   background-attachment: fixed;
 }
 
-/* Koyu temada pattern görünmesin */
 body.dark_theme {
   background-image: none !important;
 }
 
 /*------------------*/
-/* YAZI KUTULARI SADECE AYDINLIK MODDA */
+/* HERO KUTUSU (ÜST KISIM) - SADECE AYDINLIK MODDA */
 /*------------------*/
-body.light_theme .hero-content,
+body.light_theme .hero-content {
+  background: linear-gradient(120deg, rgba(255,255,255,0.43), rgba(245,250,255,0.38));
+  border-radius: 28px;
+  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 6px 28px rgba(80,110,160,0.07);
+  backdrop-filter: blur(1.2px);
+  margin-bottom: 2.5rem;
+  border: 1.5px solid rgba(160, 180, 220, 0.13);
+  text-align: center;
+}
+
+/* Hero başlık ve alt başlıklar */
+body.light_theme .hero-content .hero-title {
+  color: #3464a3;
+  font-size: 3rem;
+  font-family: var(--ff-saira-stencil-one, Arial, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
+}
+
+body.light_theme .hero-content .hero-subtitle,
+body.light_theme .hero-content .section-title,
+body.light_theme .hero-content h1,
+body.light_theme .hero-content h2,
+body.light_theme .hero-content h3 {
+  color: #3464a3;
+  text-shadow: 0 2px 12px #fff;
+}
+
+body.light_theme .hero-content p,
+body.light_theme .hero-content span,
+body.light_theme .hero-content small {
+  color: #222;
+  text-shadow: 0 1.5px 8px #fff;
+}
+
+body.light_theme .hero-content .heart,
+body.light_theme .hero-content .subline {
+  filter: drop-shadow(0 2px 8px #fff);
+}
+
+/*------------------*/
+/* ANA İÇERİK KUTULARI (SADECE AYDINLIK MODDA) */
+/*------------------*/
 body.light_theme .about-content,
 body.light_theme .section-text,
 body.light_theme .contact-content,
@@ -1471,60 +1513,11 @@ body.light_theme .container-main-content {
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   backdrop-filter: blur(1.5px);
   margin-bottom: 2rem;
-  color: #232323; /* Yazılar koyu tonda */
-}
-
-/* HERO kutusu için üst kısımda özel daha şeffaf, daha modern kutu */
-body.light_theme .hero-content {
-  background: rgba(255,255,255,0.54);
-  border-radius: 28px;
-  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10), 0 1.5px 16px rgba(160, 200, 250, 0.14);
-  backdrop-filter: blur(2.5px);
-  margin-bottom: 2.5rem;
-  border: 1.5px solid rgba(185, 210, 230, 0.20);
-  text-align: center;
-}
-
-/* Hero başlık ve alt başlıklar */
-body.light_theme .hero-content .hero-title,
-body.light_theme .hero-content .section-title,
-body.light_theme .hero-content h1,
-body.light_theme .hero-content h2,
-body.light_theme .hero-content h3 {
-  color: #6094c9;
-  text-shadow: 0 2px 16px #fff, 0 0 2px #6094c9;
-}
-
-body.light_theme .hero-content .hero-title {
-  font-size: 3rem;
-  font-family: var(--ff-saira-stencil-one);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-body.light_theme .hero-content .hero-subtitle {
-  color: #4d7ead;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Diğer alt yazılar */
-body.light_theme .hero-content p,
-body.light_theme .hero-content span,
-body.light_theme .hero-content small {
-  color: #333;
-  text-shadow: 0 2px 10px #fff;
-}
-
-/* Küçük kalp ve alt satırlar belirgin */
-body.light_theme .hero-content .heart,
-body.light_theme .hero-content .subline {
-  filter: drop-shadow(0 2px 8px #fff);
+  color: #232323;
 }
 
 /*------------------*/
-/* BAŞLIKLARA GÖLGE (tüm light mod başlıklar için) */
+/* BAŞLIKLARA GÖLGE */
 /*------------------*/
 body.light_theme .hero-title,
 body.light_theme .section-title,
@@ -1549,4 +1542,3 @@ body.light_theme h3 {
     border-radius: 12px;
   }
 }
-
