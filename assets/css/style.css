@@ -1503,7 +1503,7 @@ body.light_theme #welcome-effect {
   display: inline-block;
   font-family: 'Saira Stencil One', cursive;
   font-size: clamp(1.2rem, 3vw, 2rem);
-  color: #3464a3;
+  color: #6094c9 /* powder blue (açık, pastel) */
   animation: fadeInOut 3s ease-in-out infinite;
   letter-spacing: 0.15em;
   vertical-align: middle;
