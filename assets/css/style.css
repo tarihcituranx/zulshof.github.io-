@@ -1439,7 +1439,6 @@ body.dark_theme {
 }
 
 /* Mevcut CSS kodlarının üzerine eklemen gereken bölümler */
-
 /*------------------*/
 /* ARKA PLAN PATTERN */
 /*------------------*/
@@ -1457,70 +1456,97 @@ body.dark_theme {
 }
 
 /*------------------*/
-/* YAZI OKUNURLUĞU İÇİN KUTU STİLİ */
+/* YAZI KUTULARI SADECE AYDINLIK MODDA */
 /*------------------*/
-
-/* Hero, About ve ana içerik bölümlerinin okunurluğunu garanti altına alır */
-.hero-content,
-.about-content,
-.section-text,
-.contact-content,
-.project-card .card-content,
-.stats-list,
-.container-main-content { /* .container-main-content ana içerik kapsayıcıları için örnek */
-  background: rgba(255,255,255,0.78); /* Hafif yarı saydam beyaz */
+body.light_theme .hero-content,
+body.light_theme .about-content,
+body.light_theme .section-text,
+body.light_theme .contact-content,
+body.light_theme .project-card .card-content,
+body.light_theme .stats-list,
+body.light_theme .container-main-content {
+  background: rgba(255,255,255,0.78);
   border-radius: 18px;
   padding: 2rem 2.5rem;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  backdrop-filter: blur(1.5px); /* Arka plan patterni hafif bulanıklaştırır */
+  backdrop-filter: blur(1.5px);
   margin-bottom: 2rem;
+  color: #232323; /* Yazılar koyu tonda */
 }
 
-/* Mobilde padding'i azalt */
-@media (max-width: 600px) {
-  .hero-content,
-  .about-content,
-  .section-text,
-  .contact-content,
-  .project-card .card-content,
-  .stats-list,
-  .container-main-content {
-    padding: 1rem 0.7rem;
-    border-radius: 12px;
-  }
+/* HERO kutusu için üst kısımda özel daha şeffaf, daha modern kutu */
+body.light_theme .hero-content {
+  background: rgba(255,255,255,0.54);
+  border-radius: 28px;
+  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10), 0 1.5px 16px rgba(160, 200, 250, 0.14);
+  backdrop-filter: blur(2.5px);
+  margin-bottom: 2.5rem;
+  border: 1.5px solid rgba(185, 210, 230, 0.20);
+  text-align: center;
+}
+
+/* Hero başlık ve alt başlıklar */
+body.light_theme .hero-content .hero-title,
+body.light_theme .hero-content .section-title,
+body.light_theme .hero-content h1,
+body.light_theme .hero-content h2,
+body.light_theme .hero-content h3 {
+  color: #6094c9;
+  text-shadow: 0 2px 16px #fff, 0 0 2px #6094c9;
+}
+
+body.light_theme .hero-content .hero-title {
+  font-size: 3rem;
+  font-family: var(--ff-saira-stencil-one);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+body.light_theme .hero-content .hero-subtitle {
+  color: #4d7ead;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Diğer alt yazılar */
+body.light_theme .hero-content p,
+body.light_theme .hero-content span,
+body.light_theme .hero-content small {
+  color: #333;
+  text-shadow: 0 2px 10px #fff;
+}
+
+/* Küçük kalp ve alt satırlar belirgin */
+body.light_theme .hero-content .heart,
+body.light_theme .hero-content .subline {
+  filter: drop-shadow(0 2px 8px #fff);
 }
 
 /*------------------*/
-/* BAŞLIKLARA GÖLGE */
+/* BAŞLIKLARA GÖLGE (tüm light mod başlıklar için) */
 /*------------------*/
-.hero-title,
-.section-title,
-h1, h2, h3 {
+body.light_theme .hero-title,
+body.light_theme .section-title,
+body.light_theme h1,
+body.light_theme h2,
+body.light_theme h3 {
   text-shadow: 1.5px 2px 10px rgba(255,255,255,0.75), 0 0 2px #222;
 }
 
 /*------------------*/
-/* YAZI RENGİ DAHA KOYU */
+/* MOBİL DOSTU DOKUNUŞLAR */
 /*------------------*/
-body.light_theme,
-body.light_theme .section-title,
-body.light_theme .about-content,
-body.light_theme .hero-content,
-body.light_theme .section-text {
-  color: #232323;
+@media (max-width: 600px) {
+  body.light_theme .hero-content,
+  body.light_theme .about-content,
+  body.light_theme .section-text,
+  body.light_theme .contact-content,
+  body.light_theme .project-card .card-content,
+  body.light_theme .stats-list,
+  body.light_theme .container-main-content {
+    padding: 1rem 0.7rem;
+    border-radius: 12px;
+  }
 }
-
-/*------------------*/
-/* GEREKSİZ TEKRARLARI ENGELLE */
-/*------------------*/
-.hero-content,
-.about-content,
-.section-text,
-.contact-content,
-.project-card .card-content,
-.stats-list {
-  /* Eğer başka yerde arka plan veya border-radius verilmişse, çakışmayı önler */
-  box-sizing: border-box;
-}
-
 
