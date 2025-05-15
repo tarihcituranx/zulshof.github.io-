@@ -10,8 +10,9 @@
     html, body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+      height: 100vh;
       width: 100vw;
+      overflow: hidden;
       box-sizing: border-box;
       font-family: 'Roboto', sans-serif;
       background: 
@@ -22,47 +23,63 @@
       justify-content: center;
       align-items: center;
       transition: background 0.6s;
-      overflow: hidden;
     }
-
+    .cloud {
+      position: fixed;
+      top: 0; bottom: 0;
+      width: 55vw;
+      min-width: 240px;
+      max-width: 860px;
+      z-index: 10;
+      pointer-events: none;
+      transition: transform 1.1s cubic-bezier(.7,.2,.2,1);
+      will-change: transform;
+    }
+    .cloud.left {
+      left: 0;
+      transform: translateX(0);
+    }
+    .cloud.right {
+      right: 0;
+      transform: translateX(0);
+    }
+    .cloud.open.left {
+      transform: translateX(-110%);
+    }
+    .cloud.open.right {
+      transform: translateX(110%);
+    }
     .boot-container {
-      background: rgba(17, 30, 52, 0.80);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.22);
+      z-index: 20;
+      position: relative;
+      background: rgba(17, 30, 52, 0.83);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
       padding: 2.2rem 2.2rem 1.7rem 2.2rem;
-      animation: fadeInScale 1s cubic-bezier(.4,2,.3,1);
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: opacity 1s, transform 1s;
-      max-width: 360px;
+      max-width: 370px;
       width: 92vw;
+      animation: fadeInScale 1s cubic-bezier(.4,2,.3,1);
+      transition: opacity 1s, transform 1s;
       opacity: 1;
     }
-
-    .fade-out {
-      opacity: 0 !important;
-      transform: scale(0.95);
-      pointer-events: none;
-    }
-
     @keyframes fadeInScale {
       0% { opacity: 0; transform: scale(0.92);}
       100% { opacity: 1; transform: scale(1);}
     }
-
     .boot-image {
       width: 120px;
       height: 120px;
       object-fit: cover;
       border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
       margin-bottom: 1.1rem;
       border: 3px solid #fca31150;
       background: #fff;
       max-width: 100%;
     }
-
     .boot-title {
       font-family: 'Saira Stencil One', cursive;
       font-size: 2.1rem;
@@ -73,16 +90,14 @@
       line-height: 1.1;
       word-break: break-word;
     }
-
     .boot-subtext {
-      font-size: 1.1rem;
+      font-size: 1.07rem;
       color: #a5c1e1;
-      opacity: 0.93;
+      opacity: 0.94;
       margin-bottom: 1.6rem;
       font-weight: 500;
       font-family: 'Roboto', sans-serif;
     }
-
     .progress-bar {
       width: 98%;
       height: 8px;
@@ -98,38 +113,49 @@
       width: 0%;
       background: linear-gradient(90deg,#fca311,#e85d04 85%);
       border-radius: 8px;
-      animation: progressGrow 2.2s cubic-bezier(.4,2,.3,1) forwards;
+      animation: progressGrow 2s cubic-bezier(.4,2,.3,1) forwards;
     }
     @keyframes progressGrow {
       to { width: 100%;}
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 480px) {
-      .boot-container {
-        padding: 1.3rem 0.5rem 1.2rem 0.5rem;
-        max-width: 97vw;
-      }
-      .boot-image { width: 66vw; max-width: 98px; min-width: 56px; height: auto; }
-      .boot-title { font-size: 1.5rem; }
-      .boot-subtext { font-size: 0.98rem; }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .boot-container { max-width: 99vw; padding: 1.1rem 0.2rem 1.0rem 0.2rem;}
+      .boot-title { font-size: 1.3rem; }
+      .boot-image { width: 66vw; max-width: 82px; min-width: 38px; height: auto; }
       .progress-bar { height: 6px; }
+      .cloud { min-width: 100px; }
     }
-    @media (max-width: 340px) {
-      .boot-title { font-size: 1.1rem; }
-      .boot-subtext { font-size: 0.79rem; }
-      .boot-image { max-width: 48px; min-width: 32px; }
+    @media (max-width: 400px) {
+      .boot-title { font-size: 1.02rem; }
+      .boot-image { max-width: 43px; }
     }
     @media (max-height: 400px) {
-      .boot-container { padding: 0.5rem 0.2rem 0.5rem 0.2rem; }
-      .boot-title { font-size: 1.1rem; }
-      .boot-image { max-width: 54px; }
+      .boot-container { padding: 0.3rem 0.1rem 0.5rem 0.1rem; }
+      .boot-title { font-size: 0.9rem; }
+      .boot-image { max-width: 30px; }
     }
   </style>
 </head>
 <body>
+  <!-- Bulutlar SVG ile iki tarafta (isteğe göre kendi SVG veya PNG bulutunu da koyabilirsin) -->
+  <div class="cloud left" id="cloudLeft" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="180" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="90" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="270" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="cloud right" id="cloudRight" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="340" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="430" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="250" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
   <div class="boot-container" id="bootContainer" role="alert" aria-live="assertive">
-    <img src="./assets/images/about-banner.png" alt="Illustrator" class="boot-image" />
+    <img src="./assets/images/about-banner.png" alt="Zulshof Banner" class="boot-image" />
     <div class="boot-title">ZULSHOF</div>
     <div class="boot-subtext" id="bootSubtext">Preparing your experience...</div>
     <div class="progress-bar"><div class="progress-bar-inner"></div></div>
@@ -148,17 +174,26 @@
       id: "Menyiapkan pengalaman Anda...",
       de: "Ihre Erfahrung wird vorbereitet...",
       fr: "Préparation de votre expérience...",
-      ru: "Подготавливаем ваш deneyim...",
+      ru: "Подготавливаем ваш опыт...",
     };
     const subtext = document.getElementById("bootSubtext");
     subtext.textContent = translations[lang] || translations["en"];
 
-    // Yönlendirme zamanlaması
+    // Efekt süreleri
     const boot = document.getElementById("bootContainer");
-    setTimeout(() => boot.classList.add("fade-out"), 2100);
-    setTimeout(() => window.location.href = goTo, 2700);
+    const cloudL = document.getElementById("cloudLeft");
+    const cloudR = document.getElementById("cloudRight");
 
-    // Erişilebilirlik: ESC ile atlatma
+    // Önce progress bar dolacak, sonra bulutlar ayrılacak, sonra yönlendirme
+    setTimeout(() => {
+      cloudL.classList.add("open");
+      cloudR.classList.add("open");
+      boot.style.opacity = "0";
+    }, 2050);
+
+    setTimeout(() => window.location.href = goTo, 2950);
+
+    // ESC ile atlatma (erişilebilirlik)
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') window.location.href = goTo;
     });
