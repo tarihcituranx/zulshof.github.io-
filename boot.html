@@ -4,87 +4,164 @@
   <meta charset="UTF-8">
   <title>ZULSHOF Boot</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #0d1b2a;
+      min-height: 100vh;
+      width: 100vw;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      background: 
+        linear-gradient(135deg, #0d1b2aee 60%, #274472dd 100%),
+        url('/assets/images/blue-flowers.png') center center / cover no-repeat fixed;
       color: #fca311;
-      font-family: 'Saira Stencil One', cursive;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      text-align: center;
+      transition: background 0.6s;
       overflow: hidden;
-      transition: opacity 1s ease;
     }
 
     .boot-container {
-      animation: fadeIn 1s ease-in-out;
-      transition: opacity 1s ease;
+      background: rgba(17, 30, 52, 0.80);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.22);
+      padding: 2.2rem 2.2rem 1.7rem 2.2rem;
+      animation: fadeInScale 1s cubic-bezier(.4,2,.3,1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: opacity 1s, transform 1s;
+      max-width: 360px;
+      width: 92vw;
+      opacity: 1;
     }
 
     .fade-out {
       opacity: 0 !important;
+      transform: scale(0.95);
+      pointer-events: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.92);}
+      100% { opacity: 1; transform: scale(1);}
     }
 
     .boot-image {
-      width: 160px;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-      margin-bottom: 1rem;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+      margin-bottom: 1.1rem;
+      border: 3px solid #fca31150;
+      background: #fff;
+      max-width: 100%;
     }
 
     .boot-title {
-      font-size: 2rem;
-      margin-bottom: 0.3rem;
+      font-family: 'Saira Stencil One', cursive;
+      font-size: 2.1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.45rem;
       color: #fca311;
+      text-shadow: 0 2px 8px #0004;
+      line-height: 1.1;
+      word-break: break-word;
     }
 
     .boot-subtext {
+      font-size: 1.1rem;
+      color: #a5c1e1;
+      opacity: 0.93;
+      margin-bottom: 1.6rem;
+      font-weight: 500;
       font-family: 'Roboto', sans-serif;
-      font-size: 1rem;
-      color: #9ab8e0;
-      opacity: 0.85;
+    }
+
+    .progress-bar {
+      width: 98%;
+      height: 8px;
+      background: #203356;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0;
+      margin-top: 0.3rem;
+      position: relative;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg,#fca311,#e85d04 85%);
+      border-radius: 8px;
+      animation: progressGrow 2.2s cubic-bezier(.4,2,.3,1) forwards;
+    }
+    @keyframes progressGrow {
+      to { width: 100%;}
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .boot-container {
+        padding: 1.3rem 0.5rem 1.2rem 0.5rem;
+        max-width: 97vw;
+      }
+      .boot-image { width: 66vw; max-width: 98px; min-width: 56px; height: auto; }
+      .boot-title { font-size: 1.5rem; }
+      .boot-subtext { font-size: 0.98rem; }
+      .progress-bar { height: 6px; }
+    }
+    @media (max-width: 340px) {
+      .boot-title { font-size: 1.1rem; }
+      .boot-subtext { font-size: 0.79rem; }
+      .boot-image { max-width: 48px; min-width: 32px; }
+    }
+    @media (max-height: 400px) {
+      .boot-container { padding: 0.5rem 0.2rem 0.5rem 0.2rem; }
+      .boot-title { font-size: 1.1rem; }
+      .boot-image { max-width: 54px; }
     }
   </style>
 </head>
 <body>
-  <div class="boot-container" id="bootContainer">
-    <img src="./assets/images/about-banner.png" alt="Illustrator" class="boot-image">
+  <div class="boot-container" id="bootContainer" role="alert" aria-live="assertive">
+    <img src="./assets/images/about-banner.png" alt="Illustrator" class="boot-image" />
     <div class="boot-title">ZULSHOF</div>
     <div class="boot-subtext" id="bootSubtext">Preparing your experience...</div>
+    <div class="progress-bar"><div class="progress-bar-inner"></div></div>
   </div>
-
   <script>
-    // URL parametresiyle dönüş adresini al
+    // Dönüş adresini al
     const params = new URLSearchParams(window.location.search);
     const goTo = params.get("return") || "index.html";
-
-    // Boot ekranı bir kere gösterilsin
     localStorage.setItem("boot-shown", "true");
 
-    // Kullanıcı diline göre metin seçimi
+    // Dil seçimi
     const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
     const translations = {
       en: "Preparing your experience...",
       tr: "Siteniz hazırlanıyor...",
-      id: "Menyiapkan pengalaman Anda..."
+      id: "Menyiapkan pengalaman Anda...",
+      de: "Ihre Erfahrung wird vorbereitet...",
+      fr: "Préparation de votre expérience...",
+      ru: "Подготавливаем ваш deneyim...",
     };
     const subtext = document.getElementById("bootSubtext");
     subtext.textContent = translations[lang] || translations["en"];
 
     // Yönlendirme zamanlaması
     const boot = document.getElementById("bootContainer");
-    setTimeout(() => boot.classList.add("fade-out"), 1800);
-    setTimeout(() => window.location.href = goTo, 2800);
+    setTimeout(() => boot.classList.add("fade-out"), 2100);
+    setTimeout(() => window.location.href = goTo, 2700);
+
+    // Erişilebilirlik: ESC ile atlatma
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') window.location.href = goTo;
+    });
   </script>
 </body>
 </html>
