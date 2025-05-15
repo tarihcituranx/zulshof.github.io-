@@ -1569,31 +1569,70 @@ body.light_theme h3 {
   100% { opacity: 0; transform: translateY(10px); }
 }
 
+/* KARANLIK MOD HERO KUTUSU ve YAZILARI */
 body.dark_theme .hero-content {
-  background: rgba(24, 24, 24, 0.93); /* koyu, hafif şeffaf kutu */
+  background: rgba(34,40,50,0.67);  /* daha koyu, şeffaf kutu */
   border-radius: 28px;
   padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.18);
-  backdrop-filter: blur(1.5px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 1.5px 8px #191b25;
+  backdrop-filter: blur(9px);
   margin: 4rem auto 2.5rem auto;
-  border: 1.5px solid rgba(120, 120, 120, 0.13);
+  border: 1.5px solid rgba(120, 130, 150, 0.13);
   max-width: 520px;
   text-align: center;
 }
 
-body.dark_theme .hero-title,
-body.dark_theme .hero-subtitle,
-body.dark_theme .hero-deco span,
+body.dark_theme .hero-title {
+  color: #3464a3; /* koyu canlı mavi */
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 18px #13151a, 0 0 4px #3464a3;
+}
+
+body.dark_theme .hero-subtitle {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  color: #3464a3; /* koyu mavi */
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 1px 8px #13151a;
+  letter-spacing: 0.05em;
+}
+
+body.dark_theme .hero-deco {
+  margin: 1rem 0;
+}
+body.dark_theme .hero-deco span {
+  color: #6094c9; /* powder blue */
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  margin: 0 0.25rem;
+  display: inline-block;
+  text-shadow: 0 1px 8px #13151a;
+}
+
+body.dark_theme .hero-welcome {
+  margin-top: 2rem;
+}
 body.dark_theme #welcome-effect {
-  color: #fff !important;
-  text-shadow: 0 2px 18px #000, 0 0 4px #222;
+  display: inline-block;
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #6094c9; /* powder blue */
+  animation: fadeInOut 3s ease-in-out infinite;
+  letter-spacing: 0.15em;
+  vertical-align: middle;
+  text-shadow: 0 3px 14px #13151a;
 }
-
 body.dark_theme .heart {
-  filter: drop-shadow(0 2px 8px #000);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  filter: drop-shadow(0 2px 8px #191b25);
 }
 
-/* Gerekirse responsive ve padding ayarları aynı şekilde devam eder */
+/* Responsive - mobile */
 @media (max-width: 600px) {
   body.dark_theme .hero-content {
     padding: 1.2rem 0.7rem 1.5rem 0.7rem;
