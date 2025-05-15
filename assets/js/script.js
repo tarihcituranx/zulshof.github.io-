@@ -251,3 +251,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Hero bölümündeki karşılama mesajlarını döngüyle değiştirir
+const welcomeElement = document.getElementById("welcome-effect");
+const translations = ["Welcome", "Hoş Geldiniz", "Selamat Datang"];
+let currentIndex = 0;
+setInterval(() => {
+  currentIndex = (currentIndex + 1) % translations.length;
+  welcomeElement.textContent = translations[currentIndex];
+}, 3000);
