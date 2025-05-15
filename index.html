@@ -181,12 +181,67 @@
       </button>
 
       <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
-          <li><a href="#home" class="navbar-link" data-lang-en="Home" data-lang-tr="Anasayfa" data-lang-id="Beranda">Home</a></li>
-          <li><a href="#about" class="navbar-link" data-lang-en="About" data-lang-tr="Hakkımda" data-lang-id="Tentang">About</a></li>
-          <li><a href="#skills" class="navbar-link" data-lang-en="Fun Fact" data-lang-tr="Bilgi" data-lang-id="Catatan">Fun Fact</a></li>
-          <li><a href="#portfolio" class="navbar-link" data-lang-en="Works" data-lang-tr="Çalışmalarım" data-lang-id="Bekerja">Works</a></li>
-          <li><a href="#contact" class="navbar-link" data-lang-en="Contact" data-lang-tr="İletişim" data-lang-id="Kontak">Contact</a></li>
+  <ul class="navbar-list">
+    <li>
+      <a href="#home" class="navbar-link"
+         data-lang-en="Home"
+         data-lang-tr="Anasayfa"
+         data-lang-id="Beranda">Home</a>
+    </li>
+    <li>
+      <a href="#about" class="navbar-link"
+         data-lang-en="About"
+         data-lang-tr="Hakkımda"
+         data-lang-id="Tentang">About</a>
+    </li>
+    <li>
+      <a href="#skills" class="navbar-link"
+         data-lang-en="Fun Fact"
+         data-lang-tr="Bilgi"
+         data-lang-id="Catatan">Fun Fact</a>
+    </li>
+    <li>
+      <a href="#portfolio" class="navbar-link"
+         data-lang-en="Works"
+         data-lang-tr="Çalışmalarım"
+         data-lang-id="Bekerja">Works</a>
+    </li>
+    <li>
+      <a href="#contact" class="navbar-link"
+         data-lang-en="Contact"
+         data-lang-tr="İletişim"
+         data-lang-id="Kontak">Contact</a>
+    </li>
+    <!-- Gizlilik/GDPR/KVKK/Privacy Menu -->
+    <li>
+      <a href="/privacy.html"
+         class="navbar-link navbar-privacy"
+         id="privacy-menu-link"
+         data-lang-en="Privacy"
+         data-lang-tr="Gizlilik"
+         data-lang-id="Privasi">Privacy</a>
+    </li>
+  </ul>
+</nav>
+<script>
+  // Dile göre navbar ve gizlilik linki yönlendirme
+  function updatePrivacyMenuLink() {
+    var lang = localStorage.getItem("site-lang") || "tr";
+    var link = document.getElementById("privacy-menu-link");
+    if (!link) return;
+    if (lang === "tr")      link.setAttribute("href", "/kvkk.html");
+    else if (lang === "id") link.setAttribute("href", "/kebijakan-privasi.html");
+    else                    link.setAttribute("href", "/privacy.html");
+    // Menüde görünen yazıyı da seçilen dile göre ayarla (isteğe bağlı):
+    link.textContent = link.getAttribute("data-lang-" + lang) || link.getAttribute("data-lang-en");
+  }
+  // Sayfa yüklendiğinde ve dil değiştiğinde güncelle
+  document.addEventListener("DOMContentLoaded", updatePrivacyMenuLink);
+  window.addEventListener("storage", function(e) {
+    if (e.key === "site-lang") updatePrivacyMenuLink();
+  });
+  // Eğer başka bir yerde dil değişiyorsa, orada da updatePrivacyMenuLink() çağırabilirsin.
+</script>
         </ul>
       </nav>
     </div>
