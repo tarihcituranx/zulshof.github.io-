@@ -1448,7 +1448,6 @@ body.light_theme {
   background-size: 340px;
   background-attachment: fixed;
 }
-
 body.dark_theme {
   background-image: none !important;
 }
@@ -1462,83 +1461,73 @@ body.light_theme .hero-content {
   padding: 2.2rem 2.5rem 2.5rem 2.5rem;
   box-shadow: 0 6px 28px rgba(80,110,160,0.07);
   backdrop-filter: blur(1.2px);
-  margin-bottom: 2.5rem;
+  margin: 4rem auto 2.5rem auto;
   border: 1.5px solid rgba(160, 180, 220, 0.13);
+  max-width: 520px;
   text-align: center;
 }
 
-/* Hero başlık ve alt başlıklar */
-body.light_theme .hero-content .hero-title {
+body.light_theme .hero-title {
   color: #3464a3;
-  font-size: 3rem;
-  font-family: var(--ff-saira-stencil-one, Arial, sans-serif);
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
   text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
 }
 
-body.light_theme .hero-content .hero-subtitle,
-body.light_theme .hero-content .section-title,
-body.light_theme .hero-content h1,
-body.light_theme .hero-content h2,
-body.light_theme .hero-content h3 {
+body.light_theme .hero-subtitle {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
   color: #3464a3;
-  text-shadow: 0 2px 12px #fff;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 1px 8px #fff;
+  letter-spacing: 0.05em;
 }
 
-body.light_theme .hero-content p,
-body.light_theme .hero-content span,
-body.light_theme .hero-content small {
-  color: #222;
-  text-shadow: 0 1.5px 8px #fff;
+body.light_theme .hero-deco {
+  margin: 1rem 0;
+}
+body.light_theme .hero-deco span {
+  color: #6094c9;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  margin: 0 0.25rem;
+  display: inline-block;
 }
 
-body.light_theme .hero-content .heart,
-body.light_theme .hero-content .subline {
+body.light_theme .hero-welcome {
+  margin-top: 2rem;
+}
+body.light_theme #welcome-effect {
+  display: inline-block;
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #3464a3;
+  animation: fadeInOut 3s ease-in-out infinite;
+  letter-spacing: 0.15em;
+  vertical-align: middle;
+  text-shadow: 0 3px 14px #fff;
+}
+body.light_theme .heart {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  vertical-align: middle;
+  margin-left: 0.5rem;
   filter: drop-shadow(0 2px 8px #fff);
 }
 
-/*------------------*/
-/* ANA İÇERİK KUTULARI (SADECE AYDINLIK MODDA) */
-/*------------------*/
-body.light_theme .about-content,
-body.light_theme .section-text,
-body.light_theme .contact-content,
-body.light_theme .project-card .card-content,
-body.light_theme .stats-list,
-body.light_theme .container-main-content {
-  background: rgba(255,255,255,0.78);
-  border-radius: 18px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  backdrop-filter: blur(1.5px);
-  margin-bottom: 2rem;
-  color: #232323;
-}
-
-/*------------------*/
-/* BAŞLIKLARA GÖLGE */
-/*------------------*/
-body.light_theme .hero-title,
-body.light_theme .section-title,
-body.light_theme h1,
-body.light_theme h2,
-body.light_theme h3 {
-  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.75), 0 0 2px #222;
-}
-
-/*------------------*/
-/* MOBİL DOSTU DOKUNUŞLAR */
-/*------------------*/
+/* Responsive - mobile */
 @media (max-width: 600px) {
-  body.light_theme .hero-content,
-  body.light_theme .about-content,
-  body.light_theme .section-text,
-  body.light_theme .contact-content,
-  body.light_theme .project-card .card-content,
-  body.light_theme .stats-list,
-  body.light_theme .container-main-content {
-    padding: 1rem 0.7rem;
-    border-radius: 12px;
+  body.light_theme .hero-content {
+    padding: 1.2rem 0.7rem 1.5rem 0.7rem;
+    border-radius: 13px;
+    max-width: 98vw;
   }
+}
+
+/* Fade animasyonu */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
 }
