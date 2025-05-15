@@ -179,16 +179,43 @@ body.dark_theme {
 }
 
 /* Karanlık modda patterni softlaştıran overlay */
+body {
+  background-color: #e7f4fd;
+  background-image: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+body.light_theme {
+  background-color: #A3E3ED;
+  background-image: url('/assets/images/floral-pattern.png');
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: scroll;
+  position: relative;
+  z-index: 0;
+}
+
+body.dark_theme {
+  background-color: #10121a;
+  background-image: url('/assets/images/blue-flowers.png') !important;
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: scroll;
+  position: relative;
+  z-index: 0;
+}
+
 body.dark_theme::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 1; /* Kutuların altında, içeriklerin üstünde kalmalı! */
+  z-index: 1;
   pointer-events: none;
-  background: rgba(16,18,26,0.62);
+  background: rgba(16,18,26,0.55);
 }
 
-/* Kutular ve içeriklerin overlay'in üzerinde görünmesi için: */
 body.dark_theme .hero-content,
 body.dark_theme .section-text,
 body.dark_theme .about-content,
@@ -200,14 +227,12 @@ body.dark_theme .container-main-content {
   z-index: 2;
 }
 
-/* Mobilde background-attachment: fixed sorun çıkarıyorsa sadece scroll yap! */
 @media (max-width: 600px) {
   body.light_theme,
   body.dark_theme {
-    background-attachment: scroll;
+    background-attachment: scroll !important;
   }
 }
-
 
 /*-----------------------------------*\
  * #REUSED STYLE
