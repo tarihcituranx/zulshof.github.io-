@@ -1427,18 +1427,15 @@ textarea.input-field {
 /* ... (senin mevcut css kodların) ... */
 
 body.light_theme {
-  /* Light theme için floral desenli arka plan */
   background-color: #A3E3ED;
-  background-image: url('assets/images/floral-pattern.png');
+  background-image: url('../images/floral-pattern.png');
   background-repeat: repeat;
   background-size: 340px;
   background-attachment: fixed;
 }
 
 body.dark_theme {
-  /* Dark theme için pattern yok, düz koyu renk */
   background-image: none !important;
 }
-
 
 
