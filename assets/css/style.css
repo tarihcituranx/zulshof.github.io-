@@ -6,10 +6,6 @@
  * copyright 2022 codewithsadee
  */
 
-
-
-
-
 /*-----------------------------------*\
  * #CUSTOM PROPERTY
 \*-----------------------------------*/
@@ -48,62 +44,49 @@
   /**
    * transition
    */
-
   --transition-1: 0.25s ease-in-out;
 
   /**
    * spacing
    */
-
   --section-padding: 80px;
 
   /**
    * radius
    */
-
   --radius-4: 4px;
   --radius-12: 12px;
-
 }
-
-
-
-
 
 /*-----------------------------------*\
  * #THEME COLORS
 \*-----------------------------------*/
 
 body.dark_theme {
-  /* MEVCUT KOYU TEMA DEĞİŞKENLERİNİZ */
   --bg-primary: hsl(0, 0%, 12%);
-  --bg-secondary: hsl(0, 0%, 19%);    /* Footer arka planı için bu kullanılır */
+  --bg-secondary: hsl(0, 0%, 19%);
   --color-primary: hsl(0, 0%, 100%);
-  --color-secondary: hsl(0, 0%, 62%); /* Footer'daki "zulshof" ve genel metinler için bu kullanılır */
+  --color-secondary: hsl(0, 0%, 62%);
   --card-shadow: hsla(0, 0%, 0%, 0.4);
   --input-bg: hsl(0, 0%, 16%);
-  --shadow-1: 10px 10px 40px var(--card-shadow); /* Footer gölgesi için bu kullanılır */
+  --shadow-1: 10px 10px 40px var(--card-shadow);
 
-  /* FOOTER İÇİN EK/GÜNCELLENMİŞ DEĞİŞKENLER (KOYU TEMA) */
-  --raw-seinna: #fca311;                 /* "illustrator" kısmı için (koyu temada turuncu) */
-  --footer-actual-link-color: var(--raw-seinna); /* Koyu temada linkler turuncu olsun */
+  --raw-seinna: #fca311;
+  --footer-actual-link-color: var(--raw-seinna);
 }
 
 body.light_theme {
-  /* MEVCUT AYDINLIK TEMA DEĞİŞKENLERİNİZ */
-  --bg-primary: #A3E3ED; /* Blizzard Blue */
-  --bg-secondary: hsl(0, 0%, 100%); /* Beyaz - Footer arka planı için bu kullanılır */
-  --color-primary: hsl(0, 0%, 12%); /* Siyah ton */
-  --color-secondary: hsl(0, 0%, 37%); /* Gri ton - Footer'daki "zulshof" ve genel metinler için bu kullanılır */
-  --card-shadow: hsla(0, 0%, 0%, 0.1); /* Şeffaf siyah */
-  --input-bg: hsl(0, 0%, 93%); /* Gri ton */
-  --shadow-1: 10px 10px 40px var(--card-shadow); /* Footer gölgesi için bu kullanılır */
+  --bg-primary: #A3E3ED;
+  --bg-secondary: hsl(0, 0%, 100%);
+  --color-primary: hsl(0, 0%, 12%);
+  --color-secondary: hsl(0, 0%, 37%);
+  --card-shadow: hsla(0, 0%, 0%, 0.1);
+  --input-bg: hsl(0, 0%, 93%);
+  --shadow-1: 10px 10px 40px var(--card-shadow);
 
-  /* FOOTER İÇİN EK/GÜNCELLENMİŞ DEĞİŞKENLER (AYDINLIK TEMA) */
-  --raw-seinna: #D95E00;                 /* "illustrator" kısmı için (aydınlık temada koyu turuncu) */
-  --footer-actual-link-color: var(--color-secondary); /* Aydınlık temada linkler "zulshof" gibi koyu gri olsun */
+  --raw-seinna: #D95E00;
+  --footer-actual-link-color: var(--color-secondary);
 }
-
 
 
 /*-----------------------------------*\
@@ -170,8 +153,39 @@ body {
 
 body.active { overflow: hidden; }
 
+/*-----------------------------------*\
+ * #AROUND-THEME BACKGROUNDS
+\*-----------------------------------*/
 
+/* Aydınlık mod pattern */
+body.light_theme {
+  background-color: #e7f4fd;
+  background-image: url('/assets/images/floral-pattern.png');
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: fixed;
+  position: relative;
+}
 
+/* Karanlık mod pattern */
+body.dark_theme {
+  background-color: #10121a;
+  background-image: url('/assets/images/blue-flowers.png');
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Karanlık modda patterni softlaştıran overlay */
+body.dark_theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(16,18,26,0.66);
+}
 
 
 /*-----------------------------------*\
@@ -276,9 +290,163 @@ body.active { overflow: hidden; }
   z-index: 1;
 }
 
+/*-----------------------------------*\
+ * #THEMED CARDS & BLUR KUTULAR
+\*-----------------------------------*/
 
+body.light_theme .hero-content,
+body.dark_theme .hero-content,
+body.light_theme .section-text,
+body.dark_theme .section-text,
+body.light_theme .about-content,
+body.dark_theme .about-content,
+body.light_theme .contact-content,
+body.dark_theme .contact-content,
+body.light_theme .project-card .card-content,
+body.dark_theme .project-card .card-content,
+body.light_theme .stats-list,
+body.dark_theme .stats-list,
+body.light_theme .container-main-content,
+body.dark_theme .container-main-content {
+  border-radius: 28px;
+  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
+  margin: 4rem auto 2.5rem auto;
+  max-width: 520px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 40px rgba(80,110,160,0.10), 0 1.5px 8px #2221;
+  border: 1.5px solid rgba(120, 150, 190, 0.13);
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+}
 
+body.light_theme .hero-content,
+body.light_theme .section-text,
+body.light_theme .about-content,
+body.light_theme .contact-content,
+body.light_theme .project-card .card-content,
+body.light_theme .stats-list,
+body.light_theme .container-main-content {
+  background: rgba(255,255,255,0.85);
+  color: #232323;
+}
 
+body.dark_theme .hero-content,
+body.dark_theme .section-text,
+body.dark_theme .about-content,
+body.dark_theme .contact-content,
+body.dark_theme .project-card .card-content,
+body.dark_theme .stats-list,
+body.dark_theme .container-main-content {
+  background: rgba(22,30,48,0.77);
+  color: #e8f0ff;
+  border: 1.5px solid rgba(120, 150, 210, 0.17);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.23), 0 1.5px 8px #191b25;
+}
+
+/*-----------------------------------*\
+ * #HERO BAŞLIK VE YAZILAR
+\*-----------------------------------*/
+
+body.light_theme .hero-title,
+body.dark_theme .hero-title {
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+body.light_theme .hero-title {
+  color: #3464a3;
+  text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
+}
+body.dark_theme .hero-title {
+  color: #6094c9;
+  text-shadow: 0 2px 18px #191e2f, 0 0 8px #3464a3;
+}
+
+body.light_theme .hero-subtitle,
+body.dark_theme .hero-subtitle {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+body.light_theme .hero-subtitle {
+  color: #3464a3;
+  text-shadow: 0 1px 8px #fff;
+}
+body.dark_theme .hero-subtitle {
+  color: #6094c9;
+  text-shadow: 0 1px 8px #191e2f;
+}
+
+body.light_theme .hero-deco span,
+body.dark_theme .hero-deco span {
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  margin: 0 0.25rem;
+  display: inline-block;
+}
+body.light_theme .hero-deco span {
+  color: #6094c9;
+  text-shadow: 0 1px 8px #fff;
+}
+body.dark_theme .hero-deco span {
+  color: #b0d8fa;
+  text-shadow: 0 1px 8px #191e2f;
+}
+
+body.light_theme .hero-welcome,
+body.dark_theme .hero-welcome {
+  margin-top: 2rem;
+}
+body.light_theme #welcome-effect,
+body.dark_theme #welcome-effect {
+  display: inline-block;
+  font-family: 'Saira Stencil One', cursive;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  letter-spacing: 0.15em;
+  vertical-align: middle;
+  animation: fadeInOut 3s ease-in-out infinite;
+}
+body.light_theme #welcome-effect {
+  color: #6094c9;
+  text-shadow: 0 3px 14px #fff;
+}
+body.dark_theme #welcome-effect {
+  color: #b0d8fa;
+  text-shadow: 0 3px 14px #191e2f;
+}
+
+body.light_theme .heart,
+body.dark_theme .heart {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+body.light_theme .heart {
+  filter: drop-shadow(0 2px 8px #fff);
+}
+body.dark_theme .heart {
+  filter: drop-shadow(0 2px 8px #191b25);
+}
+
+/*------------------*/
+/* ANA BAŞLIKLARIN GÖLGESİ */
+body.light_theme .hero-title,
+body.dark_theme .hero-title,
+body.light_theme .section-title,
+body.dark_theme .section-title,
+body.light_theme h1,
+body.dark_theme h1,
+body.light_theme h2,
+body.dark_theme h2,
+body.light_theme h3,
+body.dark_theme h3 {
+  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.7), 0 0 2px #222;
+}
 
 /*-----------------------------------*\
  * #HEADER
@@ -1436,199 +1604,6 @@ body.light_theme {
 
 body.dark_theme {
   background-image: none !important;
-}
-
-/*------------------*/
-/* ARKA PLAN PATTERN - HER TEMA İÇİN FARKLI */
-/*------------------*/
-body.light_theme {
-  background-color: #e7f4fd;
-  background-image: url('/assets/images/floral-pattern.png'); /* Aydınlık mod pattern */
-  background-repeat: repeat;
-  background-size: 340px;
-  background-attachment: fixed;
-  position: relative;
-}
-body.dark_theme {
-  background-color: #10121a;
-  background-image: url('/assets/images/blue-flowers.png'); /* Karanlık mod pattern */
-  background-repeat: repeat;
-  background-size: 340px;
-  background-attachment: fixed;
-  position: relative;
-}
-/* Dark modda patterni softlaştırmak için overlay (ama patterni tamamen örtmesin!) */
-body.dark_theme::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: rgba(16,18,26,0.66);
-}
-
-/*------------------*/
-/* KUTULAR (HERO, İÇERİK VB.) */
-/*------------------*/
-body.light_theme .hero-content,
-body.dark_theme .hero-content,
-body.light_theme .section-text,
-body.dark_theme .section-text,
-body.light_theme .about-content,
-body.dark_theme .about-content,
-body.light_theme .contact-content,
-body.dark_theme .contact-content,
-body.light_theme .project-card .card-content,
-body.dark_theme .project-card .card-content,
-body.light_theme .stats-list,
-body.dark_theme .stats-list,
-body.light_theme .container-main-content,
-body.dark_theme .container-main-content {
-  border-radius: 28px;
-  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  margin: 4rem auto 2.5rem auto;
-  max-width: 520px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  box-shadow: 0 8px 40px rgba(80,110,160,0.10), 0 1.5px 8px #2221;
-  border: 1.5px solid rgba(120, 150, 190, 0.13);
-  backdrop-filter: blur(13px);
-  -webkit-backdrop-filter: blur(13px);
-}
-
-/* Kutuların arka planı ve yazı rengi tema bazlı */
-body.light_theme .hero-content,
-body.light_theme .section-text,
-body.light_theme .about-content,
-body.light_theme .contact-content,
-body.light_theme .project-card .card-content,
-body.light_theme .stats-list,
-body.light_theme .container-main-content {
-  background: rgba(255,255,255,0.85);
-  color: #232323;
-}
-body.dark_theme .hero-content,
-body.dark_theme .section-text,
-body.dark_theme .about-content,
-body.dark_theme .contact-content,
-body.dark_theme .project-card .card-content,
-body.dark_theme .stats-list,
-body.dark_theme .container-main-content {
-  background: rgba(22,30,48,0.77);
-  color: #e8f0ff;
-  border: 1.5px solid rgba(120, 150, 210, 0.17);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.23), 0 1.5px 8px #191b25;
-}
-
-/*------------------*/
-/* HERO BAŞLIKLARI */
-/*------------------*/
-body.light_theme .hero-title,
-body.dark_theme .hero-title {
-  font-family: 'Saira Stencil One', cursive;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-}
-
-body.light_theme .hero-title {
-  color: #3464a3;
-  text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
-}
-body.dark_theme .hero-title {
-  color: #6094c9;
-  text-shadow: 0 2px 18px #191e2f, 0 0 8px #3464a3;
-}
-
-/*------------------*/
-/* ALT BAŞLIK */
-body.light_theme .hero-subtitle,
-body.dark_theme .hero-subtitle {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
-  font-weight: bold;
-  margin: 0;
-  letter-spacing: 0.05em;
-}
-body.light_theme .hero-subtitle {
-  color: #3464a3;
-  text-shadow: 0 1px 8px #fff;
-}
-body.dark_theme .hero-subtitle {
-  color: #6094c9;
-  text-shadow: 0 1px 8px #191e2f;
-}
-
-/*------------------*/
-/* DEKORATİF SPAN */
-body.light_theme .hero-deco span,
-body.dark_theme .hero-deco span {
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  margin: 0 0.25rem;
-  display: inline-block;
-}
-body.light_theme .hero-deco span {
-  color: #6094c9;
-  text-shadow: 0 1px 8px #fff;
-}
-body.dark_theme .hero-deco span {
-  color: #b0d8fa;
-  text-shadow: 0 1px 8px #191e2f;
-}
-
-/*------------------*/
-/* WELCOME EFEKTİ */
-body.light_theme .hero-welcome,
-body.dark_theme .hero-welcome {
-  margin-top: 2rem;
-}
-body.light_theme #welcome-effect,
-body.dark_theme #welcome-effect {
-  display: inline-block;
-  font-family: 'Saira Stencil One', cursive;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  letter-spacing: 0.15em;
-  vertical-align: middle;
-  animation: fadeInOut 3s ease-in-out infinite;
-}
-body.light_theme #welcome-effect {
-  color: #6094c9;
-  text-shadow: 0 3px 14px #fff;
-}
-body.dark_theme #welcome-effect {
-  color: #b0d8fa;
-  text-shadow: 0 3px 14px #191e2f;
-}
-
-/*------------------*/
-/* KALP (HEART) */
-body.light_theme .heart,
-body.dark_theme .heart {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  vertical-align: middle;
-  margin-left: 0.5rem;
-}
-body.light_theme .heart {
-  filter: drop-shadow(0 2px 8px #fff);
-}
-body.dark_theme .heart {
-  filter: drop-shadow(0 2px 8px #191b25);
-}
-
-/*------------------*/
-/* ANA BAŞLIKLARIN GÖLGESİ */
-body.light_theme .hero-title,
-body.dark_theme .hero-title,
-body.light_theme .section-title,
-body.dark_theme .section-title,
-body.light_theme h1,
-body.dark_theme h1,
-body.light_theme h2,
-body.dark_theme h2,
-body.light_theme h3,
-body.dark_theme h3 {
-  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.7), 0 0 2px #222;
 }
 
 /*------------------*/
