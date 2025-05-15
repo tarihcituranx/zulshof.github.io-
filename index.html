@@ -367,6 +367,17 @@
 
 <script>
   // Çok dilli yaratıcı FAQ butonu metni
+ <!-- FAQ Butonu -->
+<a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">Soruların mı Var? Cevaplar İçin Tıkla!</a>
+  </div>
+   
+  <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
+    <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
+  </div>
+</section>
+
+<script>
+  // Çok dilli yaratıcı FAQ butonu metni
   const faqBtnTexts = {
     tr: "Kafandaki Soru İşaretleri İçin Tıkla!",
     en: "Got Questions? Find All The Answers Here!",
@@ -375,11 +386,25 @@
   function detectLang() {
     return localStorage.getItem("site-lang") || document.documentElement.lang || "en";
   }
-  document.addEventListener("DOMContentLoaded", function() {
+  function updateFaqBtnText() {
     var btn = document.getElementById("skills-faq-btn");
     var lang = detectLang().substring(0,2);
     btn.textContent = faqBtnTexts[lang] || faqBtnTexts["en"];
+  }
+  document.addEventListener("DOMContentLoaded", updateFaqBtnText);
+
+  // Eğer dil değiştiren butonların varsa, onların click eventinde de güncelle:
+  ["tr","en","id"].forEach(function(code){
+    var langBtn = document.getElementById("lang-"+code);
+    if(langBtn){
+      langBtn.addEventListener("click", function() {
+        localStorage.setItem("site-lang", code);
+        updateFaqBtnText();
+      });
+    }
   });
+
+  // Eğer başka bir yerde dil değiştiriyorsan, yine updateFaqBtnText() fonksiyonunu çağır.
 </script>
 
 <style>
