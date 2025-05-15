@@ -902,77 +902,34 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => firefly.remove(), 1000);
   });
 </script>
-<!-- ======== COOKIE BANNER KODU BAŞLANGICI ======== -->
+<!-- ======== GELİŞMİŞ OTOMATİK VERSİYONLU COOKIE BANNER ======== -->
 <style>
- /* Cookie Banner Stilleri */
   #cookie-banner {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #222; /* Koyu tema için uygun bir arka plan */
-    color: #fff;
-    padding: 1rem 1.5rem; /* Biraz daha fazla yan boşluk */
+    bottom: 0; left: 0; right: 0;
+    background: #222; color: #fff;
+    padding: 1rem 1.5rem;
     font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem; /* Biraz daha küçük font */
-    box-shadow: 0 -3px 15px rgba(0,0,0,0.3); /* Daha belirgin gölge */
-    display: flex;
-    flex-wrap: wrap; /* Küçük ekranlarda alt alta gelmesi için */
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem; /* Metin ve butonlar arası boşluk */
-    z-index: 10000; /* Diğer elementlerin üzerinde kalması için yüksek z-index */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Opaklık geçişi eklendi */
+    font-size: 0.9rem;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.3);
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: center; gap: 1rem;
+    z-index: 10000; transition: transform 0.5s, opacity 0.5s;
     opacity: 1;
   }
-
-  #cookie-banner.hidden {
-    transform: translateY(100%);
-    opacity: 0;
-    pointer-events: none; /* Gizliyken tıklama olaylarını engelle */
-  }
-
-  #cookie-banner .cookie-text {
-    flex-grow: 1; /* Mümkün olduğunca genişlesin */
-    max-width: 100%; /* Küçük ekranlarda tam genişlik */
-  }
-
-  @media (min-width: 768px) { /* Orta ve büyük ekranlar için */
-    #cookie-banner .cookie-text {
-      max-width: 70%; /* Büyük ekranlarda metin kısmını biraz daralt */
-    }
-  }
-
-  #cookie-banner .cookie-actions {
-    display: flex;
-    gap: 0.75rem; /* Butonlar arası boşluk */
-  }
-
+  #cookie-banner.hidden {transform: translateY(100%); opacity: 0; pointer-events: none;}
+  #cookie-banner .cookie-text {flex-grow: 1; max-width: 100%;}
+  @media (min-width: 768px) {#cookie-banner .cookie-text {max-width: 70%;}}
+  #cookie-banner .cookie-actions {display: flex; gap: 0.75rem;}
   #cookie-banner .cookie-actions button {
-    background: #fca311; /* Ana tema renginiz */
-    color: #ffffff;
-    border: none;
-    padding: 0.6rem 1.2rem; /* Buton iç boşlukları */
-    border-radius: 25px; /* Daha yuvarlak butonlar */
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 0.85rem; /* Buton yazı boyutu */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    background: #fca311; color: #fff; border: none;
+    padding: 0.6rem 1.2rem; border-radius: 25px;
+    cursor: pointer; font-weight: bold; font-size: 0.85rem;
+    transition: background-color 0.3s, transform 0.2s;
   }
-
-  #cookie-banner .cookie-actions button:hover {
-    background-color: #e0930b; /* Hover rengi biraz daha koyu */
-    transform: scale(1.03); /* Hafif büyüme efekti */
-  }
-
-  #cookie-banner .cookie-actions button.decline {
-    background: #6c757d; /* Gri tonunda reddet butonu */
-    color: #fff;
-  }
-
-  #cookie-banner .cookie-actions button.decline:hover {
-    background-color: #5a6268;
-  }
+  #cookie-banner .cookie-actions button:hover {background-color: #e0930b; transform: scale(1.03);}
+  #cookie-banner .cookie-actions button.decline {background: #6c757d;}
+  #cookie-banner .cookie-actions button.decline:hover {background-color: #5a6268;}
 </style>
 
 <div id="cookie-banner" class="hidden">
@@ -995,68 +952,80 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
-  (function() { // Kapsülleme için IIFE (Immediately Invoked Function Expression)
-    const cookieBanner = document.getElementById("cookie-banner");
-    if (!cookieBanner) {
-      // console.warn("Cookie banner HTML element (#cookie-banner) not found.");
-      return; // Banner HTML'i yoksa script çalışmasın
-    }
+(function() {
+  // 1. Otomatik versiyon: sadece buradan güncelle, büyük değişiklikte
+  const COOKIE_CONSENT_VERSION = "20240516";
+  const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
 
-    const acceptButton = cookieBanner.querySelector(".accept");
-    const declineButton = cookieBanner.querySelector(".decline");
-    const cookieConsentKey = "cookie-consent-v1"; // Anahtar ismini versiyonlamak ileride değişiklik yapmayı kolaylaştırır
+  // 2. Eski consentları otomatik temizle
+  Object.keys(localStorage)
+    .filter(key => key.startsWith("cookie-consent-v") && key !== cookieConsentKey)
+    .forEach(key => localStorage.removeItem(key));
 
-    // Dil metinlerini güncelleme fonksiyonu
-    function updateBannerTexts() {
-      const siteLangStorage = localStorage.getItem("site-lang");
-      const browserLang = navigator.language ? navigator.language.slice(0, 2).toLowerCase() : 'en';
-      let lang = siteLangStorage || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
+  // 3. Banner elemanları
+  const cookieBanner = document.getElementById("cookie-banner");
+  if (!cookieBanner) return;
+  const acceptButton = cookieBanner.querySelector(".accept");
+  const declineButton = cookieBanner.querySelector(".decline");
 
-      cookieBanner.querySelectorAll('[data-lang-en]').forEach(el => {
-        const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
-        // Butonların textContent'ini değiştirmek genellikle yeterlidir.
-        el.textContent = text;
-      });
-    }
+  // 4. Dil ayarlama fonksiyonu
+  function getCurrentLang() {
+    const siteLangStorage = localStorage.getItem("site-lang");
+    const browserLang = navigator.language ? navigator.language.slice(0, 2).toLowerCase() : 'en';
+    return siteLangStorage || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
+  }
+  function updateBannerTexts() {
+    const lang = getCurrentLang();
+    cookieBanner.querySelectorAll('[data-lang-en]').forEach(el => {
+      const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
+      el.textContent = text;
+    });
+  }
 
-    // Banner'ı gösterme veya gizleme mantığı
-    const cookieAccepted = localStorage.getItem(cookieConsentKey);
-    if (!cookieAccepted) {
-      cookieBanner.classList.remove("hidden");
-      updateBannerTexts(); // Banner gösteriliyorsa metinleri güncelle
-    }
+  // 5. Consent okuma/yazma
+  function hasCookieConsent() {
+    return !!localStorage.getItem(cookieConsentKey);
+  }
+  function setCookieConsent(val) {
+    localStorage.setItem(cookieConsentKey, val ? "accepted" : "declined");
+  }
 
-    // Buton olayları
-    if (acceptButton) {
-      acceptButton.addEventListener("click", () => {
-        localStorage.setItem(cookieConsentKey, "accepted");
-        cookieBanner.classList.add("hidden");
-      });
-    } else {
-      // console.warn("Cookie banner 'accept' button not found.");
-    }
+  // 6. Banner'ı göster/gizle
+  if (!hasCookieConsent()) {
+    cookieBanner.classList.remove("hidden");
+    updateBannerTexts();
+  }
 
-    if (declineButton) {
-      declineButton.addEventListener("click", () => {
-        localStorage.setItem(cookieConsentKey, "declined"); // Reddetme durumunu da kaydetmek iyi bir pratik
-        cookieBanner.classList.add("hidden");
-      });
-    } else {
-      // console.warn("Cookie banner 'decline' button not found.");
-    }
+  // 7. Buton eventleri
+  if (acceptButton) {
+    acceptButton.addEventListener("click", () => {
+      setCookieConsent(true);
+      cookieBanner.classList.add("hidden");
+    });
+  }
+  if (declineButton) {
+    declineButton.addEventListener("click", () => {
+      setCookieConsent(false);
+      cookieBanner.classList.add("hidden");
+    });
+  }
 
-    // Ana dil seçici değiştiğinde banner metinlerini (eğer görünürse) güncelle
-    const globalLangSelector = document.getElementById("lang"); // Navbar'daki dil seçiciniz
-    if (globalLangSelector) {
-      globalLangSelector.addEventListener("change", function() {
-        if (!cookieBanner.classList.contains("hidden")) { // Sadece banner görünürse metinleri güncelle
-          updateBannerTexts();
-        }
-      });
-    }
-  })(); // IIFE'yi hemen çalıştır
+  // 8. Dil değişirse banner anında güncellensin
+  function listenLangChange() {
+    // Sık kullanılan: eğer sitede dil değişimi bir event ile oluyorsa burada yakala
+    // Navbar'daki TR/EN/ID butonlarına tıklandığında localStorage.site-lang değişiyorsa:
+    window.addEventListener("storage", function(e) {
+      if (e.key === "site-lang" && !cookieBanner.classList.contains("hidden")) updateBannerTexts();
+    });
+    // Eğer sitede JS ile manuel dil değiştirme fonksiyonu varsa, orada da updateBannerTexts() çağırabilirsin.
+  }
+  listenLangChange();
+
+  // 9. Sayfa ilk açılışta da dil kontrolü yap
+  updateBannerTexts();
+})();
 </script>
-<!-- ======== COOKIE BANNER KODU SONU ======== -->
+<!-- ======== GELİŞMİŞ OTOMATİK VERSİYONLU COOKIE BANNER SONU ======== -->
 </script>
 <style>
   #preloader {
