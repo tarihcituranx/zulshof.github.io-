@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found | ZULSHOF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background: 
+        linear-gradient(135deg, #0d1b2aee 60%, #274472dd 100%),
+        url('/assets/images/blue-flowers.png') center center / cover no-repeat fixed;
+      color: #fca311;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .notfound-container {
+      background: rgba(17, 30, 52, 0.87);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.22);
+      padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 390px;
+      width: 93vw;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      animation: fadeInScale 1.2s cubic-bezier(.4,2,.3,1);
+    }
+    .notfound-title {
+      font-family: 'Saira Stencil One', cursive;
+      font-size: 3.5rem;
+      color: #fca311;
+      text-shadow: 0 2px 8px #0004;
+      margin-bottom: 0.2em;
+      letter-spacing: .1em;
+    }
+    .notfound-desc {
+      color: #a5c1e1;
+      font-size: 1.12rem;
+      margin-bottom: 1.6em;
+      min-height: 48px;
+    }
+    .notfound-img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 1.1rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.11);
+      background: #fff;
+      object-fit: cover;
+    }
+    .notfound-home {
+      color: #fff;
+      background: #fca311;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7em 2em;
+      font-size: 1.1em;
+      font-family: inherit;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background .22s;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      margin-bottom: 0.3em;
+      display: inline-block;
+    }
+    .notfound-home:hover {
+      background: #fca311cc;
+    }
+    /* Bulutlar */
+    .cloud {
+      position: fixed;
+      top: 0; bottom: 0;
+      width: 55vw;
+      min-width: 180px;
+      max-width: 700px;
+      z-index: 1;
+      pointer-events: none;
+      transition: transform 1.28s cubic-bezier(.7,.2,.2,1);
+      will-change: transform;
+    }
+    .cloud.left {
+      left: 0;
+      transform: translateX(0);
+    }
+    .cloud.right {
+      right: 0;
+      transform: translateX(0);
+    }
+    .cloud.open.left {
+      transform: translateX(-110%);
+    }
+    .cloud.open.right {
+      transform: translateX(110%);
+    }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.92);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .notfound-title { font-size: 2.1rem; }
+      .notfound-container { padding: 1.2rem 0.5rem 1.0rem 0.5rem; max-width:99vw;}
+      .notfound-img { width: 72px; }
+      .notfound-desc { font-size: 1.01rem; }
+      .cloud { min-width: 80px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bulutlar -->
+  <div class="cloud left" id="cloudLeft" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="180" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="90" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="270" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="cloud right" id="cloudRight" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="340" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="430" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="250" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="notfound-container">
+    <img src="/assets/images/about-banner.png" alt="404" class="notfound-img" />
+    <div class="notfound-title">404</div>
+    <div class="notfound-desc" id="notfound-desc"></div>
+    <a href="/" class="notfound-home" id="notfound-home"></a>
+  </div>
+  <script>
+    // Dil seçimi ve çeviriler
+    const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
+    const translations = {
+      en: {
+        notfound: "The page you are looking for was not found.<br>You may have mistyped the address or the page may have moved.",
+        homepage: "Go to Homepage",
+      },
+      tr: {
+        notfound: "Aradığınız sayfa bulunamadı.<br>Ya yanlış bir adres girdiniz ya da bu sayfa taşındı.",
+        homepage: "Anasayfa'ya dön",
+      },
+      id: {
+        notfound: "Halaman yang Anda cari tidak ditemukan.<br>Anda mungkin salah mengetik alamat atau halaman telah dipindahkan.",
+        homepage: "Kembali ke Beranda",
+      }
+    };
+    document.getElementById("notfound-desc").innerHTML =
+      (translations[lang] ? translations[lang].notfound : translations.en.notfound);
+    document.getElementById("notfound-home").textContent =
+      (translations[lang] ? translations[lang].homepage : translations.en.homepage);
+
+    // Bulut açılma efekti (ufak bir havalı animasyon)
+    setTimeout(() => {
+      document.getElementById("cloudLeft").classList.add("open");
+      document.getElementById("cloudRight").classList.add("open");
+    }, 500);
+  </script>
+</body>
+</html>
