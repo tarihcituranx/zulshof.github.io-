@@ -356,10 +356,8 @@
       Sharing creativity through colors, lines, and stories remains the best part of my daily life.
     </p>
 
-    <!-- Anasayfa Butonu -->
-    <a href="/" class="skills-home-btn" id="skills-home-btn" style="display: inline-block; margin: 2em auto 0 auto; background: #fca311; color: #222; font-weight: 700; padding: 0.8em 2em; border: none; border-radius: 9px; font-size: 1.08em; box-shadow: 0 2px 9px #0002; text-align: center; text-decoration: none; letter-spacing: .04em; transition: background .22s;">
-      Anasayfaya Dön
-    </a>
+    <!-- FAQ Butonu -->
+    <a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">Soruların mı Var? Cevaplar İçin Tıkla!</a>
   </div>
    
   <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
@@ -368,25 +366,42 @@
 </section>
 
 <script>
-  // Çok dilli buton metni
-  const homeBtnTexts = {
-    tr: "Anasayfaya Dön",
-    en: "Back to Homepage",
-    id: "Kembali ke Beranda"
+  // Çok dilli yaratıcı FAQ butonu metni
+  const faqBtnTexts = {
+    tr: "Kafandaki Soru İşaretleri İçin Tıkla!",
+    en: "Got Questions? Find All The Answers Here!",
+    id: "Punya Pertanyaan? Semua Jawabannya di Sini!"
   };
   function detectLang() {
-    // HTML'de data-lang veya localStorage sistemine göre uyarlayabilirsin
     return localStorage.getItem("site-lang") || document.documentElement.lang || "en";
   }
   document.addEventListener("DOMContentLoaded", function() {
-    var btn = document.getElementById("skills-home-btn");
+    var btn = document.getElementById("skills-faq-btn");
     var lang = detectLang().substring(0,2);
-    btn.textContent = homeBtnTexts[lang] || homeBtnTexts["en"];
+    btn.textContent = faqBtnTexts[lang] || faqBtnTexts["en"];
   });
 </script>
 
-
 <style>
+  .skills-faq-btn {
+    background: #fca311;
+    color: #222;
+    font-weight: 700;
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 9px;
+    font-size: 1.08em;
+    box-shadow: 0 2px 9px #0002;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: background .22s, transform .16s;
+    cursor: pointer;
+  }
+  .skills-faq-btn:hover {
+    background: #ffb948;
+    transform: scale(1.04) rotate(-2deg);
+  }
   .insta-link {
     color: #fca311;
     font-weight: 500;
