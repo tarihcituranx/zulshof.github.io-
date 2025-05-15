@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sıkça Sorulan Sorular | ZULSHOF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; background: linear-gradient(135deg, #0d1b2aee 60%, #274472dd 100%), url('/assets/images/blue-flowers.png') center center / cover no-repeat fixed; color: #fca311; font-family: 'Roboto', sans-serif; min-height: 100vh;}
+    .faq-container { margin: 3vw auto; max-width: 650px; background: rgba(17, 30, 52, 0.89); border-radius: 18px; box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18); padding: 2.2rem 1.3rem 1.8rem 1.3rem;}
+    .faq-title { text-align: center; font-size: 2.2rem; font-weight: 700; color: #fca311; margin-bottom: 2rem; letter-spacing: .08em;}
+    .lang-switch { text-align: center; margin-bottom: 1.6rem;}
+    .lang-switch button { margin: 0 0.3em; padding: 0.25em 1.2em; font-size: 1em; border: none; border-radius: 6px; background: #274472; color: #fff; font-weight: 700; cursor: pointer; transition: background .2s;}
+    .lang-switch button.active, .lang-switch button:focus { background: #fca311; color: #222; outline: none;}
+    .faq-list { margin: 0; padding: 0; list-style: none;}
+    .faq-item { margin-bottom: 1.2rem; border-radius: 10px; border: 1px solid #20304a; background: #18253b; overflow: hidden; box-shadow: 0 2px 12px #0002;}
+    .faq-question { cursor: pointer; padding: 1.1em 1em 1em 1em; font-size: 1.1em; font-weight: 700; color: #fca311; border: none; background: none; width: 100%; text-align: left; display: flex; align-items: center; position: relative; transition: background 0.2s;}
+    .faq-question:after { content: '+'; font-size: 1.5em; color: #a5c1e1; position: absolute; right: 1.1em; transition: transform 0.25s;}
+    .faq-item.open .faq-question:after { content: '-'; transform: rotate(180deg); color: #fca311;}
+    .faq-answer { max-height: 0; overflow: hidden; background: #23335a; color: #a5c1e1; font-size: 1em; padding: 0 1em; transition: max-height .32s cubic-bezier(.6,0,.3,1), padding .28s;}
+    .faq-item.open .faq-answer { max-height: 520px; padding: 0.7em 1em 1.1em 1em;}
+    .faq-home-btn {
+      display: block;
+      margin: 2.2em auto 0 auto;
+      background: #fca311;
+      color: #222;
+      font-weight: 700;
+      padding: 0.85em 2em;
+      border: none;
+      border-radius: 9px;
+      font-size: 1.11em;
+      box-shadow: 0 2px 12px #0002;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background .22s;
+      letter-spacing: .04em;
+    }
+    .faq-home-btn:hover { background: #fca311cc;}
+    @media (max-width: 640px) { .faq-container { padding: 1.2rem .2rem 1.0rem .2rem; } .faq-title { font-size: 1.3rem;}}
+    a { color: #fca311; word-break: break-all;}
+  </style>
+</head>
+<body>
+  <div class="faq-container">
+    <div class="faq-title" id="faq-title"></div>
+    <div class="lang-switch">
+      <button id="lang-tr">TR</button>
+      <button id="lang-en">EN</button>
+      <button id="lang-id">ID</button>
+    </div>
+    <ul class="faq-list" id="faq-list"></ul>
+    <a href="/" class="faq-home-btn" id="faq-home-btn"></a>
+  </div>
+  <script>
+    const faqs = {
+      tr: {
+        title: "Sıkça Sorulan Sorular",
+        home: "Anasayfaya Dön",
+        list: [
+          {
+            q: "Zulshof nedir?",
+            a: "Zulshof, çocukluğumdan beri hayalini kurduğum bir markaydı. Ama tek başıma yaşamak istemedim bu hayali; sizinle paylaşmak istedim. Yani burası sadece ben değilim, biziz! Fikirler ve hayallerin buluşma noktası."
+          },
+          {
+            q: "Zulshof ekibi kimlerden oluşuyor?",
+            a: `Aslında ekibimiz küçük ama kalbimiz büyük! Ben (<a href="https://www.instagram.com/zulshof/" target="_blank">Zulshof</a>) ve teknoloji tarafında sevgili dostum, iş ortağım Turan var. Birlikte hayal ettik, birlikte kurduk.`
+          },
+          {
+            q: "Hangi dillerde hizmet veriyoruz?",
+            a: "Şu anda Türkçe, İngilizce ve Endonezce dillerinde buradayız. İleride yeni diller de eklemeyi çok isteriz!"
+          },
+          {
+            q: "Dilimi nasıl değiştirebilirim?",
+            a: `Sitemiz akıllı: Eğer tarayıcının dili Türkçe, İngilizce ya da Endonezce ise otomatik ayarlanır. Farklıysa, varsayılan olarak İngilizce açılır. Sağ üstteki dil butonlarından istediğini kolayca seçebilirsin.`
+          },
+          {
+            q: "Burada ne yapıyoruz? Amacımız ne?",
+            a: `Zulshof'a dair her şeye tek noktadan ulaşabilirsin. Çizim fikirlerin varsa aşağıdaki formdan bize yolla (gizliliğin <a href="https://formspree.io" target="_blank">formspree.io</a> ile korunuyor). Ücretli çizim de yaptırabilirsin! Bir de, <a href="/assets/images/ZULSHOF%20PORTOFOLIO.pdf" target="_blank">portfolyomuz</a> var, oraya mutlaka göz at!`
+          },
+          {
+            q: "Çerezler, gizlilik ve verilerim?",
+            a: `🍪 Sitemizde deneyimini güzelleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. <b>Çerez</b>, seni hatırlayan küçük bilgiler demek.<br>
+            Gönderdiğin formlar ise tamamen <a href="https://formspree.io" target="_blank">formspree.io</a> ile güvence altında. Onların <a href="https://formspree.io/legal/privacy-policy" target="_blank">gizlilik politikası</a> ve <a href="https://formspree.io/legal/terms-of-service" target="_blank">kullanıcı sözleşmesi</a> için tıkla. Başka hiçbir kişisel veri toplamıyoruz, rahat ol!`
+          },
+          {
+            q: "Siteniz tüm cihazlarda çalışıyor mu?",
+            a: "Kesinlikle! Telefon, tablet, bilgisayar... Hepsinde uyumlu çalışacak şekilde tasarladık. Bir sorun fark edersen hemen haber et, hemen düzeltiriz."
+          },
+          {
+            q: "Tema seçeneğim var mı?",
+            a: "Tabii! Koyu ve açık tema arasında geçiş yapabilirsin. Varsayılan olarak cihazının modunu takip eder. Ama istersen üstteki butondan kendin seçebilirsin."
+          },
+          {
+            q: "Sitenizden veya sosyal medyadan içerik alabilir miyim?",
+            a: `Site ve <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a> içeriklerimizin çoğu bize ait ve telifli. Telifsiz paylaşabileceğimiz içerikleri ayrı duyururuz. Fikrinde takılırsan veya izin almak istersen bize yazabilirsin!`
+          },
+          {
+            q: "Hangi sosyal medyada varsınız?",
+            a: `Şimdilik sadece <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a>’dayız. Takibe al, yeni haberleri kaçırma!`
+          },
+          {
+            q: "Zulshof kimdir?",
+            a: `Selam! Ben Zulshof. Endonezya, Doğu Java'da yaşayan bir illüstratörüm. Küçükken çizgi kitaplara aşık oldum, o günden beri elimden kalem düşmedi. Şimdi de bu tutkumu seninle paylaşıyorum!`
+          },
+          {
+            q: "Tarihcituranx (Turan) kimdir?",
+            a: `Selam! Ben Turan, Türkiye'den. 26 yaşında bir tarih öğretmeniyim. Hayat bence keşfetmek, öğrenmek ve paylaşmak demek. Her yeni insan, her hikaye bana ilham veriyor. Sürekli öğrenmeye ve gelişmeye açığım!`
+          }
+        ]
+      },
+      en: {
+        title: "Frequently Asked Questions",
+        home: "Back to Homepage",
+        list: [
+          {
+            q: "What is Zulshof?",
+            a: "Zulshof is a dream I’ve had since I was a kid, but I didn’t want to keep it to myself. I wanted to share it with you! So, this place is not just me — it’s us. It’s where ideas and dreams come together."
+          },
+          {
+            q: "Who is in the Zulshof team?",
+            a: `Our team is small but full of heart! It's me (<a href="https://www.instagram.com/zulshof/" target="_blank">Zulshof</a>) and my tech buddy and partner, Turan. We dreamed this up and built it together.`
+          },
+          {
+            q: "Which languages do you support?",
+            a: "Right now, we’re here in Turkish, English, and Indonesian. We can’t wait to add more languages in the future!"
+          },
+          {
+            q: "How can I change the language?",
+            a: `Our site is smart: if your browser is in Turkish, English, or Indonesian, it will open in that language. Otherwise, English is default. You can always pick your language with the buttons at the top right.`
+          },
+          {
+            q: "What can I do here? What’s the point?",
+            a: `You can find everything about Zulshof in one place. Got a drawing idea? Send it to us with the form below (<a href="https://formspree.io" target="_blank">your privacy is protected by formspree.io</a>). Want a paid commission? Just reach out! And don’t forget to check our <a href="/assets/images/ZULSHOF%20PORTOFOLIO.pdf" target="_blank">portfolio</a>.`
+          },
+          {
+            q: "Cookies, privacy, and my data?",
+            a: `🍪 We use cookies to make your visit awesome and to analyze traffic. <b>Cookies</b> are tiny files that help us remember you.<br>
+            Any info you send in forms is safe with <a href="https://formspree.io" target="_blank">formspree.io</a>. Read their <a href="https://formspree.io/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="https://formspree.io/legal/terms-of-service" target="_blank">terms of service</a> for details. We don’t collect any other personal data — promise!`
+          },
+          {
+            q: "Does your site work on all devices?",
+            a: "Absolutely! Phone, tablet, or computer — it all works. If you spot a bug, let us know right away and we’ll fix it fast."
+          },
+          {
+            q: "Can I pick a theme?",
+            a: "Of course! Switch between dark and light mode anytime. By default, we follow your device’s mode, but you can always pick what you like at the top."
+          },
+          {
+            q: "Can I use your website or social content?",
+            a: `Most content on our website and <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a> is ours and copyrighted. If we share something copyright-free, we’ll let you know! If you’re unsure or want permission, just ask us.`
+          },
+          {
+            q: "Which social media are you on?",
+            a: `Right now, we’re only on <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a>. Give us a follow and don’t miss the news!`
+          },
+          {
+            q: "Who is Zulshof?",
+            a: `Hi! I'm Zulshof, an illustrator from East Java, Indonesia. Fell in love with drawing as a kid, and never stopped since. Now I get to share my passion with you!`
+          },
+          {
+            q: "Who is tarihcituranx (Turan)?",
+            a: `Hey! I’m Turan from Turkey, 26 years old, and a history teacher. For me, life is all about exploring, learning, and sharing. Every story and every person inspires me to grow.`
+          }
+        ]
+      },
+      id: {
+        title: "Pertanyaan yang Sering Diajukan",
+        home: "Kembali ke Beranda",
+        list: [
+          {
+            q: "Apa itu Zulshof?",
+            a: "Zulshof adalah mimpi masa kecilku, tapi aku nggak mau bermimpi sendirian. Aku ingin berbagi sama kamu! Jadi, ini bukan cuma aku—ini kita. Tempat ide dan mimpi bertemu."
+          },
+          {
+            q: "Siapa saja tim Zulshof?",
+            a: `Timnya kecil tapi penuh semangat! Ada aku (<a href="https://www.instagram.com/zulshof/" target="_blank">Zulshof</a>) dan partner teknologiku, Turan. Kami merancang dan membangun semuanya bareng-bareng.`
+          },
+          {
+            q: "Mendukung bahasa apa saja?",
+            a: "Sekarang situs ini tersedia dalam bahasa Turki, Inggris, dan Indonesia. Suatu hari nanti, semoga makin banyak bahasa yang bisa dipilih!"
+          },
+          {
+            q: "Bagaimana cara ganti bahasa?",
+            a: `Situs ini pintar: kalau browser kamu pakai Turki, Inggris, atau Indonesia, otomatis ikut bahasa itu. Kalau beda, akan pakai bahasa Inggris. Kamu bisa ganti bahasa sendiri di tombol kanan atas.`
+          },
+          {
+            q: "Apa aja yang bisa dilakukan di sini? Tujuannya apa?",
+            a: `Semua tentang Zulshof ada di sini. Ada ide gambar? Kirim aja lewat formulir di bawah (<a href="https://formspree.io" target="_blank">privasimu dijaga oleh formspree.io</a>). Mau pesen ilustrasi berbayar juga bisa! Jangan lupa cek <a href="/assets/images/ZULSHOF%20PORTOFOLIO.pdf" target="_blank">portofolio</a> kami juga, ya!`
+          },
+          {
+            q: "Cookie, privasi, dan dataku?",
+            a: `🍪 Kami pakai cookie supaya pengalamanmu makin seru dan buat analisa trafik. <b>Cookie</b> itu file kecil yang membantu kami mengenali kamu.<br>
+            Info yang kamu kirim lewat formulir aman bersama <a href="https://formspree.io" target="_blank">formspree.io</a>. Cek <a href="https://formspree.io/legal/privacy-policy" target="_blank">kebijakan privasi</a> dan <a href="https://formspree.io/legal/terms-of-service" target="_blank">syarat layanan</a> mereka. Di luar itu, kami nggak ambil data pribadi kamu — tenang aja!`
+          },
+          {
+            q: "Situs ini jalan di semua perangkat?",
+            a: "Tentu! HP, tablet, komputer—semua bisa. Kalau ada bug atau masalah, bilang aja ya, biar langsung kami benahi."
+          },
+          {
+            q: "Bisa pilih tema?",
+            a: "Bisa banget! Mau mode gelap atau terang, ganti aja sesukamu. Standarnya mengikuti mode perangkatmu, tapi bisa diubah di atas."
+          },
+          {
+            q: "Boleh pakai konten website atau sosial media?",
+            a: `Hampir semua konten di website dan <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a> kami punya hak cipta. Kalau ada yang bebas, pasti kami umumkan. Bingung soal izin? Tanyakan aja ke kami, ya!`
+          },
+          {
+            q: "Aktif di media sosial apa saja?",
+            a: `Sekarang baru ada di <a href="https://www.instagram.com/zulshof/" target="_blank">Instagram</a>. Jangan lupa follow buat update terbaru!`
+          },
+          {
+            q: "Siapa Zulshof?",
+            a: `Halo! Aku Zulshof, ilustrator dari Jawa Timur, Indonesia. Sejak kecil suka banget gambar, sekarang senang banget bisa berbagi karya dengan kamu semua!`
+          },
+          {
+            q: "Siapa itu tarihcituranx (Turan)?",
+            a: `Hai! Aku Turan dari Turki, 26 tahun, guru sejarah. Buatku, hidup itu soal menjelajah, belajar, dan berbagi. Setiap cerita dan orang baru selalu bikin aku semangat berkembang.`
+          }
+        ]
+      }
+    };
+
+    function getLang() { return localStorage.getItem("site-lang") || "tr"; }
+    function setLang(l) { localStorage.setItem("site-lang", l); renderFAQ(l); updateLangButtons(l);}
+    function updateLangButtons(l) {["tr","en","id"].forEach(code=>{document.getElementById("lang-"+code).classList.toggle("active",code===l);});}
+    function renderFAQ(lang) {
+      const data = faqs[lang] || faqs.tr;
+      document.getElementById("faq-title").textContent = data.title;
+      document.getElementById("faq-home-btn").textContent = data.home || faqs.tr.home;
+      const faqList = document.getElementById("faq-list");
+      faqList.innerHTML = "";
+      data.list.forEach((item, idx) => {
+        const li = document.createElement("li");
+        li.className = "faq-item";
+        li.innerHTML = `
+          <button class="faq-question" aria-expanded="false">${item.q}</button>
+          <div class="faq-answer">${item.a}</div>
+        `;
+        faqList.appendChild(li);
+      });
+      Array.from(faqList.children).forEach(li => {
+        const btn = li.querySelector('.faq-question');
+        btn.addEventListener('click', function() {
+          const open = li.classList.contains('open');
+          Array.from(faqList.children).forEach(l => l.classList.remove('open'));
+          if (!open) li.classList.add('open');
+        });
+      });
+    }
+    document.getElementById("lang-tr").onclick = () => setLang("tr");
+    document.getElementById("lang-en").onclick = () => setLang("en");
+    document.getElementById("lang-id").onclick = () => setLang("id");
+    const initialLang = getLang();
+    renderFAQ(initialLang);
+    updateLangButtons(initialLang);
+  </script>
+</body>
+</html>
