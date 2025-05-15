@@ -1439,30 +1439,36 @@ body.dark_theme {
 }
 
 /*------------------*/
-/* ARKA PLAN PATTERN (AYDINLIK & KARANLIK) */
+/* ARKA PLAN PATTERN - HER TEMA İÇİN FARKLI */
 /*------------------*/
 body.light_theme {
-  background: #e7f4fd url('/assets/images/floral-pattern.png') repeat fixed;
+  background-color: #e7f4fd;
+  background-image: url('/assets/images/floral-pattern.png'); /* Aydınlık mod pattern */
+  background-repeat: repeat;
   background-size: 340px;
-}
-body.dark_theme {
-  background: #10121a url('/assets/images/blue-flowers.png') repeat fixed;
-  background-size: 340px;
+  background-attachment: fixed;
   position: relative;
 }
-/* Karanlık modda patterni softlaştırmak için overlay (ama patternı tamamen kapatmasın!) */
+body.dark_theme {
+  background-color: #10121a;
+  background-image: url('/assets/images/blue-flowers.png'); /* Karanlık mod pattern */
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: fixed;
+  position: relative;
+}
+/* Dark modda patterni softlaştırmak için overlay (ama patterni tamamen örtmesin!) */
 body.dark_theme::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: rgba(16,18,26,0.64); /* %64 şeffaf overlay */
-  /* Sadece hafif karanlık verir, patterni öldürmez */
+  background: rgba(16,18,26,0.66);
 }
 
 /*------------------*/
-/* KUTULAR (HERO, İÇERİK) */
+/* KUTULAR (HERO, İÇERİK VB.) */
 /*------------------*/
 body.light_theme .hero-content,
 body.dark_theme .hero-content,
@@ -1491,7 +1497,7 @@ body.dark_theme .container-main-content {
   -webkit-backdrop-filter: blur(13px);
 }
 
-/* Kutuların renkleri tema bazlı */
+/* Kutuların arka planı ve yazı rengi tema bazlı */
 body.light_theme .hero-content,
 body.light_theme .section-text,
 body.light_theme .about-content,
@@ -1499,7 +1505,7 @@ body.light_theme .contact-content,
 body.light_theme .project-card .card-content,
 body.light_theme .stats-list,
 body.light_theme .container-main-content {
-  background: rgba(255,255,255,0.83);
+  background: rgba(255,255,255,0.85);
   color: #232323;
 }
 body.dark_theme .hero-content,
@@ -1509,10 +1515,10 @@ body.dark_theme .contact-content,
 body.dark_theme .project-card .card-content,
 body.dark_theme .stats-list,
 body.dark_theme .container-main-content {
-  background: rgba(26,34,56,0.75);
+  background: rgba(22,30,48,0.77);
   color: #e8f0ff;
-  border: 1.5px solid rgba(120, 150, 210, 0.15);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.24), 0 1.5px 8px #191b25;
+  border: 1.5px solid rgba(120, 150, 210, 0.17);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.23), 0 1.5px 8px #191b25;
 }
 
 /*------------------*/
@@ -1611,7 +1617,7 @@ body.dark_theme .heart {
 }
 
 /*------------------*/
-/* BAŞLIKLARA GÖLGE */
+/* ANA BAŞLIKLARIN GÖLGESİ */
 body.light_theme .hero-title,
 body.dark_theme .hero-title,
 body.light_theme .section-title,
