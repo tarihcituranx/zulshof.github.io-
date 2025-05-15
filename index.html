@@ -355,12 +355,35 @@
        data-lang-id="Berbagi kreativitas lewat warna, garis, dan cerita tetap menjadi bagian terbaik dari hari-hari saya.">
       Sharing creativity through colors, lines, and stories remains the best part of my daily life.
     </p>
+
+    <!-- Anasayfa Butonu -->
+    <a href="/" class="skills-home-btn" id="skills-home-btn" style="display: inline-block; margin: 2em auto 0 auto; background: #fca311; color: #222; font-weight: 700; padding: 0.8em 2em; border: none; border-radius: 9px; font-size: 1.08em; box-shadow: 0 2px 9px #0002; text-align: center; text-decoration: none; letter-spacing: .04em; transition: background .22s;">
+      Anasayfaya Dön
+    </a>
   </div>
    
-    <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
-      <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
-    </div>
+  <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
+    <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
+  </div>
 </section>
+
+<script>
+  // Çok dilli buton metni
+  const homeBtnTexts = {
+    tr: "Anasayfaya Dön",
+    en: "Back to Homepage",
+    id: "Kembali ke Beranda"
+  };
+  function detectLang() {
+    // HTML'de data-lang veya localStorage sistemine göre uyarlayabilirsin
+    return localStorage.getItem("site-lang") || document.documentElement.lang || "en";
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("skills-home-btn");
+    var lang = detectLang().substring(0,2);
+    btn.textContent = homeBtnTexts[lang] || homeBtnTexts["en"];
+  });
+</script>
 
 
 <style>
@@ -373,8 +396,6 @@
     text-decoration: underline;
   }
 </style>
-
-
 
       <!-- 
         - #PROJECTS
