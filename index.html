@@ -269,46 +269,24 @@
 }
 </style>
 
-<section class="hero" id="home" style="text-align: center; padding: 4rem 1rem 4rem;">
+<section class="hero" id="home">
   <div class="hero-content">
-    <h1 style="font-family: 'Saira Stencil One', cursive; font-size: clamp(2.5rem, 6vw, 5rem); color: #9ab8e0; letter-spacing: 0.1em; margin-bottom: 0.5rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.3);">
+    <h1 class="hero-title">
       ZULSHOF
     </h1>
-    <h2 style="font-family: 'Comic Sans MS', cursive, sans-serif; font-size: clamp(1.2rem, 4vw, 2.5rem); color: #9ab8e0; font-weight: bold; margin: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.25);">
+    <h2 class="hero-subtitle">
       ILLUSTRATOR
     </h2>
-    <div style="margin: 1rem 0;">
-      <span style="color: #9ab8e0; font-size: clamp(1rem, 2vw, 1.8rem); display: inline-block; margin: 0 0.25rem;">— — —</span>
-      <span style="color: #9ab8e0; font-size: clamp(1rem, 2vw, 1.8rem); display: inline-block; margin: 0 0.25rem;">— — —</span>
+    <div class="hero-deco">
+      <span>— — —</span>
+      <span>— — —</span>
     </div>
-    <div style="margin-top: 2rem;">
-      <span id="welcome-effect"
-            style="display: inline-block; font-family: 'Saira Stencil One', cursive; font-size: clamp(1.2rem, 3vw, 2rem); color: #ffffff; animation: fadeInOut 3s ease-in-out infinite; letter-spacing: 0.15em; vertical-align: middle;">
-        Welcome
-      </span>
-      <span style="font-size: clamp(1.2rem, 3vw, 2rem); color: #ffffff; vertical-align: middle; margin-left: 0.5rem;">❤️</span>
+    <div class="hero-welcome">
+      <span id="welcome-effect">Welcome</span>
+      <span class="heart">❤️</span>
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(-10px); }
-    50% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(10px); }
-  }
-</style>
-
-<script>
-  const welcomeElement = document.getElementById("welcome-effect");
-  const translations = ["Welcome", "Hoş Geldiniz", "Selamat Datang"];
-  let currentIndex = 0;
-
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % translations.length;
-    welcomeElement.textContent = translations[currentIndex];
-  }, 3000);
-</script>
 </div>
     <h2 class="h2 hero-title" style="margin-top: 2rem; font-size: clamp(1.5rem, 4.5vw, 3rem); text-shadow: 1px 1px 6px rgba(0,0,0,0.3);" data-lang-en="Explore My Imaginative 
 	World of Art & Storytelling" data-lang-tr="Sanat ve Hikaye Anlatımında
