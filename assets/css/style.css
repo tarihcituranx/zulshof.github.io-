@@ -1490,7 +1490,7 @@ body.light_theme .hero-deco {
   margin: 1rem 0;
 }
 body.light_theme .hero-deco span {
-  color: #6094c9;
+  color: #6094c9; /* powder blue */
   font-size: clamp(1rem, 2vw, 1.8rem);
   margin: 0 0.25rem;
   display: inline-block;
@@ -1516,16 +1516,53 @@ body.light_theme .heart {
   filter: drop-shadow(0 2px 8px #fff);
 }
 
-/* Responsive - mobile */
+/*------------------*/
+/* ANA İÇERİK KUTULARI (SADECE AYDINLIK MODDA) */
+/*------------------*/
+body.light_theme .section-text,
+body.light_theme .about-content,
+body.light_theme .contact-content,
+body.light_theme .project-card .card-content,
+body.light_theme .stats-list,
+body.light_theme .container-main-content {
+  background: rgba(255,255,255,0.78);
+  border-radius: 18px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  backdrop-filter: blur(1.5px);
+  margin-bottom: 2rem;
+  color: #232323;
+}
+
+/*------------------*/
+/* BAŞLIKLARA GÖLGE */
+/*------------------*/
+body.light_theme .hero-title,
+body.light_theme .section-title,
+body.light_theme h1,
+body.light_theme h2,
+body.light_theme h3 {
+  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.75), 0 0 2px #222;
+}
+
+/*------------------*/
+/* MOBİL DOSTU DOKUNUŞLAR */
+/*------------------*/
 @media (max-width: 600px) {
-  body.light_theme .hero-content {
+  body.light_theme .hero-content,
+  body.light_theme .section-text,
+  body.light_theme .about-content,
+  body.light_theme .contact-content,
+  body.light_theme .project-card .card-content,
+  body.light_theme .stats-list,
+  body.light_theme .container-main-content {
     padding: 1.2rem 0.7rem 1.5rem 0.7rem;
-    border-radius: 13px;
+    border-radius: 12px;
     max-width: 98vw;
   }
 }
 
-/* Fade animasyonu */
+/* Fade animasyonu (Welcome için) */
 @keyframes fadeInOut {
   0% { opacity: 0; transform: translateY(-10px); }
   50% { opacity: 1; transform: translateY(0); }
