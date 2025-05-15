@@ -1,6 +1,8 @@
 {
   "name": "Zulshof",
   "short_name": "Zulshof",
+  "description": "Zulshof - Genç Tarihçiler için kaynak, bilgi ve topluluk platformu.",
+  "lang": "tr",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -17,5 +19,25 @@
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
+  "orientation": "portrait",
+  "shortcuts": [
+    {
+      "name": "Ana Sayfa",
+      "short_name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Hakkımızda",
+      "short_name": "Hakkımızda",
+      "url": "/hakkimizda"
+    },
+    {
+      "name": "İletişim",
+      "short_name": "İletişim",
+      "url": "/iletisim"
+    }
+  ]
 }
