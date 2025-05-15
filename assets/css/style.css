@@ -1516,47 +1516,48 @@ body.light_theme .heart {
   filter: drop-shadow(0 2px 8px #fff);
 }
 /*------------------*/
-/* HERO KUTUSU (ÜST KISIM) - SADECE KARANLIK MODDA */
+/* KARANLIK TEMA - HERO KUTUSU */
 /*------------------*/
 body.dark_theme .hero-content {
-  background: linear-gradient(120deg, rgba(0,0,0,0.43), rgba(20,20,30,0.38));
+  background: linear-gradient(145deg, #1c1c28, #2a2a3c);
   border-radius: 28px;
-  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.4);
-  backdrop-filter: blur(1.2px);
+  padding: 2.5rem 3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
   margin: 4rem auto 2.5rem auto;
-  border: 1.5px solid rgba(60, 60, 80, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 520px;
   text-align: center;
 }
 
 body.dark_theme .hero-title {
-  color: #a3c0ff;
+  color: #4fa3ff;
   font-family: 'Saira Stencil One', cursive;
   font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 18px #000, 0 0 4px #a3c0ff;
+  text-shadow: 0 3px 20px rgba(79, 163, 255, 0.8), 0 0 5px rgba(255, 255, 255, 0.2);
 }
 
 body.dark_theme .hero-subtitle {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-size: clamp(1.2rem, 4vw, 2.5rem);
-  color: #a3c0ff;
+  color: #4fa3ff;
   font-weight: bold;
   margin: 0;
-  text-shadow: 0 1px 8px #000;
-  letter-spacing: 0.05em;
+  text-shadow: 0 2px 12px rgba(79, 163, 255, 0.6);
+  letter-spacing: 0.1em;
 }
 
 body.dark_theme .hero-deco {
   margin: 1rem 0;
 }
 body.dark_theme .hero-deco span {
-  color: #90b0e0; /* pastel mavi */
+  color: #56c1ff;
   font-size: clamp(1rem, 2vw, 1.8rem);
   margin: 0 0.25rem;
   display: inline-block;
+  text-shadow: 0 2px 12px rgba(86, 193, 255, 0.6);
 }
 
 body.dark_theme .hero-welcome {
@@ -1566,17 +1567,25 @@ body.dark_theme #welcome-effect {
   display: inline-block;
   font-family: 'Saira Stencil One', cursive;
   font-size: clamp(1.2rem, 3vw, 2rem);
-  color: #90b0e0; /* pastel mavi (açık) */
+  color: #56c1ff;
   animation: fadeInOut 3s ease-in-out infinite;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   vertical-align: middle;
-  text-shadow: 0 3px 14px #000;
+  text-shadow: 0 4px 16px rgba(86, 193, 255, 0.8);
 }
+
 body.dark_theme .heart {
-  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   vertical-align: middle;
   margin-left: 0.5rem;
-  filter: drop-shadow(0 2px 8px #000);
+  color: #ff6b6b;
+  filter: drop-shadow(0 3px 12px rgba(255, 107, 107, 0.8));
+}
+
+/* Fade in/out effect for welcome text */
+@keyframes fadeInOut {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 /*------------------*/
 /* ANA İÇERİK KUTULARI (SADECE AYDINLIK MODDA) */
