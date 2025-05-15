@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Sıkça Sorulan Sorular | ZULSHOF</title>
@@ -53,6 +53,21 @@
     <a href="/" class="faq-home-btn" id="faq-home-btn"></a>
   </div>
   <script>
+    const privacyLinks = {
+      tr: {
+        label: "Gizlilik/KVKK Politikası",
+        html: `Gizlilik ve kişisel verilerin korunması ile ilgili tüm detaylara <a href="/kvkk.html" target="_blank" rel="noopener">buradan ulaşabilirsiniz</a>. (16.05.2025 itibariyle günceldir)`
+      },
+      en: {
+        label: "Privacy & Cookie Policy",
+        html: `For all privacy and personal data protection details, <a href="/privacy.html" target="_blank" rel="noopener">see here</a>. (Valid as of 16.05.2025)`
+      },
+      id: {
+        label: "Kebijakan Privasi & Cookie",
+        html: `Untuk semua informasi tentang kebijakan privasi dan perlindungan data pribadi, <a href="/kebijakan-privasi.html" target="_blank" rel="noopener">klik di sini</a>. (Berlaku mulai 16.05.2025)`
+      }
+    };
+
     const faqs = {
       tr: {
         title: "Sıkça Sorulan Sorular",
@@ -96,8 +111,10 @@
           },
           {
             q: "Çerezler, gizlilik ve verilerim?",
+            // GÜNCEL METİN (SADECE BURASI DEĞİŞTİ)
             a: `🍪 Sitemizde deneyimini güzelleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. <b>Çerez</b>, seni hatırlayan küçük bilgiler demek.<br>
-            Formlar ise tamamen <a href="https://formspree.io" target="_blank">formspree.io</a> ile güvende. Onların <a href="https://formspree.io/legal/privacy-policy" target="_blank">gizlilik politikası</a> ve <a href="https://formspree.io/legal/terms-of-service" target="_blank">kullanıcı sözleşmesi</a> için tıkla. Başka hiçbir kişisel veri toplamıyoruz, rahat ol!`
+            Formlar ise tamamen <a href="https://formspree.io" target="_blank">formspree.io</a> ile güvenli şekilde doğrudan site sahibinin e-posta adresine iletilir.<br>
+            Gizlilik/KVKK politikamız ve detaylı bilgi için ${privacyLinks.tr.html}`
           },
           {
             q: "Sitenizden veya sosyal medyadan içerik alabilir miyim?",
@@ -151,8 +168,10 @@
           },
           {
             q: "Cookies, privacy, and my data?",
+            // UPDATED TEXT (ENGLISH)
             a: `🍪 We use cookies to make your visit awesome and to analyze traffic. <b>Cookies</b> are tiny files that help us remember you.<br>
-            Any info you send in forms is safe with <a href="https://formspree.io" target="_blank">formspree.io</a>. Read their <a href="https://formspree.io/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="https://formspree.io/legal/terms-of-service" target="_blank">terms of service</a> for details. We don’t collect any other personal data—promise!`
+            All form info is securely delivered via <a href="https://formspree.io" target="_blank">formspree.io</a> directly to the site owner's inbox.<br>
+            For our Privacy & Cookie Policy and full details, ${privacyLinks.en.html}`
           },
           {
             q: "Can I use content from your website or social media?",
@@ -206,8 +225,10 @@
           },
           {
             q: "Cookie, privasi, dan dataku?",
+            // UPDATED TEXT (INDONESIAN)
             a: `🍪 Kami pakai cookie supaya pengalamanmu makin seru dan buat analisa trafik. <b>Cookie</b> itu file kecil yang membantu kami mengenali kamu.<br>
-            Info yang kamu kirim lewat form aman bersama <a href="https://formspree.io" target="_blank">formspree.io</a>. Lihat <a href="https://formspree.io/legal/privacy-policy" target="_blank">privacy policy</a> dan <a href="https://formspree.io/legal/terms-of-service" target="_blank">terms of service</a>. Di luar itu, kami nggak ambil data pribadimu—tenang aja!`
+            Semua data dari form dikirim aman via <a href="https://formspree.io" target="_blank">formspree.io</a> langsung ke email pemilik situs.<br>
+            Untuk Kebijakan Privasi & Cookie dan detail lengkap, ${privacyLinks.id.html}`
           },
           {
             q: "Boleh pakai konten website atau sosmed?",
