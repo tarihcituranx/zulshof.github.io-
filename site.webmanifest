@@ -1,8 +1,9 @@
 {
+  "id": "/",
   "name": "Zulshof",
   "short_name": "Zulshof",
-  "description": "Zulshof - Genç Tarihçiler için kaynak, bilgi ve topluluk platformu.",
-  "lang": "tr",
+  "description": "Zulshof - Creative freelance illustrator, portfolio and commission platform.",
+  "lang": "en",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -25,19 +26,34 @@
   "orientation": "portrait",
   "shortcuts": [
     {
-      "name": "Ana Sayfa",
+      "name": "Home",
       "short_name": "Home",
       "url": "/"
     },
     {
-      "name": "Hakkımızda",
-      "short_name": "Hakkımızda",
-      "url": "/hakkimizda"
+      "name": "About",
+      "short_name": "About",
+      "url": "/faq.html"
     },
     {
-      "name": "İletişim",
-      "short_name": "İletişim",
-      "url": "/iletisim"
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "url": "/faq.html"
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "/#contact-form"
+    },
+    {
+      "name": "Privacy Policy",
+      "short_name": "Privacy",
+      "url": "/privacy.html"
+    },
+    {
+      "name": "Instagram",
+      "short_name": "IG",
+      "url": "instagram://user?username=zulshof"
     }
   ]
 }
