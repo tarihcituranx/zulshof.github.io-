@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>500 Sunucu Hatası | ZULSHOF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background: 
+        linear-gradient(135deg, #2d1c2aee 60%, #6f1d1bdd 100%),
+        url('/assets/images/blue-flowers.png') center center / cover no-repeat fixed;
+      color: #fca311;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+    .error-container {
+      background: rgba(44, 19, 40, 0.89);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(60, 0, 0, 0.18);
+      padding: 2.5rem 2.5rem 2.2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 390px;
+      width: 93vw;
+      text-align: center;
+      z-index: 2;
+      position: relative;
+      animation: fadeInScale 1.2s cubic-bezier(.4,2,.3,1);
+    }
+    .error-title {
+      font-family: 'Saira Stencil One', cursive;
+      font-size: 3.5rem;
+      color: #fca311;
+      text-shadow: 0 2px 8px #0004;
+      margin-bottom: 0.1em;
+      letter-spacing: .1em;
+    }
+    .error-desc {
+      color: #e99;
+      font-size: 1.15rem;
+      margin-bottom: 1.5em;
+      min-height: 48px;
+      font-weight: 500;
+    }
+    /* Üzgün robot çizimi */
+    .robot-svg {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+    .error-home {
+      color: #fff;
+      background: #fca311;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7em 2em;
+      font-size: 1.1em;
+      font-family: inherit;
+      text-decoration: none;
+      font-weight: 700;
+      transition: background .22s;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #0002;
+      margin-bottom: 0.3em;
+      display: inline-block;
+    }
+    .error-home:hover {
+      background: #fca311cc;
+    }
+    /* Bulutlar */
+    .cloud {
+      position: fixed;
+      top: 0; bottom: 0;
+      width: 55vw;
+      min-width: 180px;
+      max-width: 700px;
+      z-index: 1;
+      pointer-events: none;
+      transition: transform 1.28s cubic-bezier(.7,.2,.2,1);
+      will-change: transform;
+    }
+    .cloud.left {
+      left: 0;
+      transform: translateX(0);
+    }
+    .cloud.right {
+      right: 0;
+      transform: translateX(0);
+    }
+    .cloud.open.left {
+      transform: translateX(-110%);
+    }
+    .cloud.open.right {
+      transform: translateX(110%);
+    }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.92);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .error-title { font-size: 2.1rem; }
+      .error-container { padding: 1.2rem 0.5rem 1.0rem 0.5rem; max-width:99vw;}
+      .robot-svg { width: 66px; height: 66px;}
+      .error-desc { font-size: 1.01rem; }
+      .cloud { min-width: 80px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bulutlar -->
+  <div class="cloud left" id="cloudLeft" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="180" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="90" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="270" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="cloud right" id="cloudRight" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="340" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="430" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="250" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="error-container">
+    <!-- Üzgün robot SVG -->
+    <svg class="robot-svg" viewBox="0 0 120 120">
+      <ellipse cx="60" cy="84" rx="32" ry="18" fill="#aaa" opacity="0.15"/>
+      <rect x="28" y="28" width="64" height="54" rx="18" fill="#e5e5f7" stroke="#aaa" stroke-width="2"/>
+      <rect x="35" y="35" width="50" height="36" rx="10" fill="#fff" stroke="#bbb" stroke-width="1.5"/>
+      <circle cx="48" cy="53" r="7" fill="#bbb"/>
+      <circle cx="72" cy="53" r="7" fill="#bbb"/>
+      <ellipse cx="48" cy="55.5" rx="3" ry="2.3" fill="#333"/>
+      <ellipse cx="72" cy="55.5" rx="3" ry="2.3" fill="#333"/>
+      <!-- Üzgün kaş -->
+      <path d="M44 50 Q48 47 52 50" stroke="#555" stroke-width="1.2" fill="none"/>
+      <path d="M68 50 Q72 47 76 50" stroke="#555" stroke-width="1.2" fill="none"/>
+      <!-- Ağız (üzgün) -->
+      <path d="M52 65 Q60 59 68 65" stroke="#e85d04" stroke-width="2.1" fill="none"/>
+      <!-- Anten -->
+      <rect x="58" y="16" width="4" height="14" rx="2" fill="#bbb"/>
+      <circle cx="60" cy="14" r="4" fill="#fca311" stroke="#e85d04" stroke-width="1"/>
+      <!-- Kırık dişli -->
+      <g>
+        <circle cx="60" cy="87" r="8" fill="#bbb" stroke="#e85d04" stroke-width="2"/>
+        <rect x="60" y="79" width="2" height="6" rx="0.7" fill="#e85d04" transform="rotate(-18 61 82)"/>
+        <rect x="60" y="87" width="2" height="6" rx="0.7" fill="#e85d04" transform="rotate(18 61 90)"/>
+        <rect x="52" y="87" width="2" height="6" rx="0.7" fill="#e85d04" transform="rotate(-25 53 90)"/>
+        <rect x="68" y="87" width="2" height="6" rx="0.7" fill="#e85d04" transform="rotate(25 69 90)"/>
+      </g>
+    </svg>
+    <div class="error-title">500</div>
+    <div class="error-desc" id="error-desc"></div>
+    <a href="/" class="error-home" id="error-home"></a>
+  </div>
+  <script>
+    // Dil seçimi ve çeviriler
+    const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
+    const translations = {
+      en: {
+        error: "Oops! Our robot dropped a gear.<br>There was a server error.<br>Please try again a bit later.",
+        homepage: "Go to Homepage",
+      },
+      tr: {
+        error: "Üzgünüz! Robotumuz bir dişli düşürdü.<br>Sunucuda bir hata oluştu.<br>Lütfen daha sonra tekrar deneyin.",
+        homepage: "Anasayfa'ya dön",
+      },
+      id: {
+        error: "Maaf! Robot kami kehilangan roda gigi.<br>Terjadi kesalahan pada server.<br>Silakan coba beberapa saat lagi.",
+        homepage: "Kembali ke Beranda",
+      }
+    };
+    document.getElementById("error-desc").innerHTML =
+      (translations[lang] ? translations[lang].error : translations.en.error);
+    document.getElementById("error-home").textContent =
+      (translations[lang] ? translations[lang].homepage : translations.en.homepage);
+
+    // Bulut açılma efekti
+    setTimeout(() => {
+      document.getElementById("cloudLeft").classList.add("open");
+      document.getElementById("cloudRight").classList.add("open");
+    }, 550);
+  </script>
+</body>
+</html>
