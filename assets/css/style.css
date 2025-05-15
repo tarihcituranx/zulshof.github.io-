@@ -1439,86 +1439,66 @@ body.dark_theme {
 }
 
 /*------------------*/
-/* ARKA PLAN PATTERN (SADECE AYDINLIK MODDA) */
+/* ARKA PLAN PATTERN (AYDINLIK & KARANLIK MOD) */
 /*------------------*/
 body.light_theme {
-  background-color: #A3E3ED;
-  background-image: url('/assets/images/floral-pattern.png');
+  background-color: #e7f4fd;
+  background-image: url('/assets/images/floral-pattern.png'); /* AYDINLIK pattern */
   background-repeat: repeat;
   background-size: 340px;
   background-attachment: fixed;
+  position: relative;
 }
 body.dark_theme {
-  background-image: none !important;
+  background-color: #10121a;
+  background-image: url('/assets/images/blue-flowers.png'); /* KARANLIK pattern */
+  background-repeat: repeat;
+  background-size: 340px;
+  background-attachment: fixed;
+  position: relative;
+}
+/* Karanlık modda patternin göz yormasını engellemek için overlay */
+body.dark_theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(16,18,26,0.82);
 }
 
 /*------------------*/
-/* HERO KUTUSU (ÜST KISIM) - SADECE AYDINLIK MODDA */
+/* KUTULAR (HERO, İÇERİK VB. HER İKİ TEMA) */
 /*------------------*/
-body.light_theme .hero-content {
-  background: linear-gradient(120deg, rgba(255,255,255,0.43), rgba(245,250,255,0.38));
+body.light_theme .hero-content,
+body.dark_theme .hero-content,
+body.light_theme .section-text,
+body.dark_theme .section-text,
+body.light_theme .about-content,
+body.dark_theme .about-content,
+body.light_theme .contact-content,
+body.dark_theme .contact-content,
+body.light_theme .project-card .card-content,
+body.dark_theme .project-card .card-content,
+body.light_theme .stats-list,
+body.dark_theme .stats-list,
+body.light_theme .container-main-content,
+body.dark_theme .container-main-content {
   border-radius: 28px;
   padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  box-shadow: 0 6px 28px rgba(80,110,160,0.07);
-  backdrop-filter: blur(1.2px);
   margin: 4rem auto 2.5rem auto;
-  border: 1.5px solid rgba(160, 180, 220, 0.13);
   max-width: 520px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 8px 40px rgba(80,110,160,0.08), 0 1.5px 8px #2221;
+  border: 1.5px solid rgba(120, 150, 190, 0.13);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }
 
-body.light_theme .hero-title {
-  color: #3464a3;
-  font-family: 'Saira Stencil One', cursive;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
-}
-
-body.light_theme .hero-subtitle {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  font-size: clamp(1.2rem, 4vw, 2.5rem);
-  color: #3464a3;
-  font-weight: bold;
-  margin: 0;
-  text-shadow: 0 1px 8px #fff;
-  letter-spacing: 0.05em;
-}
-
-body.light_theme .hero-deco {
-  margin: 1rem 0;
-}
-body.light_theme .hero-deco span {
-  color: #6094c9; /* powder blue */
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  margin: 0 0.25rem;
-  display: inline-block;
-}
-
-body.light_theme .hero-welcome {
-  margin-top: 2rem;
-}
-body.light_theme #welcome-effect {
-  display: inline-block;
-  font-family: 'Saira Stencil One', cursive;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  color: #6094c9; /* powder blue (açık, pastel) */
-  animation: fadeInOut 3s ease-in-out infinite;
-  letter-spacing: 0.15em;
-  vertical-align: middle;
-  text-shadow: 0 3px 14px #fff;
-}
-body.light_theme .heart {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  vertical-align: middle;
-  margin-left: 0.5rem;
-  filter: drop-shadow(0 2px 8px #fff);
-}
-
-/*------------------*/
-/* ANA İÇERİK KUTULARI (SADECE AYDINLIK MODDA) */
-/*------------------*/
+/* Kutuların renkleri tema bazlı */
+body.light_theme .hero-content,
 body.light_theme .section-text,
 body.light_theme .about-content,
 body.light_theme .contact-content,
@@ -1526,117 +1506,157 @@ body.light_theme .project-card .card-content,
 body.light_theme .stats-list,
 body.light_theme .container-main-content {
   background: rgba(255,255,255,0.78);
-  border-radius: 18px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-  backdrop-filter: blur(1.5px);
-  margin-bottom: 2rem;
   color: #232323;
 }
+body.dark_theme .hero-content,
+body.dark_theme .section-text,
+body.dark_theme .about-content,
+body.dark_theme .contact-content,
+body.dark_theme .project-card .card-content,
+body.dark_theme .stats-list,
+body.dark_theme .container-main-content {
+  background: rgba(26,34,56,0.74);
+  color: #e8f0ff;
+  border: 1.5px solid rgba(120, 150, 210, 0.15);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 1.5px 8px #191b25;
+}
 
 /*------------------*/
-/* BAŞLIKLARA GÖLGE */
+/* HERO BAŞLIKLARI */
 /*------------------*/
 body.light_theme .hero-title,
-body.light_theme .section-title,
-body.light_theme h1,
-body.light_theme h2,
-body.light_theme h3 {
-  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.75), 0 0 2px #222;
-}
-
-/*------------------*/
-/* MOBİL DOSTU DOKUNUŞLAR */
-/*------------------*/
-@media (max-width: 600px) {
-  body.light_theme .hero-content,
-  body.light_theme .section-text,
-  body.light_theme .about-content,
-  body.light_theme .contact-content,
-  body.light_theme .project-card .card-content,
-  body.light_theme .stats-list,
-  body.light_theme .container-main-content {
-    padding: 1.2rem 0.7rem 1.5rem 0.7rem;
-    border-radius: 12px;
-    max-width: 98vw;
-  }
-}
-
-/* Fade animasyonu (Welcome için) */
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translateY(-10px); }
-  50% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(10px); }
-}
-
-/* KARANLIK MOD HERO KUTUSU ve YAZILARI */
-body.dark_theme .hero-content {
-  background: rgba(34,40,50,0.67);  /* daha koyu, şeffaf kutu */
-  border-radius: 28px;
-  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.15), 0 1.5px 8px #191b25;
-  backdrop-filter: blur(9px);
-  margin: 4rem auto 2.5rem auto;
-  border: 1.5px solid rgba(120, 130, 150, 0.13);
-  max-width: 520px;
-  text-align: center;
-}
-
 body.dark_theme .hero-title {
-  color: #3464a3; /* koyu canlı mavi */
   font-family: 'Saira Stencil One', cursive;
   font-size: clamp(2.5rem, 6vw, 5rem);
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
-  text-shadow: 0 2px 18px #13151a, 0 0 4px #3464a3;
+}
+body.light_theme .hero-title {
+  color: #3464a3;
+  text-shadow: 0 2px 18px #fff, 0 0 4px #3464a3;
+}
+body.dark_theme .hero-title {
+  color: #3464a3;
+  text-shadow: 0 2px 18px #10121a, 0 0 4px #1b2238;
 }
 
+/*------------------*/
+/* ALT BAŞLIK */
+body.light_theme .hero-subtitle,
 body.dark_theme .hero-subtitle {
   font-family: 'Comic Sans MS', cursive, sans-serif;
   font-size: clamp(1.2rem, 4vw, 2.5rem);
-  color: #3464a3; /* koyu mavi */
   font-weight: bold;
   margin: 0;
-  text-shadow: 0 1px 8px #13151a;
   letter-spacing: 0.05em;
 }
-
-body.dark_theme .hero-deco {
-  margin: 1rem 0;
+body.light_theme .hero-subtitle {
+  color: #3464a3;
+  text-shadow: 0 1px 8px #fff;
 }
+body.dark_theme .hero-subtitle {
+  color: #3464a3;
+  text-shadow: 0 1px 8px #10121a;
+}
+
+/*------------------*/
+/* DEKORATİF SPAN */
+body.light_theme .hero-deco span,
 body.dark_theme .hero-deco span {
-  color: #6094c9; /* powder blue */
   font-size: clamp(1rem, 2vw, 1.8rem);
   margin: 0 0.25rem;
   display: inline-block;
-  text-shadow: 0 1px 8px #13151a;
+}
+body.light_theme .hero-deco span {
+  color: #6094c9;
+  text-shadow: 0 1px 8px #fff;
+}
+body.dark_theme .hero-deco span {
+  color: #6094c9;
+  text-shadow: 0 1px 8px #10121a;
 }
 
+/*------------------*/
+/* WELCOME EFEKTİ */
+body.light_theme .hero-welcome,
 body.dark_theme .hero-welcome {
   margin-top: 2rem;
 }
+body.light_theme #welcome-effect,
 body.dark_theme #welcome-effect {
   display: inline-block;
   font-family: 'Saira Stencil One', cursive;
   font-size: clamp(1.2rem, 3vw, 2rem);
-  color: #6094c9; /* powder blue */
-  animation: fadeInOut 3s ease-in-out infinite;
   letter-spacing: 0.15em;
   vertical-align: middle;
-  text-shadow: 0 3px 14px #13151a;
+  animation: fadeInOut 3s ease-in-out infinite;
 }
+body.light_theme #welcome-effect {
+  color: #6094c9;
+  text-shadow: 0 3px 14px #fff;
+}
+body.dark_theme #welcome-effect {
+  color: #6094c9;
+  text-shadow: 0 3px 14px #10121a;
+}
+
+/*------------------*/
+/* KALP (HEART) */
+body.light_theme .heart,
 body.dark_theme .heart {
   font-size: clamp(1.2rem, 3vw, 2rem);
   vertical-align: middle;
   margin-left: 0.5rem;
+}
+body.light_theme .heart {
+  filter: drop-shadow(0 2px 8px #fff);
+}
+body.dark_theme .heart {
   filter: drop-shadow(0 2px 8px #191b25);
 }
 
-/* Responsive - mobile */
+/*------------------*/
+/* BAŞLIKLARA GÖLGE */
+body.light_theme .hero-title,
+body.dark_theme .hero-title,
+body.light_theme .section-title,
+body.dark_theme .section-title,
+body.light_theme h1,
+body.dark_theme h1,
+body.light_theme h2,
+body.dark_theme h2,
+body.light_theme h3,
+body.dark_theme h3 {
+  text-shadow: 1.5px 2px 10px rgba(255,255,255,0.75), 0 0 2px #222;
+}
+
+/*------------------*/
+/* MOBİL DOSTU */
 @media (max-width: 600px) {
-  body.dark_theme .hero-content {
+  body.light_theme .hero-content,
+  body.dark_theme .hero-content,
+  body.light_theme .section-text,
+  body.dark_theme .section-text,
+  body.light_theme .about-content,
+  body.dark_theme .about-content,
+  body.light_theme .contact-content,
+  body.dark_theme .contact-content,
+  body.light_theme .project-card .card-content,
+  body.dark_theme .project-card .card-content,
+  body.light_theme .stats-list,
+  body.dark_theme .stats-list,
+  body.light_theme .container-main-content,
+  body.dark_theme .container-main-content {
     padding: 1.2rem 0.7rem 1.5rem 0.7rem;
     border-radius: 13px;
     max-width: 98vw;
   }
+}
+
+/*------------------*/
+/* FADE ANİMASYONU (WELCOME) */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
 }
