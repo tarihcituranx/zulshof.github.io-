@@ -163,7 +163,7 @@ body.light_theme {
   background-image: url('/assets/images/floral-pattern.png');
   background-repeat: repeat;
   background-size: 340px;
-  background-attachment: fixed;
+  /* background-attachment: fixed; // İstersen kaldırabilirsin, PC'de sorun çıkarsa! */
   position: relative;
 }
 
@@ -173,8 +173,9 @@ body.dark_theme {
   background-image: url('/assets/images/blue-flowers.png');
   background-repeat: repeat;
   background-size: 340px;
-  background-attachment: fixed;
+  /* background-attachment: fixed; // Masaüstünde sorun çıkarsa kaldır! */
   position: relative;
+  z-index: 0; /* Ana gövde en alta */
 }
 
 /* Karanlık modda patterni softlaştıran overlay */
@@ -182,9 +183,29 @@ body.dark_theme::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 1; /* Kutuların altında, içeriklerin üstünde kalmalı! */
   pointer-events: none;
-  background: rgba(16,18,26,0.66);
+  background: rgba(16,18,26,0.62);
+}
+
+/* Kutular ve içeriklerin overlay'in üzerinde görünmesi için: */
+body.dark_theme .hero-content,
+body.dark_theme .section-text,
+body.dark_theme .about-content,
+body.dark_theme .contact-content,
+body.dark_theme .project-card .card-content,
+body.dark_theme .stats-list,
+body.dark_theme .container-main-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobilde background-attachment: fixed sorun çıkarıyorsa sadece scroll yap! */
+@media (max-width: 600px) {
+  body.light_theme,
+  body.dark_theme {
+    background-attachment: scroll;
+  }
 }
 
 
