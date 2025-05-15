@@ -1568,3 +1568,36 @@ body.light_theme h3 {
   50% { opacity: 1; transform: translateY(0); }
   100% { opacity: 0; transform: translateY(10px); }
 }
+
+body.dark_theme .hero-content {
+  background: rgba(24, 24, 24, 0.93); /* koyu, hafif şeffaf kutu */
+  border-radius: 28px;
+  padding: 2.2rem 2.5rem 2.5rem 2.5rem;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.18);
+  backdrop-filter: blur(1.5px);
+  margin: 4rem auto 2.5rem auto;
+  border: 1.5px solid rgba(120, 120, 120, 0.13);
+  max-width: 520px;
+  text-align: center;
+}
+
+body.dark_theme .hero-title,
+body.dark_theme .hero-subtitle,
+body.dark_theme .hero-deco span,
+body.dark_theme #welcome-effect {
+  color: #fff !important;
+  text-shadow: 0 2px 18px #000, 0 0 4px #222;
+}
+
+body.dark_theme .heart {
+  filter: drop-shadow(0 2px 8px #000);
+}
+
+/* Gerekirse responsive ve padding ayarları aynı şekilde devam eder */
+@media (max-width: 600px) {
+  body.dark_theme .hero-content {
+    padding: 1.2rem 0.7rem 1.5rem 0.7rem;
+    border-radius: 13px;
+    max-width: 98vw;
+  }
+}
