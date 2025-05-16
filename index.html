@@ -60,6 +60,15 @@
       color: #1c2b3a;
     }
   </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XE41DZ84HH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XE41DZ84HH');
+</script>
 
   <!-- MEVCUT SCRIPT BLOKUNUZ (Tema, Boot Yönlendirme, Başlık Çevirisi vb.) -->
   <script>
@@ -393,9 +402,19 @@
 
 <section class="skills" id="skills">
   <div class="skills-content section-content">
-    <p class="section-subtitle" data-lang-en="Fun Fact" data-lang-tr="Küçük Bir Not" data-lang-id="Fakta Menarik">Fun Fact</p>
+    <p class="section-subtitle"
+       data-lang-en="Fun Fact"
+       data-lang-tr="Küçük Bir Not"
+       data-lang-id="Fakta Menarik">
+      Fun Fact
+    </p>
 
-    <h2 class="h3 section-title" data-lang-en="How It All Started…" data-lang-tr="Her Şey Nasıl Başladı…" data-lang-id="Bagaimana Semua Dimulai…">How It All Started…</h2>
+    <h2 class="h3 section-title"
+        data-lang-en="How It All Started…"
+        data-lang-tr="Her Şey Nasıl Başladı…"
+        data-lang-id="Bagaimana Semua Dimulai…">
+      How It All Started…
+    </h2>
 
     <p class="section-text"
        data-lang-en="As a child, I remember flipping through a children’s magazine filled with adorable illustrations. That moment sparked my love for art—especially drawing."
@@ -411,8 +430,13 @@
       Sharing creativity through colors, lines, and stories remains the best part of my daily life.
     </p>
 
-     <!-- FAQ Butonu - SADECE BİR TANE -->
-    <a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">
+    <!-- Çok dilli FAQ Butonu -->
+    <a href="faq.html"
+       class="skills-faq-btn"
+       id="skills-faq-btn"
+       data-lang-en="Got Questions? Find All The Answers Here!"
+       data-lang-tr="Kafandaki Soru İşaretleri İçin Tıkla!"
+       data-lang-id="Punya Pertanyaan? Semua Jawabannya di Sini!">
       Got Questions? Find All The Answers Here!
     </a>
   </div>
@@ -422,7 +446,7 @@
   </div>
 </section>
 
-<!-- Eğer dil değiştiren butonlar varsa örnek: -->
+<!-- Zaten var olan dil değiştirme butonları -->
 <div>
   <button id="lang-en">English</button>
   <button id="lang-tr">Türkçe</button>
@@ -430,38 +454,31 @@
 </div>
 
 <script>
-  // Çok dilli yaratıcı FAQ butonu metni
-  const faqBtnTexts = {
-    tr: "Kafandaki Soru İşaretleri İçin Tıkla!",
-    en: "Got Questions? Find All The Answers Here!",
-    id: "Punya Pertanyaan? Semua Jawabannya di Sini!"
-  };
-
+  // Sayfadaki tüm data-lang-en içeren etiketleri seçip uygun dile çevirir
   function detectLang() {
     return localStorage.getItem("site-lang") || document.documentElement.lang || "en";
   }
 
-  function updateFaqBtnText() {
-    var btn = document.getElementById("skills-faq-btn");
-    if (!btn) return;
+  function updateLanguages() {
     var lang = detectLang().substring(0,2);
-    btn.textContent = faqBtnTexts[lang] || faqBtnTexts["en"];
+    document.querySelectorAll('[data-lang-en]').forEach(function(el) {
+      var val = el.getAttribute('data-lang-' + lang);
+      if (val) el.textContent = val;
+    });
   }
 
-  document.addEventListener("DOMContentLoaded", updateFaqBtnText);
+  document.addEventListener("DOMContentLoaded", updateLanguages);
 
-  // Eğer dil değiştiren butonların varsa, onların click eventinde de güncelle:
+  // Dil değiştikçe tüm siteyi güncelle
   ["tr","en","id"].forEach(function(code){
     var langBtn = document.getElementById("lang-"+code);
     if(langBtn){
       langBtn.addEventListener("click", function() {
         localStorage.setItem("site-lang", code);
-        updateFaqBtnText();
+        updateLanguages();
       });
     }
   });
-
-  // Başka bir yerde dil değiştiriyorsan yine updateFaqBtnText() fonksiyonunu çağır.
 </script>
 <style>
   .skills-faq-btn {
@@ -955,7 +972,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <script>
 (function() {
   // 1. Otomatik versiyon: sadece buradan güncelle, büyük değişiklikte
-  const COOKIE_CONSENT_VERSION = "20240518";
+  const COOKIE_CONSENT_VERSION = "20240519";
   const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
 
   // 2. Eski consentları otomatik temizle
