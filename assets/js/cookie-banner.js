@@ -1,6 +1,6 @@
 // Cookie Banner & Google Analytics loader
 document.addEventListener('DOMContentLoaded', function() {
-  const COOKIE_CONSENT_VERSION = "20240525";
+  const COOKIE_CONSENT_VERSION = "20240526";
   const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
   const cookieBanner = document.getElementById("cookie-banner");
   const acceptButton = cookieBanner?.querySelector(".accept");
