@@ -886,62 +886,24 @@ document.addEventListener("DOMContentLoaded", () => {
 </style>
 
 
- <title>Uçan Kelebek ve Cookie Banner</title>
-  <!-- Ionicons ve stil dosyalarını çağır -->
+
+  <title>Çerez Ayarları Footer Altı - GNCTRHC</title>
+  <!-- Ionicons ve temel stiller -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <style>
-    .firefly {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: radial-gradient(circle, #fca311 0%, #ffba08 60%, transparent 100%);
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0.8;
-      z-index: 9999;
-      animation: firefly-fade 1s ease-out forwards;
+    body {
+      background: #181f28;
+      color: #ddd;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    @keyframes firefly-fade {
-      0% { transform: scale(1); opacity: 1; }
-      100% { transform: scale(0.1); opacity: 0; }
-    }
-    #preloader {
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: #0d1b2a;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 99999;
-      transition: opacity 0.6s ease, visibility 0.6s ease;
-      animation: fadeIn 1s ease-in-out both;
-    }
-    #preloader.hidden { opacity: 0; visibility: hidden; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.95); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .preloader-image {
-      width: 150px; height: auto; border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.45); margin-bottom: 1.25rem;
-      animation: imageFadeIn 1s ease-in-out;
-    }
-    @keyframes imageFadeIn {
-      0% { opacity: 0; transform: translateY(10px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .preloader-logo {
-      font-family: 'Saira Stencil One', cursive;
-      font-size: 2rem; color: #fca311;
-      letter-spacing: 0.1em; margin: 0.3rem 0;
-      animation: fadeInUp 1.2s ease-in-out;
-    }
-    .preloader-subtext {
-      color: #9ab8e0; font-size: 1.1rem; font-family: 'Roboto', sans-serif;
-      opacity: 0.85; animation: fadeInUp 1.4s ease-in-out;
-    }
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(15px); }
-      100% { opacity: 1; transform: translateY(0); }
+    main {
+      flex: 1 0 auto;
     }
     /* Go to top butonu */
     .go-top {
@@ -950,7 +912,7 @@ document.addEventListener("DOMContentLoaded", () => {
       display: flex; align-items: center; justify-content: center;
       color: #fff; text-decoration: none;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 9998;
+      z-index: 1002;
     }
     /* Kelebek */
     #flyingButterfly {
@@ -961,28 +923,107 @@ document.addEventListener("DOMContentLoaded", () => {
       pointer-events: none;
       transition: left 0.1s linear, top 0.1s linear;
     }
+    /* Footer */
+    #site-footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 2em 0 1em 0;
+      font-size: 1.1em;
+      margin-top: 2em;
+    }
+    #site-footer b, #site-footer a { color: #fca311; text-decoration: none; }
+    #site-footer a:hover { text-decoration: underline; }
+    /* Çerez Ayarları butonu footer'ın altına ortalı şekilde */
+    #cookie-settings-link-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: 1.3em 0 1.7em 0;
+      position: static !important;
+      z-index: 1;
+    }
+    #cookie-settings-link {
+      color: #fca311;
+      background: #222;
+      text-decoration: underline;
+      font-weight: normal;
+      cursor: pointer;
+      padding: 0.5em 1.5em;
+      border-radius: 5px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.09);
+      transition: background .2s, color .2s;
+      display: none; /* JS ile block yapılacak */
+    }
+    #cookie-settings-link:hover {
+      background: #fca311;
+      color: #222;
+      text-decoration: none;
+    }
     /* Cookie banner stilleri */
-    #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem 1.5rem; font-family: 'Roboto', sans-serif; font-size: 0.9rem; box-shadow: 0 -3px 15px rgba(0,0,0,0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; z-index: 10000; transition: transform 0.5s, opacity 0.5s; opacity: 1;}
+    #cookie-banner { 
+      position: fixed; bottom: 0; left: 0; right: 0; 
+      background: #222; color: #fff; 
+      padding: 1rem 1.5rem; 
+      font-family: 'Roboto', sans-serif; 
+      font-size: 0.9rem; 
+      box-shadow: 0 -3px 15px rgba(0,0,0,0.3); 
+      display: flex; flex-wrap: wrap; 
+      justify-content: space-between; align-items: center; gap: 1rem; 
+      z-index: 10000; transition: transform 0.5s, opacity 0.5s; opacity: 1;
+    }
     #cookie-banner.hidden {transform: translateY(100%); opacity: 0; pointer-events: none;}
     #cookie-banner .cookie-text {flex-grow: 1; max-width: 100%;}
     @media (min-width: 768px) {#cookie-banner .cookie-text {max-width: 70%;}}
     #cookie-banner .cookie-actions {display: flex; gap: 0.75rem;}
-    #cookie-banner .cookie-actions button {background: #fca311; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 0.85rem; transition: background-color 0.3s, transform 0.2s;}
+    #cookie-banner .cookie-actions button {
+      background: #fca311; color: #fff; border: none; 
+      padding: 0.6rem 1.2rem; border-radius: 25px; 
+      cursor: pointer; font-weight: bold; font-size: 0.85rem; 
+      transition: background-color 0.3s, transform 0.2s;
+    }
     #cookie-banner .cookie-actions button:hover {background-color: #e0930b; transform: scale(1.03);}
     #cookie-banner .cookie-actions button.decline {background: #6c757d;}
     #cookie-banner .cookie-actions button.decline:hover {background-color: #5a6268;}
     #cookie-banner .privacy-link {margin-left: 1.2em;}
     #cookie-banner .privacy-link a {color:#fca311; text-decoration:underline; font-weight:bold;}
-    #cookie-settings-link {color:#fca311; text-decoration:underline; font-weight:normal; cursor:pointer; position:fixed; right:1em; bottom:1.2em; z-index:9999; display:none; background-color: #222; padding: 0.5em; border-radius: 5px; font-family: 'Roboto', sans-serif; font-size: 0.85rem;}
   </style>
 </head>
 <body>
-  <!-- Uçan Kelebek -->
-  <img src="./assets/images/kelebek-pixabay.gif" alt="Uçan Kelebek" id="flyingButterfly">
-  <!-- Go To Top Butonu -->
-  <a href="#top" class="go-top" data-go-top title="Go to Top" aria-label="Scroll to the top of the page">
-    <ion-icon name="arrow-up" style="font-size: 24px;"></ion-icon>
-  </a>
+  <main>
+    <!-- Uçan Kelebek -->
+    <img src="./assets/images/kelebek-pixabay.gif" alt="Uçan Kelebek" id="flyingButterfly">
+
+    <!-- Go To Top Butonu -->
+    <a href="#top" class="go-top" data-go-top title="Go to Top" aria-label="Scroll to the top of the page">
+      <ion-icon name="arrow-up" style="font-size: 24px;"></ion-icon>
+    </a>
+
+    <!-- ...buraya sitenin ana içeriğini ekle... -->
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer">
+    <div class="footer-credits">
+      © 2025 ❤️ ile hazırlayanlar:
+      <br>
+      <b>zulshof</b> &amp; <b>tarihcituranx</b>
+      <br>
+      Açık kaynak ilham kaynağı: <a href="#">codewithsadee</a>
+    </div>
+  </footer>
+
+  <!-- Çerez Ayarları Butonu (footer'ın tam ALTINDA ve ortalı) -->
+  <div id="cookie-settings-link-container">
+    <a id="cookie-settings-link">
+      <span data-lang-en="Cookie Preferences"
+            data-lang-tr="Çerez Ayarları"
+            data-lang-id="Preferensi Cookie">Çerez Ayarları</span>
+    </a>
+  </div>
+
   <!-- Cookie Banner -->
   <div id="cookie-banner" class="hidden" role="dialog" aria-live="polite" aria-labelledby="cookie-banner-text" aria-describedby="cookie-banner-actions">
     <div class="cookie-text" id="cookie-banner-text"
@@ -1002,108 +1043,10 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
     <span class="privacy-link"></span>
   </div>
-  <a id="cookie-settings-link">
-    <span data-lang-en="Cookie Preferences"
-          data-lang-tr="Çerez Ayarları"
-          data-lang-id="Preferensi Cookie">Cookie Preferences</span>
-  </a>
 
-  <!-- Scriptler -->
-  <script src="./assets/js/script.js"></script>
-
-  <!-- Firefly efekti -->
-  <script>
-    document.addEventListener("mousemove", (e) => {
-      const firefly = document.createElement("div");
-      firefly.classList.add("firefly");
-      firefly.style.left = e.pageX + "px";
-      firefly.style.top = e.pageY + "px";
-      document.body.appendChild(firefly);
-      setTimeout(() => firefly.remove(), 1000);
-    });
-  </script>
-
-  <!-- Uçan Kelebek Animasyonu -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const butterfly = document.getElementById('flyingButterfly');
-      if (!butterfly) return;
-      let screenWidth, screenHeight, butterflyWidth, butterflyHeight;
-      let currentX, currentY, targetX, targetY;
-      let isLanded = true;
-      let landTimer = null;
-
-      function updateScreenDimensions() {
-        screenWidth = window.innerWidth;
-        screenHeight = window.innerHeight;
-      }
-      function initializeButterflyState() {
-        butterflyWidth = butterfly.offsetWidth;
-        butterflyHeight = butterfly.offsetHeight;
-        if (!butterflyWidth || butterflyWidth === 0) butterflyWidth = 80;
-        if (!butterflyHeight || butterflyHeight === 0) butterflyHeight = butterflyWidth * 0.75;
-        updateScreenDimensions();
-        currentX = Math.random() * (screenWidth - butterflyWidth);
-        currentY = Math.random() * (screenHeight - butterflyHeight);
-        butterfly.style.left = currentX + 'px';
-        butterfly.style.top = currentY + 'px';
-        butterfly.style.transform = 'scaleX(1)';
-        targetX = currentX; targetY = currentY;
-      }
-      function setNewTarget() {
-        if (!screenWidth || !butterflyWidth) { setTimeout(setNewTarget, 100); return; }
-        targetX = Math.random() * (screenWidth - butterflyWidth);
-        targetY = Math.random() * (screenHeight - butterflyHeight);
-        isLanded = false;
-        if (targetX < currentX) butterfly.style.transform = 'scaleX(-1)';
-        else butterfly.style.transform = 'scaleX(1)';
-      }
-      function fly() {
-        if (isLanded) {
-          if (!landTimer) {
-            const landingTime = Math.random() * 5000 + 3000;
-            landTimer = setTimeout(() => { setNewTarget(); landTimer = null; }, landingTime);
-          }
-        } else {
-          const dx = targetX - currentX;
-          const dy = targetY - currentY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          const speed = Math.min(Math.max(1, distance / 70), 2.5);
-          if (distance < speed * 1.5 || distance < 5) {
-            currentX = targetX; currentY = targetY; isLanded = true;
-          } else {
-            currentX += (dx / distance) * speed;
-            currentY += (dy / distance) * speed;
-          }
-          butterfly.style.left = currentX + 'px';
-          butterfly.style.top = currentY + 'px';
-        }
-        requestAnimationFrame(fly);
-      }
-      function startButterflyEffect() {
-        initializeButterflyState();
-        setNewTarget();
-        fly();
-      }
-      if (butterfly.complete && butterfly.naturalWidth > 0) startButterflyEffect();
-      else {
-        butterfly.onload = () => { startButterflyEffect(); };
-        setTimeout(() => { if (!(butterfly.complete && butterfly.naturalWidth > 0)) startButterflyEffect(); }, 1500);
-      }
-      window.addEventListener('resize', () => {
-        updateScreenDimensions();
-        currentX = Math.min(Math.max(0, currentX), screenWidth - butterflyWidth);
-        currentY = Math.min(Math.max(0, currentY), screenHeight - butterflyHeight);
-        targetX = Math.min(Math.max(0, targetX), screenWidth - butterflyWidth);
-        targetY = Math.min(Math.max(0, targetY), screenHeight - butterflyHeight);
-        butterfly.style.left = currentX + 'px';
-        butterfly.style.top = currentY + 'px';
-        if (isLanded) { clearTimeout(landTimer); landTimer = null; setNewTarget(); }
-      });
-    });
-  </script>
-
-  <!-- Cookie Banner JS -->
-  <script src="/assets/js/cookie-banner.js"></script>
+  <!-- Kelebek animasyonu (ayrı js dosyası veya aşağıdaki gibi ekleyebilirsin) -->
+  <script src="./assets/js/butterfly.js"></script>
+  <!-- Cookie Banner JS (ayrı dosyada) -->
+  <script src="./assets/js/cookie-banner.js"></script>
 </body>
 </html>
