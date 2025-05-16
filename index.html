@@ -411,8 +411,10 @@
       Sharing creativity through colors, lines, and stories remains the best part of my daily life.
     </p>
 
-    <!-- FAQ Butonu -->
-    <a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">Soruların mı Var? Cevaplar İçin Tıkla!</a>
+     <!-- FAQ Butonu - SADECE BİR TANE -->
+    <a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">
+      Got Questions? Find All The Answers Here!
+    </a>
   </div>
    
   <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
@@ -420,16 +422,12 @@
   </div>
 </section>
 
-<script>
-  // Çok dilli yaratıcı FAQ butonu metni
- <!-- FAQ Butonu -->
-<a href="faq.html" class="skills-faq-btn" id="skills-faq-btn" style="display: inline-block; margin: 2em auto 0 auto;">Soruların mı Var? Cevaplar İçin Tıkla!</a>
-  </div>
-   
-  <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
-    <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
-  </div>
-</section>
+<!-- Eğer dil değiştiren butonlar varsa örnek: -->
+<div>
+  <button id="lang-en">English</button>
+  <button id="lang-tr">Türkçe</button>
+  <button id="lang-id">Bahasa</button>
+</div>
 
 <script>
   // Çok dilli yaratıcı FAQ butonu metni
@@ -438,14 +436,18 @@
     en: "Got Questions? Find All The Answers Here!",
     id: "Punya Pertanyaan? Semua Jawabannya di Sini!"
   };
+
   function detectLang() {
     return localStorage.getItem("site-lang") || document.documentElement.lang || "en";
   }
+
   function updateFaqBtnText() {
     var btn = document.getElementById("skills-faq-btn");
+    if (!btn) return;
     var lang = detectLang().substring(0,2);
     btn.textContent = faqBtnTexts[lang] || faqBtnTexts["en"];
   }
+
   document.addEventListener("DOMContentLoaded", updateFaqBtnText);
 
   // Eğer dil değiştiren butonların varsa, onların click eventinde de güncelle:
@@ -459,9 +461,8 @@
     }
   });
 
-  // Eğer başka bir yerde dil değiştiriyorsan, yine updateFaqBtnText() fonksiyonunu çağır.
+  // Başka bir yerde dil değiştiriyorsan yine updateFaqBtnText() fonksiyonunu çağır.
 </script>
-
 <style>
   .skills-faq-btn {
     background: #fca311;
