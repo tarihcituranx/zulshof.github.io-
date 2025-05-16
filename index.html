@@ -430,28 +430,30 @@
       Sharing creativity through colors, lines, and stories remains the best part of my daily life.
     </p>
 
-    <!-- Çok dilli FAQ Butonu -->
-    <a href="faq.html"
-       class="skills-faq-btn"
-       id="skills-faq-btn"
-       data-lang-en="Got Questions? Find All The Answers Here!"
-       data-lang-tr="Kafandaki Soru İşaretleri İçin Tıkla!"
-       data-lang-id="Punya Pertanyaan? Semua Jawabannya di Sini!">
-      Got Questions? Find All The Answers Here!
-    </a>
-  </div>
-   
-  <div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
-    <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
-  </div>
+   <!-- Çok dilli FAQ Butonu -->
+<a href="faq.html"
+   class="skills-faq-btn"
+   id="skills-faq-btn"
+   data-lang-en="Got Questions? Find All The Answers Here!"
+   data-lang-tr="Kafandaki Soru İşaretleri İçin Tıkla!"
+   data-lang-id="Punya Pertanyaan? Semua Jawabannya di Sini!">
+  Got Questions? Find All The Answers Here!
+</a>
+</div>
+
+<div style="flex: 1; min-width: 280px; display: flex; justify-content: center; align-items: center;">
+  <img src="./assets/images/child.png" alt="Child illustration" style="max-width: 90%; height: auto; padding: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); border-radius: 10px;">
+</div>
 </section>
 
-<!-- Zaten var olan dil değiştirme butonları -->
+<!-- AŞAĞIDAKİ DİL BUTONLARINI KALDIRDIN! -->
+<!--
 <div>
   <button id="lang-en">English</button>
   <button id="lang-tr">Türkçe</button>
   <button id="lang-id">Bahasa</button>
 </div>
+-->
 
 <script>
   // Sayfadaki tüm data-lang-en içeren etiketleri seçip uygun dile çevirir
@@ -469,7 +471,7 @@
 
   document.addEventListener("DOMContentLoaded", updateLanguages);
 
-  // Dil değiştikçe tüm siteyi güncelle
+  // Dil butonları başka bir yerdeyse sadece orada kalsın! Buradaki kod gereksiz tekrar olmaz.
   ["tr","en","id"].forEach(function(code){
     var langBtn = document.getElementById("lang-"+code);
     if(langBtn){
@@ -509,7 +511,6 @@
     text-decoration: underline;
   }
 </style>
-
       <!-- 
         - #PROJECTS
       -->
@@ -919,8 +920,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(firefly);
     setTimeout(() => firefly.remove(), 1000);
   });
-</script>
-<!-- ======== GELİŞMİŞ OTOMATİK VERSİYONLU COOKIE BANNER ======== -->
+<!-- ====== COOKIE BANNER + DİNAMİK GİZLİLİK SAYFASI LİNKİ + ÇEREZ AYARLARI ====== -->
 <style>
   #cookie-banner {
     position: fixed;
@@ -948,6 +948,8 @@ document.addEventListener("DOMContentLoaded", () => {
   #cookie-banner .cookie-actions button:hover {background-color: #e0930b; transform: scale(1.03);}
   #cookie-banner .cookie-actions button.decline {background: #6c757d;}
   #cookie-banner .cookie-actions button.decline:hover {background-color: #5a6268;}
+  #cookie-banner .privacy-link {color:#fca311; text-decoration:underline; font-weight:bold; margin-left:1.2em;}
+  #cookie-banner .settings-link {color:#fca311; text-decoration:underline; font-weight:normal; margin-left:1.2em; cursor:pointer;}
 </style>
 
 <div id="cookie-banner" class="hidden">
@@ -967,40 +969,68 @@ document.addEventListener("DOMContentLoaded", () => {
       data-lang-tr="Reddet"
       data-lang-id="Tolak">Decline</button>
   </div>
+  <span class="privacy-link"></span>
 </div>
+
+<!-- Çerez Ayarları linki (footer veya sabit köşe için) -->
+<a id="cookie-settings-link"
+   class="settings-link"
+   style="position:fixed;right:1em;bottom:1.2em;z-index:9999;display:none;">
+   <span data-lang-en="Cookie Preferences"
+         data-lang-tr="Çerez Ayarları"
+         data-lang-id="Preferensi Cookie">Cookie Preferences</span>
+</a>
 
 <script>
 (function() {
-  // 1. Otomatik versiyon: sadece buradan güncelle, büyük değişiklikte
-  const COOKIE_CONSENT_VERSION = "20240519";
+  // Cookie versiyonu (değişirse eski izinler sıfırlanır)
+  const COOKIE_CONSENT_VERSION = "20240520";
   const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
 
-  // 2. Eski consentları otomatik temizle
+  // Eski consentları temizle
   Object.keys(localStorage)
     .filter(key => key.startsWith("cookie-consent-v") && key !== cookieConsentKey)
     .forEach(key => localStorage.removeItem(key));
 
-  // 3. Banner elemanları
   const cookieBanner = document.getElementById("cookie-banner");
   if (!cookieBanner) return;
   const acceptButton = cookieBanner.querySelector(".accept");
   const declineButton = cookieBanner.querySelector(".decline");
+  const privacyLink = cookieBanner.querySelector('.privacy-link');
+  const settingsLink = document.getElementById("cookie-settings-link");
 
-  // 4. Dil ayarlama fonksiyonu
+  // Dile göre gizlilik sayfası yolu ve metni
   function getCurrentLang() {
     const siteLangStorage = localStorage.getItem("site-lang");
     const browserLang = navigator.language ? navigator.language.slice(0, 2).toLowerCase() : 'en';
     return siteLangStorage || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
   }
+
+  function getPrivacyPageHrefAndText(lang) {
+    if(lang === "tr") {
+      return { href: "/kvkk.html", text: "KVKK Aydınlatma Metni" };
+    } else if(lang === "id") {
+      return { href: "/kebijakan-privasi.html", text: "Kebijakan Privasi & Cookie" };
+    } else {
+      return { href: "/privacy.html", text: "Privacy & Cookie Policy" };
+    }
+  }
+
   function updateBannerTexts() {
     const lang = getCurrentLang();
     cookieBanner.querySelectorAll('[data-lang-en]').forEach(el => {
       const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
       el.textContent = text;
     });
+    // Privacy linki güncelle
+    const privData = getPrivacyPageHrefAndText(lang);
+    privacyLink.innerHTML = `<a href="${privData.href}" target="_blank" class="privacy-link">${privData.text}</a>`;
+    // Ayarlar linkini güncelle
+    settingsLink.querySelector('span').textContent =
+      lang === "tr" ? "Çerez Ayarları" : (lang === "id" ? "Preferensi Cookie" : "Cookie Preferences");
   }
 
-  // 5. Consent okuma/yazma
+  // Consent okuma/yazma
   function hasCookieConsent() {
     return !!localStorage.getItem(cookieConsentKey);
   }
@@ -1008,42 +1038,82 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem(cookieConsentKey, val ? "accepted" : "declined");
   }
 
-  // 6. Banner'ı göster/gizle
-  if (!hasCookieConsent()) {
+  // Banner'ı göster/gizle
+  function showBanner() {
     cookieBanner.classList.remove("hidden");
     updateBannerTexts();
   }
+  function hideBanner() {
+    cookieBanner.classList.add("hidden");
+  }
 
-  // 7. Buton eventleri
+  if (!hasCookieConsent()) {
+    showBanner();
+  } else {
+    // Kabul ettiyse Analytics kodunu yükle
+    if (localStorage.getItem(cookieConsentKey) === "accepted") {
+      loadGoogleAnalytics();
+    }
+    // Çerez ayarları linkini göster
+    settingsLink.style.display = "block";
+    updateBannerTexts();
+  }
+
+  // Buton eventleri
   if (acceptButton) {
     acceptButton.addEventListener("click", () => {
       setCookieConsent(true);
-      cookieBanner.classList.add("hidden");
+      hideBanner();
+      loadGoogleAnalytics();
+      settingsLink.style.display = "block";
     });
   }
   if (declineButton) {
     declineButton.addEventListener("click", () => {
       setCookieConsent(false);
-      cookieBanner.classList.add("hidden");
+      hideBanner();
+      settingsLink.style.display = "block";
     });
   }
 
-  // 8. Dil değişirse banner anında güncellensin
-  function listenLangChange() {
-    // Sık kullanılan: eğer sitede dil değişimi bir event ile oluyorsa burada yakala
-    // Navbar'daki TR/EN/ID butonlarına tıklandığında localStorage.site-lang değişiyorsa:
-    window.addEventListener("storage", function(e) {
-      if (e.key === "site-lang" && !cookieBanner.classList.contains("hidden")) updateBannerTexts();
+  // "Çerez Ayarları" linkine tıklandığında eski tercihi sil ve banner'ı tekrar göster
+  if (settingsLink) {
+    settingsLink.addEventListener("click", function(e){
+      e.preventDefault();
+      localStorage.removeItem(cookieConsentKey);
+      showBanner();
+      settingsLink.style.display = "none";
     });
-    // Eğer sitede JS ile manuel dil değiştirme fonksiyonu varsa, orada da updateBannerTexts() çağırabilirsin.
   }
-  listenLangChange();
 
-  // 9. Sayfa ilk açılışta da dil kontrolü yap
+  // Dil değişirse banner ve linkler anında güncellensin
+  window.addEventListener("storage", function(e) {
+    if (
+      (e.key === "site-lang" && !cookieBanner.classList.contains("hidden")) ||
+      e.key === "site-lang"
+    ) updateBannerTexts();
+  });
+
+  // Sayfa ilk açılışta da dil kontrolü yap
   updateBannerTexts();
+
+  // ========= GA4 KODUNU DİNAMİK YÜKLEME =========
+  function loadGoogleAnalytics() {
+    if (window.GA4_LOADED) return; // Çift yüklemeyi engelle
+    window.GA4_LOADED = true;
+    // 1. Google Analytics scriptini ekle
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XE41DZ84HH';
+    document.head.appendChild(gtagScript);
+    // 2. Gtag init kodunu ekle
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', 'G-XE41DZ84HH');
+  }
 })();
-</script>
-<!-- ======== GELİŞMİŞ OTOMATİK VERSİYONLU COOKIE BANNER SONU ======== -->
 </script>
 <style>
   #preloader {
