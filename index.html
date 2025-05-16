@@ -920,267 +920,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(firefly);
     setTimeout(() => firefly.remove(), 1000);
   });
-<style>
-  /* Ensure body has some padding if banner is at the bottom and content might be obscured */
-  /* body { padding-bottom: 150px; } */
 
-  #cookie-banner {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: #222; color: #fff;
-    padding: 1rem 1.5rem;
-    font-family: 'Roboto', sans-serif; /* Roboto font is assumed to be loaded or use a fallback */
-    font-size: 0.9rem;
-    box-shadow: 0 -3px 15px rgba(0,0,0,0.3);
-    display: flex; flex-wrap: wrap;
-    justify-content: space-between; align-items: center; gap: 1rem;
-    z-index: 10000; transition: transform 0.5s, opacity 0.5s;
-    opacity: 1;
-  }
-  #cookie-banner.hidden {transform: translateY(100%); opacity: 0; pointer-events: none;}
-  #cookie-banner .cookie-text {flex-grow: 1; max-width: 100%;}
-  @media (min-width: 768px) {#cookie-banner .cookie-text {max-width: 70%;}}
-  #cookie-banner .cookie-actions {display: flex; gap: 0.75rem;}
-  #cookie-banner .cookie-actions button {
-    background: #fca311; color: #fff; border: none;
-    padding: 0.6rem 1.2rem; border-radius: 25px;
-    cursor: pointer; font-weight: bold; font-size: 0.85rem;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  #cookie-banner .cookie-actions button:hover {background-color: #e0930b; transform: scale(1.03);}
-  #cookie-banner .cookie-actions button.decline {background: #6c757d;}
-  #cookie-banner .cookie-actions button.decline:hover {background-color: #5a6268;}
-
-  /* Styling for the span that will contain the privacy link */
-  #cookie-banner span.privacy-link {
-    margin-left: 1.2em; /* Original margin */
-  }
-  /* Styling for the <a> tag created by JavaScript inside the span.privacy-link */
-  #cookie-banner span.privacy-link a {
-    color:#fca311;
-    text-decoration:underline;
-    font-weight:bold;
-  }
-
-  #cookie-settings-link {
-    color:#fca311; text-decoration:underline; font-weight:normal;
-    cursor:pointer;
-    position:fixed;
-    right:1em;
-    bottom:1.2em;
-    z-index:9999;
-    display:none; /* Initially hidden */
-    background-color: #222; /* Added background for better visibility */
-    padding: 0.5em;
-    border-radius: 5px;
-    font-family: 'Roboto', sans-serif; /* Consistent font */
-    font-size: 0.85rem; /* Consistent font size */
-  }
-</style>
-
-<div id="cookie-banner" class="hidden" role="dialog" aria-live="polite" aria-labelledby="cookie-banner-text" aria-describedby="cookie-banner-actions">
-  <div class="cookie-text" id="cookie-banner-text"
-       data-lang-en="🍪 We use cookies to enhance your experience, personalize content, and analyze traffic. Do you accept?"
-       data-lang-tr="🍪 Deneyiminizi geliştirmek, içeriği kişiselleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?"
-       data-lang-id="🍪 Kami menggunakan cookie untuk meningkatkan pengalaman Anda, personalisasi konten, dan analisis lalu lintas. Apakah Anda setuju?">
-    </div>
-  <div class="cookie-actions" id="cookie-banner-actions">
-    <button class="accept"
-      data-lang-en="Accept"
-      data-lang-tr="Kabul Et"
-      data-lang-id="Setuju">Accept</button>
-    <button class="decline"
-      data-lang-en="Decline"
-      data-lang-tr="Reddet"
-      data-lang-id="Tolak">Decline</button>
-  </div>
-  <span class="privacy-link">
-      </span>
-</div>
-
-<a id="cookie-settings-link">
-    <span data-lang-en="Cookie Preferences"
-          data-lang-tr="Çerez Ayarları"
-          data-lang-id="Preferensi Cookie">Cookie Preferences</span>
-</a>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Cookie consent version (if changed, old consents are reset)
-  const COOKIE_CONSENT_VERSION = "20240524"; // Your versioning
-  const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
-
-  // Clear old consent keys from localStorage
-  Object.keys(localStorage)
-    .filter(key => key.startsWith("cookie-consent-v") && key !== cookieConsentKey)
-    .forEach(key => localStorage.removeItem(key));
-
-  const cookieBanner = document.getElementById("cookie-banner");
-  if (!cookieBanner) {
-    console.error("Cookie banner element (#cookie-banner) not found.");
-    return;
-  }
-  const cookieTextElement = cookieBanner.querySelector(".cookie-text"); // Text container
-  const acceptButton = cookieBanner.querySelector(".accept");
-  const declineButton = cookieBanner.querySelector(".decline");
-  // Get the span element that will hold the privacy policy link
-  const privacyLinkSpan = cookieBanner.querySelector('span.privacy-link');
-  const settingsLink = document.getElementById("cookie-settings-link");
-  const settingsLinkTextSpan = settingsLink ? settingsLink.querySelector('span') : null;
-
-  // Ensure all critical elements are found
-  if (!cookieTextElement || !acceptButton || !declineButton || !privacyLinkSpan || !settingsLink || !settingsLinkTextSpan) {
-      console.error("One or more cookie banner interactive elements are missing. Check IDs and classes.");
-      return;
-  }
-
-  // Function to get the current language
-  function getCurrentLang() {
-    const siteLangStorage = localStorage.getItem("site-lang");
-    const browserLang = navigator.language ? navigator.language.slice(0, 2).toLowerCase() : 'en';
-    return siteLangStorage || (["en", "tr", "id"].includes(browserLang) ? browserLang : "en");
-  }
-
-  // Function to get privacy page URL and link text based on language
-  function getPrivacyPageHrefAndText(lang) {
-    if(lang === "tr") {
-      return { href: "/kvkk.html", text: "KVKK Aydınlatma Metni" };
-    } else if(lang === "id") {
-      return { href: "/kebijakan-privasi.html", text: "Kebijakan Privasi & Cookie" };
-    } else { // Default to English
-      return { href: "/privacy.html", text: "Privacy & Cookie Policy" };
-    }
-  }
-
-  // Function to update all translatable texts in the banner and settings link
-  function updateBannerTexts() {
-    const lang = getCurrentLang();
-
-    // Update elements with data-lang attributes (main text, buttons)
-    // Includes the cookie text element itself and buttons
-    cookieBanner.querySelectorAll('[data-lang-en]').forEach(el => {
-      const text = el.getAttribute(`data-lang-${lang}`) || el.getAttribute("data-lang-en");
-      el.textContent = text;
-    });
-
-    // Update privacy link (safer creation)
-    const privData = getPrivacyPageHrefAndText(lang);
-    privacyLinkSpan.innerHTML = ''; // Clear previous link
-    const newLink = document.createElement('a');
-    newLink.href = privData.href;
-    newLink.textContent = privData.text;
-    newLink.target = "_blank"; // Open in new tab
-    // No specific class needed for newLink if CSS targets 'span.privacy-link a'
-    privacyLinkSpan.appendChild(newLink);
-
-    // Update settings link text
-    if (settingsLinkTextSpan) {
-        const settingsText = settingsLinkTextSpan.getAttribute(`data-lang-${lang}`) || settingsLinkTextSpan.getAttribute("data-lang-en");
-        settingsLinkTextSpan.textContent = settingsText;
-    }
-  }
-
-  // Functions for reading/writing cookie consent
-  function hasCookieConsent() {
-    return !!localStorage.getItem(cookieConsentKey);
-  }
-  function getCookieConsent() {
-    return localStorage.getItem(cookieConsentKey); // "accepted" or "declined"
-  }
-  function setCookieConsent(accepted) {
-    localStorage.setItem(cookieConsentKey, accepted ? "accepted" : "declined");
-    // Optionally, dispatch a custom event when consent changes
-    // document.dispatchEvent(new CustomEvent('cookieConsentChanged', { detail: { consent: accepted ? "accepted" : "declined" } }));
-  }
-
-  // Functions to show/hide the banner
-  function showBanner() {
-    updateBannerTexts(); // Update texts before showing
-    cookieBanner.classList.remove("hidden");
-    if(settingsLink) settingsLink.style.display = "none";
-  }
-  function hideBanner() {
-    cookieBanner.classList.add("hidden");
-  }
-
-  // Initial setup on page load
-  if (!hasCookieConsent()) {
-    showBanner();
-  } else {
-    if (getCookieConsent() === "accepted") {
-      loadGoogleAnalytics(); // Load GA if already accepted
-    }
-    if(settingsLink) settingsLink.style.display = "block"; // Show settings link
-    updateBannerTexts(); // Ensure texts are correct even if banner isn't shown
-  }
-
-  // Event Listeners for buttons
-  if (acceptButton) {
-    acceptButton.addEventListener("click", () => {
-      setCookieConsent(true);
-      hideBanner();
-      loadGoogleAnalytics(); // Load GA on accept
-      if(settingsLink) settingsLink.style.display = "block";
-    });
-  }
-  if (declineButton) {
-    declineButton.addEventListener("click", () => {
-      setCookieConsent(false);
-      hideBanner();
-      // Optionally, unload or disable analytics if declined after being accepted
-      if(settingsLink) settingsLink.style.display = "block";
-    });
-  }
-  if (settingsLink) {
-    settingsLink.addEventListener("click", function(e){
-      e.preventDefault();
-      localStorage.removeItem(cookieConsentKey); // Clear consent
-      // Optionally, clear GA specific cookies if you have a mechanism for it
-      showBanner(); // Show banner to re-capture consent
-    });
-  }
-
-  // Listen for language changes from localStorage (e.g., from a language switcher on your site)
-  window.addEventListener("storage", function(e) {
-    if (e.key === "site-lang") {
-        updateBannerTexts(); // Update all texts if language changes
-    }
-    // If consent is cleared in another tab/window, show banner again
-    if (e.key === cookieConsentKey && !hasCookieConsent() && cookieBanner.classList.contains("hidden")) {
-        showBanner();
-    }
-  });
-
-  // Call once on load to set initial texts correctly
-  updateBannerTexts();
-
-  // ========= GA4 CODE DYNAMIC LOADING =========
-  function loadGoogleAnalytics() {
-    // Double check consent before loading
-    if (getCookieConsent() !== "accepted") {
-        // console.log("Google Analytics not loaded: Consent not granted.");
-        return;
-    }
-    if (window.GA4_LOADED) return; // Prevent multiple loads
-
-    window.GA4_LOADED = true;
-    var gtagScript = document.createElement('script');
-    gtagScript.async = true;
-    // IMPORTANT: Replace G-YOUR_GA_ID with your actual Google Analytics Measurement ID
-    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XE41DZ84HH'; // Replace with your ID
-    document.head.appendChild(gtagScript);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag; // Make gtag globally available
-
-    gtag('js', new Date());
-    // IMPORTANT: Replace G-YOUR_GA_ID with your actual Google Analytics Measurement ID
-    gtag('config', 'G-XE41DZ84HH'); // Replace with your ID
-    // console.log("Google Analytics loaded.");
-  }
-});
-</script>
 
 <style>
   #preloader {
@@ -1247,5 +987,46 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 <!-- UÇAN KELEBEK -->
   <img src="./assets/images/kelebek-pixabay.gif" alt="Uçan Kelebek" id="flyingButterfly">
+<!-- ...diğer HTML kodun... -->
+<!-- Banner CSS ve HTML -->
+<style>
+  #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: #222; color: #fff; padding: 1rem 1.5rem; font-family: 'Roboto', sans-serif; font-size: 0.9rem; box-shadow: 0 -3px 15px rgba(0,0,0,0.3); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; z-index: 10000; transition: transform 0.5s, opacity 0.5s; opacity: 1;}
+  #cookie-banner.hidden {transform: translateY(100%); opacity: 0; pointer-events: none;}
+  #cookie-banner .cookie-text {flex-grow: 1; max-width: 100%;}
+  @media (min-width: 768px) {#cookie-banner .cookie-text {max-width: 70%;}}
+  #cookie-banner .cookie-actions {display: flex; gap: 0.75rem;}
+  #cookie-banner .cookie-actions button {background: #fca311; color: #fff; border: none; padding: 0.6rem 1.2rem; border-radius: 25px; cursor: pointer; font-weight: bold; font-size: 0.85rem; transition: background-color 0.3s, transform 0.2s;}
+  #cookie-banner .cookie-actions button:hover {background-color: #e0930b; transform: scale(1.03);}
+  #cookie-banner .cookie-actions button.decline {background: #6c757d;}
+  #cookie-banner .cookie-actions button.decline:hover {background-color: #5a6268;}
+  #cookie-banner .privacy-link {margin-left: 1.2em;}
+  #cookie-banner .privacy-link a {color:#fca311; text-decoration:underline; font-weight:bold;}
+  #cookie-settings-link {color:#fca311; text-decoration:underline; font-weight:normal; cursor:pointer; position:fixed; right:1em; bottom:1.2em; z-index:9999; display:none; background-color: #222; padding: 0.5em; border-radius: 5px; font-family: 'Roboto', sans-serif; font-size: 0.85rem;}
+</style>
+<div id="cookie-banner" class="hidden" role="dialog" aria-live="polite" aria-labelledby="cookie-banner-text" aria-describedby="cookie-banner-actions">
+  <div class="cookie-text" id="cookie-banner-text"
+       data-lang-en="🍪 We use cookies to enhance your experience, personalize content, and analyze traffic. Do you accept?"
+       data-lang-tr="🍪 Deneyiminizi geliştirmek, içeriği kişiselleştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?"
+       data-lang-id="🍪 Kami menggunakan cookie untuk meningkatkan pengalaman Anda, personalisasi konten, dan analisis lalu lintas. Apakah Anda setuju?">
+  </div>
+  <div class="cookie-actions" id="cookie-banner-actions">
+    <button class="accept"
+      data-lang-en="Accept"
+      data-lang-tr="Kabul Et"
+      data-lang-id="Setuju">Accept</button>
+    <button class="decline"
+      data-lang-en="Decline"
+      data-lang-tr="Reddet"
+      data-lang-id="Tolak">Decline</button>
+  </div>
+  <span class="privacy-link"></span>
+</div>
+<a id="cookie-settings-link">
+  <span data-lang-en="Cookie Preferences"
+        data-lang-tr="Çerez Ayarları"
+        data-lang-id="Preferensi Cookie">Cookie Preferences</span>
+</a>
+<!-- Cookie banner JS’ini, body kapanışından hemen ÖNCE çağır -->
+<script src="/assets/js/cookie-banner.js"></script>
 </body>
 </html>
