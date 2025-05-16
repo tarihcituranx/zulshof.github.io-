@@ -982,9 +982,9 @@ document.addEventListener("DOMContentLoaded", () => {
 </a>
 
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   // Cookie versiyonu (değişirse eski izinler sıfırlanır)
-  const COOKIE_CONSENT_VERSION = "20240521";
+  const COOKIE_CONSENT_VERSION = "20240522";
   const cookieConsentKey = "cookie-consent-v" + COOKIE_CONSENT_VERSION;
 
   // Eski consentları temizle
@@ -1042,6 +1042,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showBanner() {
     cookieBanner.classList.remove("hidden");
     updateBannerTexts();
+    if(settingsLink) settingsLink.style.display = "none";
   }
   function hideBanner() {
     cookieBanner.classList.add("hidden");
@@ -1050,16 +1051,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!hasCookieConsent()) {
     showBanner();
   } else {
-    // Kabul ettiyse Analytics kodunu yükle
     if (localStorage.getItem(cookieConsentKey) === "accepted") {
       loadGoogleAnalytics();
     }
-    // Çerez ayarları linkini göster
     settingsLink.style.display = "block";
     updateBannerTexts();
   }
 
-  // Buton eventleri
   if (acceptButton) {
     acceptButton.addEventListener("click", () => {
       setCookieConsent(true);
@@ -1075,45 +1073,34 @@ document.addEventListener("DOMContentLoaded", () => {
       settingsLink.style.display = "block";
     });
   }
-
-  // "Çerez Ayarları" linkine tıklandığında eski tercihi sil ve banner'ı tekrar göster
   if (settingsLink) {
     settingsLink.addEventListener("click", function(e){
       e.preventDefault();
       localStorage.removeItem(cookieConsentKey);
       showBanner();
-      settingsLink.style.display = "none";
     });
   }
 
-  // Dil değişirse banner ve linkler anında güncellensin
   window.addEventListener("storage", function(e) {
-    if (
-      (e.key === "site-lang" && !cookieBanner.classList.contains("hidden")) ||
-      e.key === "site-lang"
-    ) updateBannerTexts();
+    if ((e.key === "site-lang" && !cookieBanner.classList.contains("hidden")) || e.key === "site-lang") updateBannerTexts();
   });
-
-  // Sayfa ilk açılışta da dil kontrolü yap
   updateBannerTexts();
 
   // ========= GA4 KODUNU DİNAMİK YÜKLEME =========
   function loadGoogleAnalytics() {
     if (window.GA4_LOADED) return; // Çift yüklemeyi engelle
     window.GA4_LOADED = true;
-    // 1. Google Analytics scriptini ekle
     var gtagScript = document.createElement('script');
     gtagScript.async = true;
     gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XE41DZ84HH';
     document.head.appendChild(gtagScript);
-    // 2. Gtag init kodunu ekle
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', 'G-XE41DZ84HH');
   }
-})();
+});
 </script>
 <style>
   #preloader {
