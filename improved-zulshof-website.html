@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <title>Zulshof - Illustrator | Art & Storytelling Portfolio</title>
+    <meta name="description" content="Zulshof is a freelance illustrator from East Java, Indonesia, specializing in art and storytelling. Discover her portfolio on Instagram (@zulshof) and creative projects. Available in English, Indonesian, and Turkish.">
+    <meta name="keywords" content="Zulshof, illustrator, illüstratör, ilustrator, freelance, serbest çalışan, lepas, art, sanat, seni, drawing, çizim, gambar, portfolio, portfolyo, portofolio, Instagram, Indonesia, Endonezya, East Java, Jawa Timur, book illustration, storytelling, cerita bergambar">
+    
+    <!-- Enhanced Open Graph -->
+    <meta property="og:title" content="Zulshof - Illustrator | Art & Storytelling Portfolio">
+    <meta property="og:description" content="Freelance illustrator Zulshof's portfolio of art and storytelling. Follow on Instagram @zulshof. Available in English, Indonesian, and Turkish.">
+    <meta property="og:image" content="https://gnctrhc.com.tr/assets/images/about-banner.png">
+    <meta property="og:url" content="https://gnctrhc.com.tr/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Enhanced Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XE41DZ84HH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XE41DZ84HH');
+    </script>
+
+    <style>
+        /* Enhanced CSS Variables */
+        :root {
+            --primary-color: #fca311;
+            --secondary-color: #14213d;
+            --accent-color: #e63946;
+            --text-light: #ffffff;
+            --text-dark: #2d3436;
+            --bg-light: #f8f9fa;
+            --bg-dark: #0d1b2a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --gradient-3: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            --shadow-light: 0 8px 32px rgba(0,0,0,0.1);
+            --shadow-medium: 0 12px 40px rgba(0,0,0,0.15);
+            --shadow-heavy: 0 20px 60px rgba(0,0,0,0.25);
+            --border-radius: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        /* Dark Theme */
+        html.dark_theme {
+            --bg-light: #0d1b2a;
+            --bg-dark: #1a2332;
+            --text-dark: #ffffff;
+            --text-light: #2d3436;
+        }
+
+        html.dark_theme body {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1a2332 50%, #14213d 100%);
+        }
+
+        /* Enhanced Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-light);
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 1rem 0;
+        }
+
+        html.dark_theme .header {
+            background: rgba(13, 27, 42, 0.95);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Enhanced Logo */
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+            font-size: 0.8em;
+            margin-left: 0.5rem;
+        }
+
+        /* Enhanced Navigation */
+        .navbar {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .navbar-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .navbar-link:hover::before {
+            left: 0;
+        }
+
+        .navbar-link:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Enhanced Language Selector */
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #lang {
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        #lang:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Enhanced Theme Button */
+        .theme-btn {
+            background: var(--primary-color);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-btn:hover {
+            transform: scale(1.1) rotate(180deg);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Enhanced Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Enhanced About Section */
+        .about {
+            padding: 8rem 2rem;
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0.1;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-banner {
+            position: relative;
+        }
+
+        .about-banner img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-heavy);
+            transition: var(--transition);
+        }
+
+        .about-banner:hover img {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .about-text {
+            max-width: 500px;
+        }
+
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+
+        /* Enhanced Skills Section */
+        .skills {
+            padding: 8rem 2rem;
+            background: var(--gradient-2);
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.9);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .skill-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Enhanced Portfolio Section */
+        .portfolio {
+            padding: 8rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .instagram-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .instagram-item {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .instagram-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .instagram-item:hover::before {
+            opacity: 0.1;
+        }
+
+        .instagram-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .instagram-caption {
+            padding: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Enhanced Contact Section */
+        .contact {
+            padding: 8rem 2rem;
+            background: var(--gradient-1);
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Enhanced Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Enhanced Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-butterfly {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatAnimation 6s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        .floating-butterfly:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            color: #ff6b9d;
+        }
+
+        .floating-butterfly:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+            color: #4ecdc4;
+        }
+
+        .floating-butterfly:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+            color: #ffd93d;
+        }
+
+        /* Enhanced Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .navbar {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .instagram-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-social a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Enhanced Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .preloader-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        /* Enhanced Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 2rem;
+            box-shadow: var(--shadow-heavy);
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cookie-text {
+            flex: 1;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cookie-btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cookie-btn.accept {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .cookie-btn.decline {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .cookie-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body id="top">
+    <!-- Enhanced Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">ZULSHOF</div>
+            <div class="preloader-subtitle">Illustrator & Storyteller</div>
+        </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-butterfly">🦋</div>
+        <div class="floating-butterfly">🦋</div>
+        <div class="floating-butterfly">🦋</div>
+    </div>
+
+    <!-- Enhanced Header -->
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                zulshof<span>illustrator</span>
+            </a>
+
+            <nav class="navbar">
+                <a href="#home" class="navbar-link" data-lang-en="Home" data-lang-tr="Anasayfa" data-lang-id="Beranda">Home</a>
+                <a href="#about" class="navbar-link" data-lang-en="About" data-lang-tr="Hakkımda" data-lang-id="Tentang">About</a>
+                <a href="#skills" class="navbar-link" data-lang-en="Skills" data-lang-tr="Yetenekler" data-lang-id="Keahlian">Skills</a>
+                <a href="#portfolio" class="navbar-link" data-lang-en="Portfolio" data-lang-tr="Portfolyo" data-lang-id="Portofolio">Portfolio</a>
+                <a href="#contact" class="navbar-link" data-lang-en="Contact" data-lang-tr="İletişim" data-lang-id="Kontak">Contact</a>
+            </nav>
+
+            <div class="navbar-actions">
+                <select id="lang">
+                    <option value="en">EN</option>
+                    <option value="tr">TR</option>
+                    <option value="id">ID</option>
+                </select>
+                <button class="theme-btn" aria-label="Toggle Theme">
+                    <span class="icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">ZULSHOF</h1>
+            <h2 class="hero-subtitle">ILLUSTRATOR</h2>
+            <p class="hero-description" 
+               data-lang-en="Creating magical worlds through art and storytelling from the beautiful landscapes of East Java, Indonesia."
+               data-lang-tr="Doğu Cava'nın güzel manzaralarından ilham alarak sanat ve hikaye anlatıcılığıyla büyülü dünyalar yaratıyorum."
+               data-lang-id="Menciptakan dunia magis melalui seni dan bercerita dari lanskap indah Jawa Timur, Indonesia.">
+                Creating magical worlds through art and storytelling from the beautiful landscapes of East Java, Indonesia.
+            </p>
+            <div class="hero-buttons">
+                <a href="#portfolio" class="btn btn-primary" data-lang-en="View My Work" data-lang-tr="Çalışmalarımı Gör" data-lang-id="Lihat Karya Saya">View My Work</a>
+                <a href="#contact" class="btn btn-secondary" data-lang-en="Get in Touch" data-lang-tr="İletişime Geç" data-lang-id="Hubungi Saya">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-banner">
+                <img src="./assets/images/about-banner.png" alt="Zulshof Portrait">
+            </div>
+            <div class="about-text">
+                <p class="section-subtitle" data-lang-en="About Me" data-lang-tr="Hakkımda" data-lang-id="Tentang Saya">About Me</p>
+                <h2 class="section-title" data-lang-en="Let me tell you a little about me..." data-lang-tr="Size biraz kendimden bahsedeyim..." data-lang-id="Izinkan saya bercerita sedikit tentang diri saya...">Let me tell you a little about me...</h2>
+                <p class="section-text" 
+                   data-lang-en="Assalamu'alaikum… Hi, friends! I'm Zulshof, an illustrator based in East Java, Indonesia. I was born in a peaceful and beautiful village. Today, I work as a freelance illustrator—mostly for book publishers and on commission-based projects."
+                   data-lang-tr="Selamünaleyküm… Merhaba arkadaşlar! Ben Zulshof, Endonezya'nın Doğu Cava bölgesinden bir illüstratörüm. Huzurlu ve güzel bir köyde doğdum. Bugün, kitap yayınevleri ve özel siparişler için çalışan serbest bir illüstratörüm."
+                   data-lang-id="Assalamu'alaikum… Hai teman-teman! Saya Zulshof, seorang ilustrator dari Jawa Timur, Indonesia. Saya lahir di desa yang damai dan indah. Saat ini, saya bekerja sebagai ilustrator lepas untuk penerbit buku dan proyek pesanan.">
+                    Assalamu'alaikum… Hi, friends! I'm Zulshof, an illustrator based in East Java, Indonesia. I was born in a peaceful and beautiful village. Today, I work as a freelance illustrator—mostly for book publishers and on commission-based projects.
+                </p>
+                <div class="about-buttons">
+                    <a href="#contact" class="btn btn-primary" data-lang-en="Hire Me" data-lang-tr="Beni İşe Al" data-lang-id="Pekerjakan Saya">Hire Me</a>
+                    <a href="./assets/images/ZULSHOF%20PORTOFOLIO.pdf" target="_blank" class="btn btn-secondary" data-lang-en="View Portfolio" data-lang-tr="Portfolyoyu Gör" data-lang-id="Lihat Portofolio">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <p class="section-subtitle" data-lang-en="My Skills" data-lang-tr="Yeteneklerim" data-lang-id="Keahlian Saya">My Skills</p>
+            <h2 class="section-title" data-lang-en="What I Do Best" data-lang-tr="En İyi Yaptıklarım" data-lang-id="Apa yang Terbaik Saya Lakukan">What I Do Best</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-icon">🎨</span>
+                    <h3 class="skill-title" data-lang-en="Digital Illustration" data-lang-tr="Dijital İllüstrasyon" data-lang-id="Ilustrasi Digital">Digital Illustration</h3>
+                    <p class="section-text" data-lang-en="Creating beautiful digital artwork with modern tools and techniques." data-lang-tr="Modern araçlar ve tekniklerle güzel dijital sanat eserleri yaratıyorum." data-lang-id="Menciptakan karya seni digital yang indah dengan alat dan teknik modern.">Creating beautiful digital artwork with modern tools and techniques.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <span class="skill-icon">📚</span>
+                    <h3 class="skill-title" data-lang-en="Book Illustration" data-lang-tr="Kitap İllüstrasyonu" data-lang-id="Ilustrasi Buku">Book Illustration</h3>
+                    <p class="section-text" data-lang-en="Bringing stories to life through captivating book illustrations." data-lang-tr="Büyüleyici kitap illüstrasyonlarıyla hikayeleri hayata geçiriyorum." data-lang-id="Menghidupkan cerita melalui ilustrasi buku yang memikat.">Bringing stories to life through captivating book illustrations.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <span class="skill-icon">🎭</span>
+                    <h3 class="skill-title" data-lang-en="Character Design" data-lang-tr="Karakter Tasarımı" data-lang-id="Desain Karakter">Character Design</h3>
+                    <p class="section-text" data-lang-en="Designing memorable characters that connect with audiences." data-lang-tr="İzleyicilerle bağ kuran unutulmaz karakterler tasarlıyorum." data-lang-id="Merancang karakter berkesan yang terhubung dengan audiens.">Designing memorable characters that connect with audiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <p class="section-subtitle" data-lang-en="My Work" data-lang-tr="Çalışmalarım" data-lang-id="Karya Saya">My Work</p>
+            <h2 class="section-title" data-lang-en="Featured Instagram Posts" data-lang-tr="Öne Çıkan Instagram Paylaşımları" data-lang-id="Postingan Instagram Unggulan">Featured Instagram Posts</h2>
+            
+            <div class="instagram-gallery">
+                <a href="https://www.instagram.com/p/C1eIg5fpIsZ/" class="instagram-item" target="_blank">
+                    <img src="./assets/images/insta1.png" alt="Praying for good character">
+                    <div class="instagram-caption" data-lang-en="Praying for good character 🤲" data-lang-tr="Güzel ahlak için dua et 🤲" data-lang-id="Berdoa untuk akhlak yang baik 🤲">Praying for good character 🤲</div>
+                </a>
+                
+                <a href="https://www.instagram.com/p/C1lV9XjpC5z/" class="instagram-item" target="_blank">
+                    <img src="./assets/images/insta2.png" alt="Lili finds a butterfly">
+                    <div class="instagram-caption" data-lang-en="Lili finds a butterfly 🦋" data-lang-tr="Lili bir kelebek buluyor 🦋" data-lang-id="Lili menemukan kupu-kupu 🦋">Lili finds a butterfly 🦋</div>
+                </a>
+                
+                <a href="https://www.instagram.com/p/C620YeWJZQI/" class="instagram-item" target="_blank">
+                    <img src="./assets/images/insta3.png" alt="Illustrator selfie">
+                    <div class="instagram-caption" data-lang-en="Say cheese, I'm taking a selfie! 📸" data-lang-tr="Çekiyorum, gülümse! 📸" data-lang-id="Senyum ya, aku lagi selfie nih! 📸">Say cheese, I'm taking a selfie! 📸</div>
+                </a>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="https://www.instagram.com/zulshof/" class="btn btn-primary" target="_blank" data-lang-en="View More on Instagram" data-lang-tr="Instagram'da Daha Fazlası" data-lang-id="Lihat Lebih Banyak di Instagram">View More on Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-info">
+                <p class="section-subtitle" data-lang-en="Get In Touch" data-lang-tr="İletişime Geçin" data-lang-id="Hubungi Saya">Get In Touch</p>
+                <h2 class="section-title" data-lang-en="Let's Work Together" data-lang-tr="Birlikte Çalışalım" data-lang-id="Mari Bekerja Sama">Let's Work Together</h2>
+                <p class="section-text" data-lang-en="Have a project in mind? I'd love to hear about it and bring your ideas to life through beautiful illustrations." data-lang-tr="Aklınızda bir proje mi var? Bunu duymak ve fikirlerinizi güzel illüstrasyonlarla hayata geçirmek isterim." data-lang-id="Punya proyek dalam pikiran? Saya ingin mendengarnya dan mewujudkan ide Anda melalui ilustrasi yang indah.">Have a project in mind? I'd love to hear about it and bring your ideas to life through beautiful illustrations.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span data-lang-en="East Java, Indonesia" data-lang-tr="Doğu Cava, Endonezya" data-lang-id="Jawa Timur, Indonesia">East Java, Indonesia</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:shofiazulya0609@gmail.com">shofiazulya0609@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <a href="https://www.instagram.com/zulshof" target="_blank">@zulshof</a>
+                    </div>
+                </div>
+            </div>
+            
+            <form action="https://formspree.io/f/xdkgpeoo" method="POST" class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label" data-lang-en="Your Name" data-lang-tr="Adınız" data-lang-id="Nama Anda">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required data-lang-en-placeholder="Enter your name" data-lang-tr-placeholder="Adınızı girin" data-lang-id-placeholder="Masukkan nama Anda" placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label" data-lang-en="Your Email" data-lang-tr="E-posta Adresiniz" data-lang-id="Email Anda">Your Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required data-lang-en-placeholder="Enter your email" data-lang-tr-placeholder="E-posta adresinizi girin" data-lang-id-placeholder="Masukkan email Anda" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label" data-lang-en="Your Message" data-lang-tr="Mesajınız" data-lang-id="Pesan Anda">Your Message</label>
+                    <textarea id="message" name="message" class="form-input" rows="5" required data-lang-en-placeholder="Tell me about your project..." data-lang-tr-placeholder="Projenizden bahsedin..." data-lang-id-placeholder="Ceritakan tentang proyek Anda..." placeholder="Tell me about your project..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" data-lang-en="Send Message" data-lang-tr="Mesaj Gönder" data-lang-id="Kirim Pesan">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">zulshof</div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/zulshof" target="_blank" aria-label="Instagram">📱</a>
+                <a href="mailto:shofiazulya0609@gmail.com" aria-label="Email">📧</a>
+            </div>
+            <p data-lang-en="© 2025 Made with ❤️ by Zulshof & Tarihcituranx" data-lang-tr="© 2025 ❤️ ile Zulshof & Tarihcituranx tarafından yapılmıştır" data-lang-id="© 2025 Dibuat dengan ❤️ oleh Zulshof & Tarihcituranx">© 2025 Made with ❤️ by Zulshof & Tarihcituranx</p>
+        </div>
+    </footer>
+
+    <!-- Enhanced Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text" data-lang-en="🍪 We use cookies to enhance your experience and analyze traffic. Do you accept?" data-lang-tr="🍪 Deneyiminizi geliştirmek ve trafiği analiz etmek için çerez kullanıyoruz. Kabul ediyor musunuz?" data-lang-id="🍪 Kami menggunakan cookie untuk meningkatkan pengalaman dan menganalisis lalu lintas. Apakah Anda setuju?">🍪 We use cookies to enhance your experience and analyze traffic. Do you accept?</div>
+            <div class="cookie-actions">
+                <button class="cookie-btn accept" data-lang-en="Accept" data-lang-tr="Kabul Et" data-lang-id="Setuju">Accept</button>
+                <button class="cookie-btn decline" data-lang-en="Decline" data-lang-tr="Reddet" data-lang-id="Tolak">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Language Management
+        const languages = {
+            en: {
+                title: "zulshof - 🖌️✨A girl who loves art 🌼 freelance illustrator"
+            },
+            tr: {
+                title: "zulshof - 🖌️✨Sanatı seven bir kız 🌼 serbest çalışan illüstratör"
+            },
+            id: {
+                title: "zulshof - 🖌️✨Seorang gadis pecinta seni 🌼 ilustrator lepas"
+            }
+        };
+
+        let currentLang = localStorage.getItem('site-lang') || 'en';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('site-lang', lang);
+            
+            // Update page title
+            document.title = languages[lang].title;
+            
+            // Update all elements with data-lang attributes
+            document.querySelectorAll('[data-lang-' + lang + ']').forEach(el => {
+                el.textContent = el.getAttribute('data-lang-' + lang);
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-lang-' + lang + '-placeholder]').forEach(el => {
+                el.placeholder = el.getAttribute('data-lang-' + lang + '-placeholder');
+            });
+        }
+
+        // Theme Management
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.contains('dark_theme');
+            
+            if (isDark) {
+                html.classList.remove('dark_theme');
+                html.classList.add('light_theme');
+                localStorage.setItem('site-theme', 'light');
+            } else {
+                html.classList.remove('light_theme');
+                html.classList.add('dark_theme');
+                localStorage.setItem('site-theme', 'dark');
+            }
+        }
+
+        // Cookie Banner Management
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            setTimeout(() => {
+                banner.classList.add('show');
+            }, 2000);
+        }
+
+        function hideCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            banner.classList.remove('show');
+        }
+
+        // Preloader Management
+        function hidePreloader() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 2000);
+        }
+
+        // Smooth Scrolling for Navigation Links
+        function initSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial theme
+            const savedTheme = localStorage.getItem('site-theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const shouldUseDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+            
+            document.documentElement.classList.add(shouldUseDark ? 'dark_theme' : 'light_theme');
+
+            // Set initial language
+            document.getElementById('lang').value = currentLang;
+            updateLanguage(currentLang);
+
+            // Event listeners
+            document.getElementById('lang').addEventListener('change', function() {
+                updateLanguage(this.value);
+            });
+
+            document.querySelector('.theme-btn').addEventListener('click', toggleTheme);
+
+            // Cookie banner events
+            if (!localStorage.getItem('cookies-accepted')) {
+                showCookieBanner();
+            }
+
+            document.querySelector('.cookie-btn.accept').addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', 'true');
+                hideCookieBanner();
+            });
+
+            document.querySelector('.cookie-btn.decline').addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', 'false');
+                hideCookieBanner();
+            });
+
+            // Initialize other features
+            initSmoothScrolling();
+            hidePreloader();
+
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('.header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    if (document.documentElement.classList.contains('dark_theme')) {
+                        header.style.background = 'rgba(13, 27, 42, 0.98)';
+                    }
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    if (document.documentElement.classList.contains('dark_theme')) {
+                        header.style.background = 'rgba(13, 27, 42, 0.95)';
+                    }
+                }
+            });
+
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe elements for animation
+            document.querySelectorAll('.skill-card, .instagram-item, .about-banner').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Mouse movement effects
+        document.addEventListener('mousemove', function(e) {
+            const butterflies = document.querySelectorAll('.floating-butterfly');
+            butterflies.forEach((butterfly, index) => {
+                const speed = (index + 1) * 0.01;
+                const x = e.clientX * speed;
+                const y = e.clientY * speed;
+                
+                setTimeout(() => {
+                    butterfly.style.transform = `translate(${x}px, ${y}px)`;
+                }, index * 100);
+            });
+        });
+    </script>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
