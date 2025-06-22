@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turan KAYA - Tarihçi & Araştırmacı | Historian & Researcher</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Light theme colors */
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #f39c12;
+            --text-light: #ecf0f1;
+            --text-dark: #2c3e50;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-tertiary: #ecf0f1;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --card-bg: #ffffff;
+            --border-color: rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            /* Dark theme colors */
+            --primary-color: #34495e;
+            --secondary-color: #e74c3c;
+            --accent-color: #f1c40f;
+            --text-light: #ecf0f1;
+            --text-dark: #ecf0f1;
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2c2c2c;
+            --bg-tertiary: #3c3c3c;
+            --gradient: linear-gradient(135deg, #4a6741 0%, #9b59b6 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+            --card-bg: #2c2c2c;
+            --border-color: rgba(255,255,255,0.1);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--bg-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Header Controls */
+        .header-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .theme-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .theme-icon.active {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        .language-selector {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 25px;
+            padding: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon {
+            position: absolute;
+            color: rgba(255,255,255,0.6);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .icon:nth-child(2) { top: 20%; right: 20%; animation-delay: 1s; }
+        .icon:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .icon:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .icon:nth-child(5) { top: 50%; left: 50%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .education-timeline {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .education-timeline h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-item {
+            padding: 1.5rem 0;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+        }
+
+        .timeline-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-dark);
+        }
+
+        .personality-traits {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .trait {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .trait:hover {
+            transform: translateY(-5px);
+        }
+
+        .trait i {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .trait h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .trait p {
+            color: var(--text-dark);
+        }
+
+        /* Experiences Section */
+        .experiences {
+            padding: 5rem 0;
+            background: var(--bg-primary);
+        }
+
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .experience-category {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-header {
+            background: var(--gradient);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-content {
+            padding: 2rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .experience-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .experience-description {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-header {
+            background: var(--gradient);
+            padding: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .project-logo {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+            background: rgba(243, 156, 18, 0.1);
+        }
+
+        /* Goals Section */
+        .goals {
+            padding: 5rem 0;
+            background: var(--bg-tertiary);
+        }
+
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .goal-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .goal-card:hover {
+            transform: scale(1.05);
+        }
+
+        .goal-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .goal-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .goal-card p {
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: var(--text-dark);
+        }
+
+        .social-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .social-card h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-card p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-controls {
+                position: relative;
+                top: auto;
+                right: auto;
+                justify-content: center;
+                margin: 1rem auto;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .experiences-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .social-links {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Controls -->
+    <div class="header-controls">
+        <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-icon" id="light-icon">
+                <i class="fas fa-sun"></i>
+            </div>
+            <div class="theme-icon" id="dark-icon">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+        
+        <div class="language-selector">
+            <button class="lang-btn active" onclick="setLanguage('tr')" data-lang="tr">🇹🇷 TR</button>
+            <button class="lang-btn" onclick="setLanguage('en')" data-lang="en">🇺🇸 EN</button>
+        </div>
+    </div>
+
+    <!-- Turkish Content -->
+    <div class="lang-content active" id="content-tr">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Turan KAYA</h1>
+                    <p class="subtitle">Tarihçi & Araştırmacı</p>
+
+                    <p class="hero-description">
+                        Teknoloji ve tarihin kesiştiği noktada, geçmişin izlerini takip eden ve geleceğin yollarını arayan bir araştırmacı. 
+                        Her şeyin "nasıl" ve "neden"ini sorgulayan, meraklı bir ruh.
+                    </p>
+
+                    <div class="cta-buttons">
+                        <a href="#about" class="btn btn-primary">
+                            <i class="fas fa-user"></i> Hakkımda
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> İletişim
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="floating-icons">
+                        <i class="fas fa-scroll icon" style="font-size: 2rem;"></i>
+                        <i class="fas fa-laptop-code icon" style="font-size: 1.5rem;"></i>
+                        <i class="fas fa-book icon" style="font-size: 2.5rem;"></i>
+                        <i class="fas fa-search icon" style="font-size: 1.8rem;"></i>
+                        <i class="fas fa-graduation-cap icon" style="font-size: 2.2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title fade-in">Hakkımda</h2>
+                <div class="about-content">
+                    <div class="education-timeline fade-in">
+                        <h3>Eğitim Geçmişi</h3>
+                        <div class="timeline-item">
+                            <h3>Yüksek Lisans</h3>
+                            <p><strong>Ondokuz Mayıs Üniversitesi</strong></p>
+                            <p>Tarih Bölümü (Devam Ediyor)</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Lisans</h3>
+                            <p><strong>Necmettin Erbakan Üniversitesi</strong></p>
+                            <p>Tarih Bölümü (Mezun)</p>
+                        </div>
+                    </div>
+
+                    <div class="personality-traits">
+                        <div class="trait fade-in">
+                            <i class="fas fa-search"></i>
+                            <h3>Araştırmacı Ruh</h3>
+                            <p>Her şeyin nasıl yapıldığını araştırır, meraklı bir yapıya sahibim. Teknoloji ve tarihin gizemli dünyasında kaybolmayı seviyorum.</p>
+                        </div>
+
+                        <div class="trait fade-in">
+                            <i class="fas fa-heart"></i>
+                            <h3>Seçici Yaklaşım</h3>
+                            <p>Geçmişte herkese koşulsuz yardım ederken, artık sadece sevdiklerimin işlerini yapmayı tercih ediyorum. Değerli ilişkilere odaklanıyorum.</p>
+                        </div>
+
+                        <div class="trait fade-in">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h3>Çok Yönlü İlgiler</h3>
+                            <p>Teknoloji, tarih ve gizemli konulara olan merakım beni sürekli öğrenmeye ve keşfetmeye yönlendiriyor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiences Section -->
+        <section class="experiences" id="experiences">
+            <div class="container">
+                <h2 class="section-title fade-in">Tarihi Deneyimlerim</h2>
+                <div class="experiences-grid">
+                    <div class="experience-category fade-in">
+                        <div class="experience-header">
+                            <div class="experience-icon">
+                                <i class="fas fa-globe-europe"></i>
+                            </div>
+                            <h3>Yurt Dışı Gezileri</h3>
+                            <p>Kutsal topraklarda tarih yolculuğu</p>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-item">
+                                <div class="experience-title">Filistin Eğitim Gezisi</div>
+                                <div class="experience-description">
+                                    Necmettin Erbakan Üniversitesi ve Konya Büyükşehir Belediyesi ortaklığında gerçekleştirilen eğitim gezisinde Müslümanların ilk kıblesi Mescid-i Aksa'yı, Kubbet-üs Sahra'yı, Zeytin Dağı'nı ziyaret ettim. Peygamberlerin ve sahabelerin mezarlarını görmek büyük bir manevi deneyimdi. Tarihi El-Halil (Hebron), Eriha (Jericho), Yafa şehirleri ve Lut Gölü'nü keşfederek Filistin bölgesinin zengin tarihi, kültürü ve coğrafyası hakkında derinlemesine bilgi edindim.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience-category fade-in">
+                        <div class="experience-header">
+                            <div class="experience-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h3>Türkiye Tarihi Gezileri</h3>
+                            <p>Anadolu'nun kültürel mirasını keşif</p>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-item">
+                                <div class="experience-title">İstanbul Tarihi Yarımadası</div>
+                                <div class="experience-description">
+                                    Ayasofya, Sultanahmet Camii, Topkapı Sarayı, Galata Kulesi ve Boğaz'ın büyüleyici manzaralarını deneyimledim. Bizans ve Osmanlı dönemlerinin izlerini yerinde görmek tarihe olan bakış açımı derinleştirdi.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">Çanakkale & Gelibolu</div>
+                                <div class="experience-description">
+                                    Çanakkale Savaşları'nın geçtiği tarihi alanları, şehitlikleri ve müzeleri ziyaret ederek milli mücadelemizin önemli dönemeçlerini yakından tanıma fırsatı buldum. Savaş tarihi konusunda pratik bilgiler edindim.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">İzmir & Efes Antik Kenti</div>
+                                <div class="experience-description">
+                                    İzmir Selçuk ilçesinde bulunan Roma döneminin en önemli şehirlerinden Efes'i, Artemis Tapınağı kalıntılarını ve Selçuk Müzesi'ni gezarak antik dönem mimarisi ve kültürü hakkında bilgi sahibi oldum.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">Konya Tarihi Mekanları</div>
+                                <div class="experience-description">
+                                    Mevlana şehri Konya'da Hz. Mevlana'nın türbesi ve müzesini, Alaeddin Tepesi'nde Sultan II. Kılıç Arslan'ın mezarı ve Alaeddin Camii'ni, Karatay Medresesi ve İnce Minareli Medrese'yi ziyaret ederek Selçuklu dönemi eğitim kurumlarını ve çini sanatının en güzel örneklerini gördüm. Ayrıca dünyanın en eski şehirlerinden Çatalhöyük'ü ziyaret ederek tarih öncesi dönemler ve ilk yerleşim kültürleri hakkında bilgi edindim.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <h2 class="section-title fade-in">Projelerim & Ortaklıklarım</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-logo">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <h3>Tarih Sayfam</h3>
+                            <p>Özel Tarih İçerikleri</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Derinlemesine tarih analizleri, özel araştırmalar ve akademik perspektifle hazırladığım tarih içeriklerini paylaştığım sayfam.</p>
+                            <div class="project-links">
+                                <a href="https://t.me/TarihnameX1" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Sayfaya Git
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-logo">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Zulshof</h3>
+                            <p>İllüstratör Markası</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Zulshof, çocukluğumdan beri hayalini kurduğum bir illüstratör markası. Ama bu hayali tek başıma yaşamak istemedim; sizinle paylaşmak istedim! Burası sadece benim değil, hepimizin; hayallerin ve fikirlerin buluştuğu bir topluluk.</p>
+                            <div class="project-links">
+                                <a href="https://gnctrhc.com.tr" target="_blank" class="project-link">
+                                    <i class="fas fa-globe"></i> Web Sitesi
+                                </a>
+                                <a href="https://www.instagram.com/zulshof" target="_blank" class="project-link">
+                                    <i class="fab fa-instagram"></i> Zulshof Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section class="goals" id="goals">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--text-dark);">Hedeflerim</h2>
+                <div class="goals-grid">
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Öğretmenlik</h3>
+                        <p>Tarih bilgimi gelecek nesillere aktararak, onların geçmişi anlamalarına ve geleceği şekillendirmelerine yardımcı olmak istiyorum.</p>
+                    </div>
+
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-university"></i>
+                        <h3>Akademik Katkı</h3>
+                        <p>Ülkeme akademik anlamda katkı sağlayabilecek araştırmalar yapmak ve bilimsel çalışmalarla tarih alanına değer katmak istiyorum.</p>
+                    </div>
+
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Sürekli Öğrenme</h3>
+                        <p>Teknoloji ve tarih alanındaki yenilikler takip ederek, kendimi sürekli geliştirmek ve yeni perspektifler kazanmak istiyorum.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-content fade-in">
+                    <h2 class="section-title">İletişim</h2>
+                    <p>Benimle iletişime geçmek, proje önerilerini paylaşmak veya sadece sohbet etmek isterseniz, aşağıdaki kanallarımdan ulaşabilirsiniz.</p>
+                    
+                    <div class="social-links">
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h4>Instagram</h4>
+                            <p>Kişisel paylaşımlar ve günlük içerikler</p>
+                            <a href="https://www.instagram.com/tarihcituranx/" target="_blank" class="social-link">@tarihcituranx</a>
+                        </div>
+
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <h4>Kişisel Telegram Hesabım</h4>
+                            <p>Kişisel telegram hesabım</p>
+                            <a href="https://t.me/TarihnameX" target="_blank" class="social-link">TarihnameX</a>
+                        </div>
+
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <h4>Tarih Sayfam</h4>
+                            <p>Derinlemesine analizler ve özel içerikler</p>
+                            <a href="https://t.me/TarihnameX1" target="_blank" class="social-link">Tarih Sayfası</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- English Content -->
+    <div class="lang-content" id="content-en">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Turan KAYA</h1>
+                    <p class="subtitle">Historian & Researcher</p>
+
+                    <p class="hero-description">
+                        A researcher at the intersection of technology and history, tracking the traces of the past and seeking the paths of the future. 
+                        A curious soul questioning the "how" and "why" of everything.
+                    </p>
+
+                    <div class="cta-buttons">
+                        <a href="#about" class="btn btn-primary">
+                            <i class="fas fa-user"></i> About Me
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i> Contact
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="floating-icons">
+                        <i class="fas fa-scroll icon" style="font-size: 2rem;"></i>
+                        <i class="fas fa-laptop-code icon" style="font-size: 1.5rem;"></i>
+                        <i class="fas fa-book icon" style="font-size: 2.5rem;"></i>
+                        <i class="fas fa-search icon" style="font-size: 1.8rem;"></i>
+                        <i class="fas fa-graduation-cap icon" style="font-size: 2.2rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title fade-in">About Me</h2>
+                <div class="about-content">
+                    <div class="education-timeline fade-in">
+                        <h3>Educational Background</h3>
+                        <div class="timeline-item">
+                            <h3>Master's Degree</h3>
+                            <p><strong>Ondokuz Mayıs University</strong></p>
+                            <p>Department of History (Ongoing)</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h3>Bachelor's Degree</h3>
+                            <p><strong>Necmettin Erbakan University</strong></p>
+                            <p>Department of History (Graduate)</p>
+                        </div>
+                    </div>
+
+                    <div class="personality-traits">
+                        <div class="trait fade-in">
+                            <i class="fas fa-search"></i>
+                            <h3>Research-Oriented Mind</h3>
+                            <p>I research how everything works, possessing a curious nature. I love getting lost in the mysterious worlds of technology and history.</p>
+                        </div>
+
+                        <div class="trait fade-in">
+                            <i class="fas fa-heart"></i>
+                            <h3>Selective Approach</h3>
+                            <p>While I used to help everyone unconditionally in the past, I now prefer to focus only on the affairs of my loved ones. I focus on valuable relationships.</p>
+                        </div>
+
+                        <div class="trait fade-in">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h3>Diverse Interests</h3>
+                            <p>My curiosity about technology, history, and mysterious subjects constantly drives me to learn and explore.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiences Section -->
+        <section class="experiences" id="experiences">
+            <div class="container">
+                <h2 class="section-title fade-in">Historical Experiences</h2>
+                <div class="experiences-grid">
+                    <div class="experience-category fade-in">
+                        <div class="experience-header">
+                            <div class="experience-icon">
+                                <i class="fas fa-globe-europe"></i>
+                            </div>
+                            <h3>International Trips</h3>
+                            <p>Historical journey in holy lands</p>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-item">
+                                <div class="experience-title">Palestine Educational Trip</div>
+                                <div class="experience-description">
+                                    Participated in an educational trip organized by Necmettin Erbakan University and Konya Metropolitan Municipality. Visited Masjid al-Aqsa, the first Qibla of Muslims, Dome of the Rock, and Mount of Olives. Seeing the graves of prophets and companions was a profound spiritual experience. Explored historic cities of Hebron, Jericho, Jaffa, and the Dead Sea, gaining deep insights into Palestine's rich history, culture, and geography.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience-category fade-in">
+                        <div class="experience-header">
+                            <div class="experience-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h3>Turkish Historical Tours</h3>
+                            <p>Discovering Anatolia's cultural heritage</p>
+                        </div>
+                        <div class="experience-content">
+                            <div class="experience-item">
+                                <div class="experience-title">Istanbul Historical Peninsula</div>
+                                <div class="experience-description">
+                                    Experienced Hagia Sophia, Blue Mosque, Topkapi Palace, Galata Tower, and the enchanting Bosphorus views. Seeing Byzantine and Ottoman traces firsthand deepened my perspective on history.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">Gallipoli & Çanakkale</div>
+                                <div class="experience-description">
+                                    Visited historical areas where the Gallipoli Campaign took place, memorials, and museums, gaining the opportunity to closely understand important turning points of our national struggle.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">İzmir & Ancient City of Ephesus</div>
+                                <div class="experience-description">
+                                    Explored Ephesus in Selçuk district of İzmir, one of the most important cities of the Roman period, Temple of Artemis ruins, and Selçuk Museum, gaining knowledge about ancient architecture and culture.
+                                </div>
+                            </div>
+                            <div class="experience-item">
+                                <div class="experience-title">Konya Historical Sites</div>
+                                <div class="experience-description">
+                                    In the city of Mevlana, Konya, I visited Hz. Mevlana's mausoleum and museum, Sultan Kilij Arslan II's tomb and Alaeddin Mosque at Alaeddin Hill, Karatay Madrasa and Ince Minaret Madrasa to see Seljuk period educational institutions and finest examples of tile art. I also visited Çatalhöyük, one of the world's oldest cities, gaining knowledge about prehistoric periods and early settlement cultures.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <h2 class="section-title fade-in">My Projects & Partnerships</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-logo">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <h3>History Page</h3>
+                            <p>Specialized Historical Content</p>
+                        </div>
+                        <div class="project-content">
+                            <p>My page where I share in-depth historical analyses, special research, and historical content prepared from an academic perspective.</p>
+                            <div class="project-links">
+                                <a href="https://t.me/TarihnameX1" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i> Visit Page
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card fade-in">
+                        <div class="project-header">
+                            <div class="project-logo">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3>Zulshof</h3>
+                            <p>Illustrator Brand</p>
+                        </div>
+                        <div class="project-content">
+                            <p>Zulshof is an illustrator brand I've dreamed of since childhood. But I didn't want to live this dream alone; I wanted to share it with you! This place isn't just mine, but ours; a community where dreams and ideas meet.</p>
+                            <div class="project-links">
+                                <a href="https://gnctrhc.com.tr" target="_blank" class="project-link">
+                                    <i class="fas fa-globe"></i> Website
+                                </a>
+                                <a href="https://www.instagram.com/zulshof" target="_blank" class="project-link">
+                                    <i class="fab fa-instagram"></i> Zulshof Instagram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Section -->
+        <section class="goals" id="goals">
+            <div class="container">
+                <h2 class="section-title" style="color: var(--text-dark);">My Goals</h2>
+                <div class="goals-grid">
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Teaching</h3>
+                        <p>I want to transfer my historical knowledge to future generations, helping them understand the past and shape the future.</p>
+                    </div>
+
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-university"></i>
+                        <h3>Academic Contribution</h3>
+                        <p>I want to conduct research that can contribute academically to my country and add value to the field of history through scientific studies.</p>
+                    </div>
+
+                    <div class="goal-card fade-in">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Continuous Learning</h3>
+                        <p>I want to constantly improve myself and gain new perspectives by following innovations in technology and history.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-content fade-in">
+                    <h2 class="section-title">Contact</h2>
+                    <p>If you want to get in touch with me, share project proposals, or just chat, you can reach me through my channels below.</p>
+                    
+                    <div class="social-links">
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <h4>Instagram</h4>
+                            <p>Personal shares and daily content</p>
+                            <a href="https://www.instagram.com/tarihcituranx/" target="_blank" class="social-link">@tarihcituranx</a>
+                        </div>
+
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fab fa-telegram"></i>
+                            </div>
+                            <h4>Personal Telegram Account</h4>
+                            <p>My personal telegram account</p>
+                            <a href="https://t.me/TarihnameX" target="_blank" class="social-link">TarihnameX</a>
+                        </div>
+
+                        <div class="social-card">
+                            <div class="social-icon">
+                                <i class="fas fa-scroll"></i>
+                            </div>
+                            <h4>History Page</h4>
+                            <p>In-depth analyses and special content</p>
+                            <a href="https://t.me/TarihnameX1" target="_blank" class="social-link">History Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Turan KAYA. <span class="footer-text">Tüm hakları saklıdır.</span></p>
+            <p class="footer-motto">Tarihin izinde, geleceğin peşinde.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcons(savedTheme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcons(newTheme);
+        }
+
+        function updateThemeIcons(theme) {
+            const lightIcon = document.getElementById('light-icon');
+            const darkIcon = document.getElementById('dark-icon');
+            
+            if (theme === 'light') {
+                lightIcon.classList.add('active');
+                darkIcon.classList.remove('active');
+            } else {
+                lightIcon.classList.remove('active');
+                darkIcon.classList.add('active');
+            }
+        }
+
+        // Language Detection and Management
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            
+            if (userLang.startsWith('tr')) {
+                return 'tr';
+            } else {
+                return 'en';
+            }
+        }
+
+        function setLanguage(lang) {
+            // Hide all content
+            document.querySelectorAll('.lang-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected language content
+            document.getElementById(`content-${lang}`).classList.add('active');
+            
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+            
+            // Update footer text
+            const footerText = document.querySelector('.footer-text');
+            const footerMotto = document.querySelector('.footer-motto');
+            
+            if (lang === 'tr') {
+                footerText.textContent = 'Tüm hakları saklıdır.';
+                footerMotto.textContent = 'Tarihin izinde, geleceğin peşinde.';
+            } else {
+                footerText.textContent = 'All rights reserved.';
+                footerMotto.textContent = 'Following the traces of history, pursuing the future.';
+            }
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Initialize page
+        function initializePage() {
+            // Initialize theme
+            initializeTheme();
+            
+            // Set current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Set language based on saved preference or browser language
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const defaultLang = savedLang || detectLanguage();
+            setLanguage(defaultLang);
+        }
+
+        // Smooth scrolling
+        document.addEventListener('DOMContentLoaded', function() {
+            initializePage();
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Update current year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
