@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ZULSHOF Boot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+      background: 
+        linear-gradient(135deg, #0d1b2aee 60%, #274472dd 100%),
+        url('/assets/images/blue-flowers.png') center center / cover no-repeat fixed;
+      color: #fca311;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.6s;
+    }
+    .cloud {
+      position: fixed;
+      top: 0; bottom: 0;
+      width: 55vw;
+      min-width: 240px;
+      max-width: 860px;
+      z-index: 10;
+      pointer-events: none;
+      transition: transform 1.28s cubic-bezier(.7,.2,.2,1); /* biraz yavaşlattık */
+      will-change: transform;
+    }
+    .cloud.left {
+      left: 0;
+      transform: translateX(0);
+    }
+    .cloud.right {
+      right: 0;
+      transform: translateX(0);
+    }
+    .cloud.open.left {
+      transform: translateX(-110%);
+    }
+    .cloud.open.right {
+      transform: translateX(110%);
+    }
+    .boot-container {
+      z-index: 20;
+      position: relative;
+      background: rgba(17, 30, 52, 0.83);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+      padding: 2.2rem 2.2rem 1.7rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 370px;
+      width: 92vw;
+      animation: fadeInScale 1.12s cubic-bezier(.4,2,.3,1);
+      transition: opacity 1.06s, transform 1.06s;
+      opacity: 1;
+    }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.92);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+    .boot-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      margin-bottom: 1.1rem;
+      border: 3px solid #fca31150;
+      background: #fff;
+      max-width: 100%;
+    }
+    .boot-title {
+      font-family: 'Saira Stencil One', cursive;
+      font-size: 2.1rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.45rem;
+      color: #fca311;
+      text-shadow: 0 2px 8px #0004;
+      line-height: 1.1;
+      word-break: break-word;
+    }
+    .boot-subtext {
+      font-size: 1.07rem;
+      color: #a5c1e1;
+      opacity: 0.94;
+      margin-bottom: 1.6rem;
+      font-weight: 500;
+      font-family: 'Roboto', sans-serif;
+    }
+    .progress-bar {
+      width: 98%;
+      height: 8px;
+      background: #203356;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 0;
+      margin-top: 0.3rem;
+      position: relative;
+    }
+    .progress-bar-inner {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg,#fca311,#e85d04 85%);
+      border-radius: 8px;
+      animation: progressGrow 2.45s cubic-bezier(.4,2,.3,1) forwards; /* biraz yavaşlattık */
+    }
+    @keyframes progressGrow {
+      to { width: 100%;}
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .boot-container { max-width: 99vw; padding: 1.1rem 0.2rem 1.0rem 0.2rem;}
+      .boot-title { font-size: 1.3rem; }
+      .boot-image { width: 66vw; max-width: 82px; min-width: 38px; height: auto; }
+      .progress-bar { height: 6px; }
+      .cloud { min-width: 100px; }
+    }
+    @media (max-width: 400px) {
+      .boot-title { font-size: 1.02rem; }
+      .boot-image { max-width: 43px; }
+    }
+    @media (max-height: 400px) {
+      .boot-container { padding: 0.3rem 0.1rem 0.5rem 0.1rem; }
+      .boot-title { font-size: 0.9rem; }
+      .boot-image { max-width: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Bulutlar SVG ile iki tarafta -->
+  <div class="cloud left" id="cloudLeft" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="180" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="90" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="270" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="cloud right" id="cloudRight" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 520 400">
+      <ellipse cx="340" cy="270" rx="220" ry="120" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="430" cy="210" rx="90" ry="90" fill="#fff" fill-opacity="0.92"/>
+      <ellipse cx="250" cy="180" rx="120" ry="100" fill="#e5e5f7" fill-opacity="0.7"/>
+    </svg>
+  </div>
+  <div class="boot-container" id="bootContainer" role="alert" aria-live="assertive">
+    <img src="./assets/images/about-banner.png" alt="Zulshof Banner" class="boot-image" />
+    <div class="boot-title">ZULSHOF</div>
+    <div class="boot-subtext" id="bootSubtext">Preparing your experience...</div>
+    <div class="progress-bar"><div class="progress-bar-inner"></div></div>
+  </div>
+  <script>
+    // Dönüş adresini al
+    const params = new URLSearchParams(window.location.search);
+    const goTo = params.get("return") || "index.html";
+    localStorage.setItem("boot-shown", "true");
+
+    // Dil seçimi
+    const lang = localStorage.getItem("site-lang") || navigator.language.slice(0,2).toLowerCase();
+    const translations = {
+      en: "Preparing your experience...",
+      tr: "Siteniz hazırlanıyor...",
+      id: "Menyiapkan pengalaman Anda...",
+      de: "Ihre Erfahrung wird vorbereitet...",
+      fr: "Préparation de votre expérience...",
+      ru: "Подготавливаем ваш опыт...",
+    };
+    const subtext = document.getElementById("bootSubtext");
+    subtext.textContent = translations[lang] || translations["en"];
+
+    // Efekt süreleri (yavaşlatıldı)
+    const boot = document.getElementById("bootContainer");
+    const cloudL = document.getElementById("cloudLeft");
+    const cloudR = document.getElementById("cloudRight");
+
+    // Progress bar dolduktan biraz sonra bulutlar ayrılır
+    setTimeout(() => {
+      cloudL.classList.add("open");
+      cloudR.classList.add("open");
+      boot.style.opacity = "0";
+    }, 2400); // biraz daha uzun oldu
+
+    setTimeout(() => window.location.href = goTo, 3850); // biraz daha uzun oldu
+
+    // ESC ile atlatma (erişilebilirlik)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') window.location.href = goTo;
+    });
+  </script>
+</body>
+</html>
